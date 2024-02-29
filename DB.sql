@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS `Spring_AM_01`;
-CREATE DATABASE `Spring_AM_01`;
-USE `Spring_AM_01`;
+DROP DATABASE IF EXISTS `Project_KSW`;
+CREATE DATABASE `Project_KSW`;
+USE `Project_KSW`;
 
 # article 테이블 생성
 CREATE TABLE article(
@@ -336,10 +336,16 @@ SELECT * FROM article;
 SELECT * FROM `member`;
 
 SELECT * FROM `board`;
-
+ 
 SELECT * FROM reactionPoint;
 
 SELECT * FROM `reply`;
+
+UPDATE reply
+SET `body` = '123',
+updateDate = NOW()
+WHERE id = 4
+
 
 
 
@@ -372,6 +378,15 @@ WHERE id = 6;
 UPDATE article 
 SET title = '제목45'
 WHERE id = 7;
+
+SELECT *
+FROM reply
+WHERE id = 4
+
+UPDATE reply
+SET `body` = 123,
+updateDate = NOW()
+WHERE id =4
 
 SELECT FLOOR(RAND() * 2) + 2
 
@@ -473,3 +488,5 @@ SUM(IF(RP.point > 0,RP.point,0)) AS goodReactionPoint,
 SUM(IF(RP.point < 0,RP.point * -1,0)) AS badReactionPoint
 FROM reactionPoint AS RP
 GROUP BY RP.relTypeCode,RP.relId
+
+
