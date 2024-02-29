@@ -47,21 +47,7 @@ header>div>ul>li {
 	margin-right: 30px;
 }
 
-/* .login-box>tbody>tr>td>input { */
-/* 	padding-left: 10px; */
-/* } */
 
-/* .login-box>tbody>tr:nth-child(3)>td>input { */
-/* 	padding-left: 0; */
-/* } */
-
-/* .join-box>tbody>tr:nth-child(7)>td>input { */
-/* 	padding-left: 0; */
-/* } */
-
-/* .modify-box>tbody>tr:nth-child(5)>td>input, .modify-box>tbody>tr:nth-child(6)>td>input, */
-/* 	.modify-box>tbody>tr:nth-child(7)>td>input { */
-/* } */
 .table-box-1 th, .table-box-1 td {
 	border: 1px solid black;
 	padding: 10px;
@@ -81,4 +67,267 @@ header>div>ul>li:hover>ul {
 
 .hidden {
 	display: none;
+}
+
+
+
+/* 버튼 */
+.a-btn {
+	margin: 20px;
+}
+
+.custom-btn {
+	width: 130px;
+	height: 40px;
+	color: #fff;
+	border-radius: 5px;
+	padding: 10px 25px;
+	font-family: 'Lato', sans-serif;
+	font-weight: 500;
+	background: transparent;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	position: relative;
+	display: inline-block;
+	box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5), 7px 7px 20px
+		0px rgba(0, 0, 0, .1), 4px 4px 5px 0px rgba(0, 0, 0, .1);
+	outline: none;
+}
+
+/* 3 */
+.btn-3 {
+	background: rgb(0, 172, 238);
+	background: linear-gradient(0deg, rgba(0, 172, 238, 1) 0%,
+		rgba(2, 126, 251, 1) 100%);
+	width: 130px;
+	height: 40px;
+	line-height: 42px;
+	padding: 0;
+	border: none;
+}
+
+.btn-3 span {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.btn-3:before, .btn-3:after {
+	position: absolute;
+	content: "";
+	right: 0;
+	top: 0;
+	background: rgba(2, 126, 251, 1);
+	transition: all 0.3s ease;
+}
+
+.btn-3:before {
+	height: 0%;
+	width: 2px;
+}
+
+.btn-3:after {
+	width: 0%;
+	height: 2px;
+}
+
+.btn-3:hover {
+	background: transparent;
+	box-shadow: none;
+}
+
+.btn-3:hover:before {
+	height: 100%;
+}
+
+.btn-3:hover:after {
+	width: 100%;
+}
+
+.btn-3 span:hover {
+	color: rgba(2, 126, 251, 1);
+}
+
+.btn-3 span:before, .btn-3 span:after {
+	position: absolute;
+	content: "";
+	left: 0;
+	bottom: 0;
+	background: rgba(2, 126, 251, 1);
+	transition: all 0.3s ease;
+}
+
+.btn-3 span:before {
+	width: 2px;
+	height: 0%;
+}
+
+.btn-3 span:after {
+	width: 0%;
+	height: 2px;
+}
+
+.btn-3 span:hover:before {
+	height: 100%;
+}
+
+.btn-3 span:hover:after {
+	width: 100%;
+}
+
+span{
+text-align: center;	
+}
+
+
+
+-----------------
+Normalizing
+-----------------
+*/
+
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+a:hover, a:focus {
+  outline: none;
+}
+
+/*----*/
+
+h3 {
+  color: #fff;
+  font-weight: bold;
+  margin: 0 0 50px 0;
+  position: relative;
+  padding: 0 0 5px 0;
+}
+
+h3:before {
+  content: "";
+  background: rgba(255, 255, 255, 0.1);
+  bottom: -4px;
+  width: 25%;
+  height: 1px;
+  left: 0;
+  position: absolute;
+}
+
+.back {
+  padding: 50px 0 150px 0;
+}
+
+.color-1 {
+  background: #353535;
+}
+
+.color-2 {
+  background: #353535;
+}
+
+.color-3 {
+  background: #353535;
+}
+
+.color-4 {
+  background: #353535;
+}
+
+.color-5 {
+  background: #353535;
+}
+
+.color-6 {
+  background: #353535;
+}
+
+.color-7 {
+  background: #353535;
+}
+
+.color-8 {
+  background: #353535;
+}
+
+.color-9 {
+  background: #353535;
+}
+
+.color-10 {
+  background: #353535;
+}
+
+
+/*
+-----------------
+common style
+-----------------
+*/
+
+.menu a {
+  color: rgba(255, 255, 255, 0.8);
+  font-family: Lato;
+  font-size: 17pt;
+  font-weight: 400;
+  padding: 15px 25px;
+  /**/
+  position: relative;
+  display: block;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+/*
+
+---------------------------------------
+hover effect 73
+---------------------------------------
+*/
+
+.SMN_effect-73 a {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  padding-bottom: 5px;
+}
+
+.SMN_effect-73 a:after {
+  background: black;
+  content: '';
+  height: 2px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  transform: translate3d(-100%, 0, 0);
+  width: 100%;
+}
+
+.SMN_effect-73 a:hover::after {
+  animation: link-hoverstate .5s linear forwards;
+  animation-timing-function: linear;
+  animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+@keyframes link-hoverstate {
+  0% {
+    opacity: 1;
+    transform: translate3d(-100%, 0, 0)
+  }
+  55% {
+    transform: translate3d(100%, 0, 0)
+  }
+  56% {
+    transform: translate3d(100%, calc(0.5rem + 4px), 0)
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, calc(0.5rem + 4px), 0)
+  }
 }
