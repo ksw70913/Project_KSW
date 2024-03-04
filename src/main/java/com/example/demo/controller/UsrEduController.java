@@ -7,9 +7,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UsrEduController {
 
 	@RequestMapping("/usr/edu/book")
-	public String showMain() {
+	public String showBook() {
 
 		return "/usr/edu/book";
+	}
+	
+	@RequestMapping("/usr/edu/education")
+	public String showEducation() {
+
+		return "/usr/edu/education";
 	}
 
 }

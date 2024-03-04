@@ -6,6 +6,8 @@
 <title>HELPER</title>
 <link rel="stylesheet" href="/resource/main.css" />
 <script src="/resource/common.js" defer="defer"></script>
+<link rel="stylesheet" href="/resource/theme.css" />
+<script src="/resource/theme.js" defer="defer"></script>
 <!-- 테일윈드 불러오기 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" />
 
@@ -41,17 +43,17 @@
 					</li>
 					<li class="card-med" id="sup-cat">
 						<div class="card-image">
-							<img
-								src="https://ouch-cdn2.icons8.com/US6gJ6fHUOJqruLB7KDe5zEa82iDSp7OdO-bv-aLtvU/rs:fit:368:310/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNjU5/LzdmOWU1ZjU0LTMx/ZDQtNDgwNS1iM2E2/LWM3NzgyMTcyNzJh/NC5wbmc.png">
+							<a href="../nav/navigation"> <img
+								src="https://ouch-cdn2.icons8.com/US6gJ6fHUOJqruLB7KDe5zEa82iDSp7OdO-bv-aLtvU/rs:fit:368:310/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNjU5/LzdmOWU1ZjU0LTMx/ZDQtNDgwNS1iM2E2/LWM3NzgyMTcyNzJh/NC5wbmc.png"></a>
 						</div> <a href="../nav/navigation"> <span>학교 길찾기</span> <!-- <span>Shop All <span class="material-symbols-outlined">
 									arrow_forward </span></span> -->
 					</a>
 					</li>
 					<li class="card-med" id="sup-bird">
 						<div class="card-image">
-							<img
-								src="https://ouch-cdn2.icons8.com/6OkSfKKP476ZKzGJoDlXfXuWzX-vjlDRotIVMTz3lmo/rs:fit:368:396/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNzA1/LzRkNmI1YjIwLTQy/YWQtNDVlMC05ZDI5/LTA0MTkyMWZkNWE1/NS5wbmc.png">
-						</div> <a href="#"> <span>학습 현황</span> <!-- <span>Shop All <span class="material-symbols-outlined">
+							<a href="../edu/education"> <img
+								src="https://ouch-cdn2.icons8.com/6OkSfKKP476ZKzGJoDlXfXuWzX-vjlDRotIVMTz3lmo/rs:fit:368:396/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNzA1/LzRkNmI1YjIwLTQy/YWQtNDVlMC05ZDI5/LTA0MTkyMWZkNWE1/NS5wbmc.png"></a>
+						</div> <a href="../edu/education"> <span>학습 현황</span> <!-- <span>Shop All <span class="material-symbols-outlined">
 									arrow_forward </span></span> -->
 					</a>
 					</li>
@@ -68,17 +70,17 @@
 				<ul class="subnav">
 					<li class="card-med" id="serv-groom">
 						<div class="card-image">
-							<img
-								src="https://ouch-cdn2.icons8.com/T11rfGmMKgcStJyAFKNgtOfE79cadabx0DVMnvzA9Pk/rs:fit:368:313/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNDQx/LzFlYWU4MWY3LWQ1/ZjYtNDM2Ny1hZjM5/LWVmNTFmMGM5Njk4/MS5wbmc.png">
-						</div> <a href="#"> <span>내 정보</span> <!-- <span>More Info <span class="material-symbols-outlined">
+							<a href="/usr/member/myPage"> <img
+								src="https://ouch-cdn2.icons8.com/T11rfGmMKgcStJyAFKNgtOfE79cadabx0DVMnvzA9Pk/rs:fit:368:313/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNDQx/LzFlYWU4MWY3LWQ1/ZjYtNDM2Ny1hZjM5/LWVmNTFmMGM5Njk4/MS5wbmc.png"></a>
+						</div> <a href="/usr/member/myPage"> <span>내 정보</span> <!-- <span>More Info <span class="material-symbols-outlined">
 									arrow_forward </span></span> -->
 					</a>
 					</li>
 					<li class="card-med" id="serv-board">
 						<div class="card-image">
-							<img
-								src="https://ouch-cdn2.icons8.com/F5Ea1suZtMYimKDkJr0CJLO_1bju6-bTyT1EuDKEg8s/rs:fit:368:254/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMjcx/LzVjMzE4NWM0LWZh/NTMtNGQ1OS05ZTM2/LTZjYzBhNGU3ODg0/NC5wbmc.png">
-						</div> <a href="#"> <span>정보 수정</span> <!-- <span>More Info<span class="material-symbols-outlined">
+							<a href="../member/checkPw"> <img
+								src="https://ouch-cdn2.icons8.com/F5Ea1suZtMYimKDkJr0CJLO_1bju6-bTyT1EuDKEg8s/rs:fit:368:254/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMjcx/LzVjMzE4NWM0LWZh/NTMtNGQ1OS05ZTM2/LTZjYzBhNGU3ODg0/NC5wbmc.png"></a>
+						</div> <a href="../member/checkPw"> <span>정보 수정</span> <!-- <span>More Info<span class="material-symbols-outlined">
 									arrow_forward </span></span> -->
 					</a>
 				</ul></li>
@@ -93,6 +95,8 @@
 		</div>
 	</nav>
 </header>
+
+
 <section class="hero">
 	<h1>학교로 가는 안전한 길!</h1>
 	<h1>온라인으로 만나는 학습 동기 부여!</h1>
@@ -231,48 +235,55 @@
 	<div>
 		<h2>날씨 &amp; 시간</h2>
 		<p>오늘의 날씨를 알아보세요! 날씨에 맞는 오늘의 학습도 추천해드립니다!</p>
-		<div class="btn-group">
+
+<!-- 		<div class="btn-group">
 			<button class="btn-filled-dark">
 				<span class="material-symbols-outlined"> pin_drop </span>Find a Store
 			</button>
 			<button class="btn-outline-dark btn-hover-color">
 				<span class="material-symbols-outlined"> contact_support </span> Contact Us
 			</button>
+		</div> -->
+				<div class="clock">
+		<td><span id="Seoul"></span></td>
 		</div>
 	</div>
+	<br />
+	
+	
 </section>
 
 <footer>
 
 	<ul>
-		Products
-		<li><a href="#">Food &amp; Treats</a></li>
-		<li><a href="#">Toys</a></li>
-		<li><a href="#">Beds &amp; Furniture</a></li>
-		<li><a href="#">Outdoor Supplies</a></li>
-		<li><a href="#">Clothing</a></li>
+		교과서 등록
+		<li><a href="#">국여</a></li>
+		<li><a href="#">수학</a></li>
+		<li><a href="#">영어</a></li>
+		<li><a href="#">과학</a></li>
+		<li><a href="#">도덕</a></li>
 		<li><a href="#">Aquariums</a></li>
 		<li><a href="#">Rocks &amp; Decorations</a></li>
 	</ul>
 
 	<ul>
-		Shop by Pet
-		<li><a href="#">Dogs</a></li>
-		<li><a href="#">Cats</a></li>
-		<li><a href="#">Birds</a></li>
+		나의 정보
+		<li><a href="#">내 정보</a></li>
+		<li><a href="#">회원 수정</a></li>
+		<li><a href="#">회원 탈퇴</a></li>
 		<li><a href="#">Fish</a></li>
 	</ul>
 
 
 	<ul>
-		Our Services
-		<li><a href="#">Grooming</a></li>
-		<li><a href="#">Boarding</a></li>
+		네비게이션
+		<li><a href="#">내 학교 찾기</a></li>
+		<li><a href="#">길 안내</a></li>
 	</ul>
 	<ul>
-		Our Company
-		<li><a href="#">Locations &amp; Hours</a></li>
-		<li><a href="#">About Us</a></li>
+		로그인 &amp; 회원가입
+		<li><a href="#">로그인</a></li>
+		<li><a href="#">회원가입</a></li>
 	</ul>
 
 

@@ -35,25 +35,26 @@
 					<ul class="subnav">
 						<li class="card-med" id="sup-dog">
 							<div class="card-image">
-								<img
-									src="https://ouch-cdn2.icons8.com/qPvaAv2gxwM3l0z7dl_eoh9v6h58HlzewBUfEgX6AZE/rs:fit:368:386/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMTIv/ZmM4YjNlYmItMDNj/Ni00NGM3LTliNGUt/YTUyOWUzOGU4NTE2/LnBuZw.png">
+								<a href="../edu/book"><img
+									src="https://ouch-cdn2.icons8.com/qPvaAv2gxwM3l0z7dl_eoh9v6h58HlzewBUfEgX6AZE/rs:fit:368:386/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMTIv/ZmM4YjNlYmItMDNj/Ni00NGM3LTliNGUt/YTUyOWUzOGU4NTE2/LnBuZw.png"></a>
+
 							</div> <a href="../edu/book"> <span>교과서 등록 </span> <!-- <span><span class="material-symbols-outlined">
 									</span></span> -->
 						</a>
 						</li>
 						<li class="card-med" id="sup-cat">
 							<div class="card-image">
-								<img
-									src="https://ouch-cdn2.icons8.com/US6gJ6fHUOJqruLB7KDe5zEa82iDSp7OdO-bv-aLtvU/rs:fit:368:310/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNjU5/LzdmOWU1ZjU0LTMx/ZDQtNDgwNS1iM2E2/LWM3NzgyMTcyNzJh/NC5wbmc.png">
+								<a href="../nav/navigation"> <img
+									src="https://ouch-cdn2.icons8.com/US6gJ6fHUOJqruLB7KDe5zEa82iDSp7OdO-bv-aLtvU/rs:fit:368:310/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNjU5/LzdmOWU1ZjU0LTMx/ZDQtNDgwNS1iM2E2/LWM3NzgyMTcyNzJh/NC5wbmc.png"></a>
 							</div> <a href="../nav/navigation"> <span>학교 길찾기</span> <!-- <span>Shop All <span class="material-symbols-outlined">
 									arrow_forward </span></span> -->
 						</a>
 						</li>
 						<li class="card-med" id="sup-bird">
 							<div class="card-image">
-								<img
-									src="https://ouch-cdn2.icons8.com/6OkSfKKP476ZKzGJoDlXfXuWzX-vjlDRotIVMTz3lmo/rs:fit:368:396/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNzA1/LzRkNmI1YjIwLTQy/YWQtNDVlMC05ZDI5/LTA0MTkyMWZkNWE1/NS5wbmc.png">
-							</div> <a href="#"> <span>학습 현황</span> <!-- <span>Shop All <span class="material-symbols-outlined">
+								<a href="../edu/education"> <img
+									src="https://ouch-cdn2.icons8.com/6OkSfKKP476ZKzGJoDlXfXuWzX-vjlDRotIVMTz3lmo/rs:fit:368:396/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNzA1/LzRkNmI1YjIwLTQy/YWQtNDVlMC05ZDI5/LTA0MTkyMWZkNWE1/NS5wbmc.png"></a>
+							</div> <a href="../edu/education"> <span>학습 현황</span> <!-- <span>Shop All <span class="material-symbols-outlined">
 									arrow_forward </span></span> -->
 						</a>
 						</li>
@@ -66,35 +67,35 @@
 						</a>
 						</li>
 					</ul>
-
-					<li><a href="#">메뉴</a>
+				<li><a href="#">메뉴</a>
 					<ul class="subnav">
-					<li class="card-med" id="serv-groom">
-						<div class="card-image">
-							<img
+						<li class="card-med" id="serv-groom">
+							<div class="card-image">
+								<a href="/usr/member/myPage"> <img
 									src="https://ouch-cdn2.icons8.com/T11rfGmMKgcStJyAFKNgtOfE79cadabx0DVMnvzA9Pk/rs:fit:368:313/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNDQx/LzFlYWU4MWY3LWQ1/ZjYtNDM2Ny1hZjM5/LWVmNTFmMGM5Njk4/MS5wbmc.png">
-						</div> <a href="#"> <span>내 정보</span> <!-- <span>More Info <span class="material-symbols-outlined">
+								</a>
+							</div> <a href="/usr/member/myPage"> <span>내 정보</span> <!-- <span>More Info <span class="material-symbols-outlined">
 									arrow_forward </span></span> -->
-					</a>
-					</li>
-					<li class="card-med" id="serv-board">
-						<div class="card-image">
-							<img
+						</a>
+						</li>
+						<li class="card-med" id="serv-board">
+							<div class="card-image">
+								<img
 									src="https://ouch-cdn2.icons8.com/F5Ea1suZtMYimKDkJr0CJLO_1bju6-bTyT1EuDKEg8s/rs:fit:368:254/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMjcx/LzVjMzE4NWM0LWZh/NTMtNGQ1OS05ZTM2/LTZjYzBhNGU3ODg0/NC5wbmc.png">
-						</div> <a href="#"> <span>정보 수정</span> <!-- <span>More Info<span class="material-symbols-outlined">
+							</div> <a href="#"> <span>정보 수정</span> <!-- <span>More Info<span class="material-symbols-outlined">
 									arrow_forward </span></span> -->
-					</a>
-				
+						</a>
 					</ul></li>
-			<li><a href="../member/login">LOGIN &amp; JOIN</a></li>
-			<li><a href="#">회원 탈퇴</a></li>
-		</ul>
- 		<div id="utility">
-			<span class="material-symbols-outlined"><a href="#">↑</a>  </span>
+				<li><a href="../member/login">LOGIN &amp; JOIN</a></li>
+				<li><a href="#">회원 탈퇴</a></li>
+			</ul>
+			<div id="utility">
+				<span class="material-symbols-outlined"><a href="#">↑</a> </span>
 				<!--  <span class="material-symbols-outlined"> shopping_cart
 			</span> -->
 
-		</div>
-	</nav>
-</header><h1 style="font-size: 2rem;">${pageTitle }</h1>
-					<hr />
+			</div>
+		</nav>
+	</header>
+	<h1 style="font-size: 2rem;">${pageTitle }</h1>
+	<hr />

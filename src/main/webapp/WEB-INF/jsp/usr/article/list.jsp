@@ -3,6 +3,11 @@
 <c:set var="pageTitle" value="#{board.code } ARTICLE LIST"></c:set>
 <%@ include file="../common/head2.jspf"%>
 
+<style>
+section {
+background-color: #F4CFC6;
+}
+</style>
 
 <section class="mt-8 text-xl px-4">
 	<div class="mx-auto overflow-x-auto">
