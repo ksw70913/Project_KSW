@@ -22,9 +22,9 @@
 <body>
 	<header>
 		<div class="h-20 flex mx-auto items-center text-3xl">
-			<a href="/"><img
+			<a href="../home/main2"><img
 				src="https://velog.velcdn.com/images/pavico0913/post/ca2b48c6-583a-421d-80dd-6154a8073b1c/image.png" alt=""
-				width="200" height="50"></a>
+				width="160" height="30"></a>
 			<div class="flex-grow"></div>
 			<ul class="flex SMN_effect-73">
 				<li><a href="/">HOME</a></li>

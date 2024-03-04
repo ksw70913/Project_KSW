@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <meta charset="UTF-8">
-<title>${pageTitle }</title>
+<title>HELPER</title>
 <link rel="stylesheet" href="/resource/main.css" />
 <script src="/resource/common.js" defer="defer"></script>
 <!-- 테일윈드 불러오기 -->
@@ -19,100 +19,95 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <header>
-	<div class="banner">Get free delivery on orders over $80</div>
 	<nav>
 
-		<div id="logo">
+		<div class="h-20 flex mx-auto items-center text-3xl">
+			<a href="../home/main2"><img
+				src="https://velog.velcdn.com/images/pavico0913/post/ca2b48c6-583a-421d-80dd-6154a8073b1c/image.png" alt=""
+				width="160" height="30"></a>
 
-			<svg width="40" height="32" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-					d="M12.8 32H0V21.9849C0 17.1239 4.0116 13.1839 8.96 13.1839H15.2V0.468341C15.2 0.251458 15.3792 0.0754376 15.6 0.0754376C15.7184 0.0754376 15.8308 0.127301 15.9068 0.216883L17.3616 1.92719C18.402 1.07577 19.74 0.563816 21.2 0.563816H22C23.442 0.563816 24.7656 1.06359 25.8 1.89654L27.2932 0.14066C27.3692 0.0514706 27.4812 0 27.6 0C27.8208 0 28 0.175628 28 0.392904V15.3896H23.36C17.528 15.3896 12.8 20.0337 12.8 25.7623V32Z"
-					fill="#45413E" />
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-					d="M29.76 17.0569V12.0875C29.76 12.0836 29.76 12.0797 29.76 12.0758V6.79004C29.76 6.57435 29.9392 6.4 30.16 6.4C30.266 6.4 30.3676 6.44095 30.4424 6.51389L31.9576 7.98784C32.7864 7.42501 33.7936 7.09504 34.88 7.09504C35.97 7.09504 36.9808 7.42735 37.8112 7.99369L39.3176 6.52793C39.3924 6.45499 39.494 6.41404 39.6 6.41404C39.8208 6.41404 40 6.58878 40 6.80408V23.2632C40 28.0883 35.9884 32 31.04 32H14.4V25.7938C14.4 20.969 18.4116 17.0569 23.36 17.0569H29.76Z"
-					fill="#45413E" />
-                </svg>
-
-			Jackie's <br> Pet Store
 		</div>
 		<ul class="navigation-menu">
-			<li><a href="#">Products</a>
+			<li><a href="#">사이트 기능</a>
 				<ul class="subnav">
 					<li class="card-med" id="sup-dog">
 						<div class="card-image">
-							<img
-								src="https://ouch-cdn2.icons8.com/qPvaAv2gxwM3l0z7dl_eoh9v6h58HlzewBUfEgX6AZE/rs:fit:368:386/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMTIv/ZmM4YjNlYmItMDNj/Ni00NGM3LTliNGUt/YTUyOWUzOGU4NTE2/LnBuZw.png">
-						</div> <a href="#"> <span>Dogs</span> <span>Shop All <span class="material-symbols-outlined">
-									arrow_forward </span></span>
+							<a href="../edu/book"><img
+								src="https://ouch-cdn2.icons8.com/qPvaAv2gxwM3l0z7dl_eoh9v6h58HlzewBUfEgX6AZE/rs:fit:368:386/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMTIv/ZmM4YjNlYmItMDNj/Ni00NGM3LTliNGUt/YTUyOWUzOGU4NTE2/LnBuZw.png"></a>
+
+						</div> <a href="../edu/book"> <span>교과서 등록 </span> <!-- <span><span class="material-symbols-outlined">
+									</span></span> -->
 					</a>
 					</li>
 					<li class="card-med" id="sup-cat">
 						<div class="card-image">
 							<img
 								src="https://ouch-cdn2.icons8.com/US6gJ6fHUOJqruLB7KDe5zEa82iDSp7OdO-bv-aLtvU/rs:fit:368:310/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNjU5/LzdmOWU1ZjU0LTMx/ZDQtNDgwNS1iM2E2/LWM3NzgyMTcyNzJh/NC5wbmc.png">
-						</div> <a href="#"> <span>Cats</span> <span>Shop All <span class="material-symbols-outlined">
-									arrow_forward </span></span>
+						</div> <a href="../nav/navigation"> <span>학교 길찾기</span> <!-- <span>Shop All <span class="material-symbols-outlined">
+									arrow_forward </span></span> -->
 					</a>
 					</li>
 					<li class="card-med" id="sup-bird">
 						<div class="card-image">
 							<img
 								src="https://ouch-cdn2.icons8.com/6OkSfKKP476ZKzGJoDlXfXuWzX-vjlDRotIVMTz3lmo/rs:fit:368:396/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNzA1/LzRkNmI1YjIwLTQy/YWQtNDVlMC05ZDI5/LTA0MTkyMWZkNWE1/NS5wbmc.png">
-						</div> <a href="#"> <span>Birds</span> <span>Shop All <span class="material-symbols-outlined">
-									arrow_forward </span></span>
+						</div> <a href="#"> <span>학습 현황</span> <!-- <span>Shop All <span class="material-symbols-outlined">
+									arrow_forward </span></span> -->
 					</a>
 					</li>
 					<li class="card-med" id="sup-fish">
 						<div class="card-image">
 							<img
 								src="https://ouch-cdn2.icons8.com/41Pv7w9rcbn7II_gB2vwvVCQRYE5mvpca1ZbsvMujR0/rs:fit:368:368/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNjE5/LzRlZjE1YTgyLTI3/NjYtNDlkNC1hMGE3/LWY4ZjRmNzhjM2M5/NS5wbmc.png">
-						</div> <a href="#"> <span>Fish</span> <span>Shop All <span class="material-symbols-outlined">
-									arrow_forward </span></span>
+						</div> <a href="#"> <span>오늘의 학습 추천</span> <!-- <span>Shop All <span class="material-symbols-outlined">
+									arrow_forward </span></span> -->
 					</a>
 					</li>
 				</ul>
-			<li><a href="#">Services</a>
+			<li><a href="#">메뉴</a>
 				<ul class="subnav">
 					<li class="card-med" id="serv-groom">
 						<div class="card-image">
 							<img
 								src="https://ouch-cdn2.icons8.com/T11rfGmMKgcStJyAFKNgtOfE79cadabx0DVMnvzA9Pk/rs:fit:368:313/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNDQx/LzFlYWU4MWY3LWQ1/ZjYtNDM2Ny1hZjM5/LWVmNTFmMGM5Njk4/MS5wbmc.png">
-						</div> <a href="#"> <span>Grooming</span> <span>More Info <span class="material-symbols-outlined">
-									arrow_forward </span></span>
+						</div> <a href="#"> <span>내 정보</span> <!-- <span>More Info <span class="material-symbols-outlined">
+									arrow_forward </span></span> -->
 					</a>
 					</li>
 					<li class="card-med" id="serv-board">
 						<div class="card-image">
 							<img
 								src="https://ouch-cdn2.icons8.com/F5Ea1suZtMYimKDkJr0CJLO_1bju6-bTyT1EuDKEg8s/rs:fit:368:254/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMjcx/LzVjMzE4NWM0LWZh/NTMtNGQ1OS05ZTM2/LTZjYzBhNGU3ODg0/NC5wbmc.png">
-						</div> <a href="#"> <span>Boarding</span> <span>More Info<span class="material-symbols-outlined">
-									arrow_forward </span></span>
+						</div> <a href="#"> <span>정보 수정</span> <!-- <span>More Info<span class="material-symbols-outlined">
+									arrow_forward </span></span> -->
 					</a>
 				</ul></li>
-			<li><a href="#locate">Locations &amp; Hours</a></li>
-			<li><a href="#">About Us</a></li>
+			<li><a href="../member/login">LOGIN &amp; JOIN</a></li>
+			<li><a href="#">회원 탈퇴</a></li>
 		</ul>
 		<div id="utility">
-			<span class="material-symbols-outlined"> search </span> <span class="material-symbols-outlined"> shopping_cart
-			</span>
+			<span class="material-symbols-outlined"><a href="#">↑</a> </span>
+			<!--  <span class="material-symbols-outlined"> shopping_cart
+			</span> -->
 
 		</div>
 	</nav>
 </header>
 <section class="hero">
-	<h1>Your One-Stop Shop for Every Pet's Needs!</h1>
+	<h1>학교로 가는 안전한 길!</h1>
+	<h1>온라인으로 만나는 학습 동기 부여!</h1>
 	<div class="btn-group">
 		<button class="btn-filled-dark">
-			<span class="material-symbols-outlined"> shopping_cart </span>Shop All Products
+			<span class="material-symbols-outlined"> 길 찾기 </span> (바로가기)
 		</button>
 		<button class="btn-outline-dark btn-hover-color">
-			<span class="material-symbols-outlined"> calendar_month </span> Book a Service
+			<span class="material-symbols-outlined"> 학습 상태 </span> (바로가기)
 		</button>
 	</div>
 
 </section>
 <section>
-	<h2>Shop by Pet</h2>
+	<h2>Menu</h2>
 
 	<ul class="shop-pets">
 		<li class="card-large card-light" id="sup-dog">
@@ -121,15 +116,15 @@
 					src="https://ouch-cdn2.icons8.com/5ccPOQq69UKQcbmXfjvOScfFc9NXKG0Xu6DPNQ8b0f8/rs:fit:368:247/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMTEw/LzFlODdiYzcyLTBl/OWEtNDFlNS05N2Ey/LTMzYTA4MDQ5MWU1/OC5wbmc.png">
 			</div>
 			<ul>
-				Dogs
-				<li><a href="#">Food &amp; Treats</a></li>
-				<li><a href="#">Toys</a></li>
-				<li><a href="#">Beds &amp; Furniture</a></li>
-				<li><a href="#">Outdoor Supplies</a></li>
-				<li><a href="#">Clothing</a></li>
+				교과서 등록
+				<li><a href="#">국어</a></li>
+				<li><a href="#">수학</a></li>
+				<li><a href="#">영어</a></li>
+				<li><a href="#">과학</a></li>
+				<li><a href="#">도덕</a></li>
 
 				<button class="btn-outline-light">
-					Shop All<span class="material-symbols-outlined"> arrow_forward </span>
+					바로가기<span class="material-symbols-outlined"> arrow_forward </span>
 				</button>
 
 			</ul>
@@ -143,12 +138,12 @@
 					src="https://ouch-cdn2.icons8.com/RjiKOF2gGKiIVnIMFi0O1a4aU7DoHfhbkXr2JbUYZ3A/rs:fit:368:313/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMzEy/LzliNDQ3MmVlLWZh/YjMtNDQwNy1iOWVh/LWMwOTdlYWNjNWE3/NS5wbmc.png">
 			</div>
 			<ul>
-				Cats
-				<li><a href="#">Food &amp; Treats</a></li>
-				<li><a href="#">Toys</a></li>
-				<li><a href="#">Beds &amp; Furniture</a></li>
+				나의 정보
+				<li><a href="#">내 정보</a></li>
+				<li><a href="#">정보 수정</a></li>
+				<li><a href="#">회원 탈퇴</a></li>
 				<button class="btn-outline-dark">
-					Shop All<span class="material-symbols-outlined"> arrow_forward </span>
+					바로가기<span class="material-symbols-outlined"> arrow_forward </span>
 				</button>
 			</ul>
 
@@ -160,12 +155,12 @@
 					src="https://ouch-cdn2.icons8.com/DF-XRInvbvWS9fQSpWc_SegC3meXZK8BmE-PjrdrF3Q/rs:fit:368:396/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNzI3/LzQyYWIyNzliLWJj/ZDgtNGEyMC04MGRi/LTk3MzU4YWFmNTVk/OS5wbmc.png">
 			</div>
 			<ul>
-				Birds
-				<li><a href="#">Food &amp; Treats</a></li>
-				<li><a href="#">Toys</a></li>
+				네비게이션
+				<li><a href="#">내 학교 찾기</a></li>
+				<li><a href="#">길 안내</a></li>
 				<li><a href="#">Furniture</a></li>
 				<button class="btn-outline-dark">
-					Shop All<span class="material-symbols-outlined"> arrow_forward </span>
+					바로가기<span class="material-symbols-outlined"> arrow_forward </span>
 				</button>
 			</ul>
 
@@ -176,12 +171,12 @@
 					src="https://ouch-cdn2.icons8.com/41Pv7w9rcbn7II_gB2vwvVCQRYE5mvpca1ZbsvMujR0/rs:fit:368:368/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNjE5/LzRlZjE1YTgyLTI3/NjYtNDlkNC1hMGE3/LWY4ZjRmNzhjM2M5/NS5wbmc.png">
 			</div>
 			<ul>
-				Fish
-				<li><a href="#">Food</a></li>
-				<li><a href="#">Aquariums</a></li>
+				로그인 &amp; 회원가입
+				<li><a href="#">로그인</a></li>
+				<li><a href="#">회원가입</a></li>
 				<li><a href="#">Rocks &amp; Decorations</a></li>
 				<button class="btn-outline-light">
-					Shop All<span class="material-symbols-outlined"> arrow_forward </span>
+					바로가기<span class="material-symbols-outlined"> arrow_forward </span>
 				</button>
 			</ul>
 
@@ -199,7 +194,7 @@
 					src="https://ouch-cdn2.icons8.com/T11rfGmMKgcStJyAFKNgtOfE79cadabx0DVMnvzA9Pk/rs:fit:368:313/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNDQx/LzFlYWU4MWY3LWQ1/ZjYtNDM2Ny1hZjM5/LWVmNTFmMGM5Njk4/MS5wbmc.png">
 			</div>
 			<ul>
-				Dog Grooming
+				나의 학습
 				<span class="subtitle">Tail-wagging transformations are our specialty.</span>
 				<li><a href="#">Coat Care</a><span>$80</span></li>
 				<li><a href="#">Nail Care</a><span>$16</span></li>
@@ -218,7 +213,7 @@
 					src="https://ouch-cdn2.icons8.com/F5Ea1suZtMYimKDkJr0CJLO_1bju6-bTyT1EuDKEg8s/rs:fit:368:254/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMjcx/LzVjMzE4NWM0LWZh/NTMtNGQ1OS05ZTM2/LTZjYzBhNGU3ODg0/NC5wbmc.png">
 			</div>
 			<ul>
-				Dog Boarding
+				네비게이션
 				<span class="subtitle">Where fun and care never take a day off.</span>
 				<li><a href="#">Doggie Daycare</a><span>$80</span></li>
 				<li><a href="#">Short Term Boarding</a><span>$80</span></li>
@@ -234,9 +229,8 @@
 <section id="locate">
 
 	<div>
-		<h2>Location &amp; Hours</h2>
-		<p>Our knowledgeable and friendly staff is always ready to assist you in making the best choices for your furry,
-			feathered, or finned friends.</p>
+		<h2>날씨 &amp; 시간</h2>
+		<p>오늘의 날씨를 알아보세요! 날씨에 맞는 오늘의 학습도 추천해드립니다!</p>
 		<div class="btn-group">
 			<button class="btn-filled-dark">
 				<span class="material-symbols-outlined"> pin_drop </span>Find a Store
