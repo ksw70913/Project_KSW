@@ -50,6 +50,7 @@ public interface ArticleRepository {
 	public void deleteArticle(int id);
 
 	@Update("""
+			<script>
 			UPDATE article
 				<set>
 					<if test="title != null and title != ''">title = #{title},</if>
@@ -57,6 +58,7 @@ public interface ArticleRepository {
 					updateDate = NOW()
 				</set>
 			WHERE id = #{id}
+			</script>
 				""")
 	public void modifyArticle(int id, String title, String body);
 

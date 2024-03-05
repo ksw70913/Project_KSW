@@ -316,7 +316,7 @@ function doModifyReply(replyId) {
 					<tr>
 						<th>내용</th>
 						<td>
-							<textarea class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+							<textarea class="input input-bordered input-primary w-full max-w-xs" autocomplete="off"
 								placeholder="내용을 입력해주세요" name="body"> </textarea>
 						</td>
 					</tr>
