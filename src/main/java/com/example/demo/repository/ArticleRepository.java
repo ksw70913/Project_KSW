@@ -18,10 +18,11 @@ public interface ArticleRepository {
 			article SET
 			regDate = NOW(),
 			updateDate = NOW(),
+			boardId = #{boardId},
 			memberId = #{memberId},
 			title = #{title}, `body` = #{body}
 			""")
-	public void writeArticle(int memberId, String title, String body);
+	public void writeArticle(int memberId, int boardId, String title, String body);
 
 	@Select("SELECT LAST_INSERT_ID()")
 	public int getLastInsertId();

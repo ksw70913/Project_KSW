@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="MYPAGE"></c:set>
-<%@ include file="../common/head.jspf"%>
+<%@ include file="../common/head2.jspf"%>
 
 <div>1${loginedMember }</div>
 <div>2${rq.loginedMember }</div>

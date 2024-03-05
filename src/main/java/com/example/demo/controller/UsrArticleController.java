@@ -153,9 +153,11 @@ public class UsrArticleController {
 
 	@RequestMapping("/usr/article/doWrite")
 	@ResponseBody
-	public String doWrite(HttpServletRequest req, String title, String body) {
+	public String doWrite(HttpServletRequest req,int boardId, String title, String body) {
 
 		Rq rq = (Rq) req.getAttribute("rq");
+		
+		System.err.println(boardId);
 
 		if (Ut.isNullOrEmpty(title)) {
 			return Ut.jsHistoryBack("F-1", "제목을 입력해주세요");
@@ -164,7 +166,7 @@ public class UsrArticleController {
 			return Ut.jsHistoryBack("F-2", "내용을 입력해주세요");
 		}
 
-		ResultData<Integer> writeArticleRd = articleService.writeArticle(rq.getLoginedMemberId(), title, body);
+		ResultData<Integer> writeArticleRd = articleService.writeArticle(rq.getLoginedMemberId(),boardId, title, body);
 
 		int id = (int) writeArticleRd.getData1();
 

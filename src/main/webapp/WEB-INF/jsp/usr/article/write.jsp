@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="ARTICLE WRITE"></c:set>
-<%@ include file="../common/head.jspf"%>
+<%@ include file="../common/head2.jspf"%>
 
 
 <section class="mt-8 text-xl px-4">
@@ -9,6 +9,14 @@
 		<form action="../article/doWrite" method="POST">
 			<table class="write-box table-box-1" border="1">
 				<tbody>
+					<tr>
+						<th>보드 선택</th>
+						<td><select class="select select-bordered select-sm w-full max-w-xs" name="boardId">
+								<option value="1">NOTICE</option>
+								<option value="2">FREE</option>
+								<option value="3">QnA</option>
+						</select></td>
+					</tr>
 					<tr>
 						<th>제목</th>
 						<td><input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"

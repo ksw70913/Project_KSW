@@ -25,7 +25,7 @@
 		<nav>
 
 			<div class="h-20 flex mx-auto items-center text-3xl">
-				<a href="../home/main2"><img
+				<a href="../home/main"><img
 					src="https://velog.velcdn.com/images/pavico0913/post/ca2b48c6-583a-421d-80dd-6154a8073b1c/image.png" alt=""
 					width="160" height="30"></a>
 
@@ -60,33 +60,41 @@
 						</li>
 						<li class="card-med" id="sup-fish">
 							<div class="card-image">
-								<img
-									src="https://ouch-cdn2.icons8.com/41Pv7w9rcbn7II_gB2vwvVCQRYE5mvpca1ZbsvMujR0/rs:fit:368:368/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNjE5/LzRlZjE1YTgyLTI3/NjYtNDlkNC1hMGE3/LWY4ZjRmNzhjM2M5/NS5wbmc.png">
-							</div> <a href="#"> <span>오늘의 학습 추천</span> <!-- <span>Shop All <span class="material-symbols-outlined">
+								<a href="../article/list"> <img
+									src="https://ouch-cdn2.icons8.com/41Pv7w9rcbn7II_gB2vwvVCQRYE5mvpca1ZbsvMujR0/rs:fit:368:368/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNjE5/LzRlZjE1YTgyLTI3/NjYtNDlkNC1hMGE3/LWY4ZjRmNzhjM2M5/NS5wbmc.png"></a>
+							</div> <a href="../article/list"> <span>커뮤니티</span> <!-- <span>Shop All <span class="material-symbols-outlined">
 									arrow_forward </span></span> -->
 						</a>
 						</li>
 					</ul>
-				<li><a href="#">메뉴</a>
-					<ul class="subnav">
-						<li class="card-med" id="serv-groom">
-							<div class="card-image">
-								<a href="/usr/member/myPage"> <img
-									src="https://ouch-cdn2.icons8.com/T11rfGmMKgcStJyAFKNgtOfE79cadabx0DVMnvzA9Pk/rs:fit:368:313/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNDQx/LzFlYWU4MWY3LWQ1/ZjYtNDM2Ny1hZjM5/LWVmNTFmMGM5Njk4/MS5wbmc.png">
+					<c:if test="${rq.isLogined() }">
+						<li><a href="#">메뉴</a>
+							<ul class="subnav">
+								<li class="card-med" id="serv-groom">
+									<div class="card-image">
+										<a href="/usr/member/myPage"> <img
+											src="https://ouch-cdn2.icons8.com/T11rfGmMKgcStJyAFKNgtOfE79cadabx0DVMnvzA9Pk/rs:fit:368:313/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNDQx/LzFlYWU4MWY3LWQ1/ZjYtNDM2Ny1hZjM5/LWVmNTFmMGM5Njk4/MS5wbmc.png"></a>
+									</div> <a href="/usr/member/myPage"> <span>내 정보</span> <!-- <span>More Info <span class="material-symbols-outlined">
+									arrow_forward </span></span> -->
 								</a>
-							</div> <a href="/usr/member/myPage"> <span>내 정보</span> <!-- <span>More Info <span class="material-symbols-outlined">
+								</li>
+
+								<li class="card-med" id="serv-board">
+									<div class="card-image">
+										<a href="../article/write"> <img
+											src="https://ouch-cdn2.icons8.com/F5Ea1suZtMYimKDkJr0CJLO_1bju6-bTyT1EuDKEg8s/rs:fit:368:254/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMjcx/LzVjMzE4NWM0LWZh/NTMtNGQ1OS05ZTM2/LTZjYzBhNGU3ODg0/NC5wbmc.png"></a>
+									</div> <a href="../article/write"> <span>글 쓰기</span> <!-- <span>More Info<span class="material-symbols-outlined">
 									arrow_forward </span></span> -->
-						</a>
-						</li>
-						<li class="card-med" id="serv-board">
-							<div class="card-image">
-								<img
-									src="https://ouch-cdn2.icons8.com/F5Ea1suZtMYimKDkJr0CJLO_1bju6-bTyT1EuDKEg8s/rs:fit:368:254/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMjcx/LzVjMzE4NWM0LWZh/NTMtNGQ1OS05ZTM2/LTZjYzBhNGU3ODg0/NC5wbmc.png">
-							</div> <a href="#"> <span>정보 수정</span> <!-- <span>More Info<span class="material-symbols-outlined">
-									arrow_forward </span></span> -->
-						</a>
-					</ul></li>
-				<li><a href="../member/login">LOGIN &amp; JOIN</a></li>
+								</a>
+							</ul></li>
+					</c:if>
+				<c:if test="${!rq.isLogined() }">
+					<li><a href="../member/login">LOGIN &amp; JOIN</a></li>
+				</c:if>
+				<c:if test="${rq.isLogined() }">
+					<li><a onclick="if(confirm('로그아웃 할래?') == false) return false;" class="hover:underline"
+						href="../member/doLogout">LOGOUT</a></li>
+				</c:if>
 				<li><a href="#">회원 탈퇴</a></li>
 			</ul>
 			<div id="utility">

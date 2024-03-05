@@ -22,7 +22,7 @@
 <body>
 	<header>
 		<div class="h-20 flex mx-auto items-center text-3xl">
-			<a href="../home/main2"><img
+			<a href="../home/main"><img
 				src="https://velog.velcdn.com/images/pavico0913/post/ca2b48c6-583a-421d-80dd-6154a8073b1c/image.png" alt=""
 				width="160" height="30"></a>
 			<div class="flex-grow"></div>

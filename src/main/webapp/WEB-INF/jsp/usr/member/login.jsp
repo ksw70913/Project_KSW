@@ -1,9 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="pageTitle" value="LOGIN"></c:set>
+<c:set var="pageTitle" value="LOGIN &amp; JOIN"></c:set>
 <%@ include file="../common/head.jspf"%>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var signInTab = document.querySelector('.sign-in');
+    var signUpTab = document.querySelector('.sign-up');
+    var loginWrap = document.querySelector('.login-wrap');
 
+    signInTab.addEventListener('click', function() {
+        loginWrap.style.height = '625px';
+    });
+
+    signUpTab.addEventListener('click', function() {
+        loginWrap.style.height = '1000px';
+    });
+});
+
+</script>
 
 <style>
 nav {
@@ -36,7 +51,7 @@ a {
 	width: 100%;
 	margin: auto;
 	max-width: 525px;
-	min-height: 670px;
+	min-height: 625px;
 	position: relative;
 	background:
 		/* url(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg) */
@@ -44,6 +59,7 @@ a {
 	box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0
 		rgba(0, 0, 0, .19);
 }
+
 
 .login-html {
 	width: 100%;
@@ -192,13 +208,23 @@ a {
 .foot-lnk {
 	text-align: center;
 }
+
+.login-html .sign-in:checked+.tab+.sign-up+.tab+.login-form .sign-in-htm {
+    transform: rotate(0);
+    height: 625px; /* 변경된 높이 */
+}
+
+.login-html .sign-up:checked+.tab+.login-form .sign-up-htm {
+    transform: rotate(0);
+    height: 1000px; /* 변경된 높이 */
+}
+
 </style>
 
 
 <section>
-	<h2>LOGIN JOIN</h2>
 	<nav>
-		<div class="login-wrap">
+		<div class="login-wrap sign-wrap">
 			<div class="login-html">
 				<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign
 					In</label> <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
@@ -227,26 +253,39 @@ a {
 						</div>
 					</form>
 					<div class="sign-up-htm">
-						<div class="group">
-							<label for="user" class="label">Username</label> <input name="loginId" type="text" class="input">
-						</div>
-						<div class="group">
-							<label for="pass" class="label">Password</label> <input name="loginPw" type="password" class="input"
-								data-type="password">
-						</div>
-						<div class="group">
-							<label for="pass" class="label">Repeat Password</label> <input id="pass" type="password" class="input"
-								data-type="password">
-						</div>
-						<div class="group">
-							<label for="pass" class="label">Email Address</label> <input id="pass" type="text" class="input">
-						</div>
-						<div class="group">
-							<input type="submit" class="button" value="Sign Up">
-						</div>
-						<div class="hr"></div>
-						<div class="foot-lnk">
-							<label for="tab-1">Already Member?</a>
+						<div class="join-form">
+							<form action="../member/doJoin" method="POST">
+								<div class="group">
+									<label for="user" class="label">Username</label> <input name="loginId" type="text" class="input">
+								</div>
+								<div class="group">
+									<label for="pass" class="label">Password</label> <input name="loginPw" type="password" class="input"
+										data-type="password">
+								</div>
+								<div class="group">
+									<label for="pass" class="label">Repeat Password</label> <input name="loginPw2" type="password" class="input"
+										data-type="password">
+								</div>
+								<div class="group">
+									<label for="pass" class="label">Email Address</label> <input name="email" type="text" class="input">
+								</div>
+								<div class="group">
+									<label for="pass" class="label">Name</label> <input name="name" type="text" class="input">
+								</div>
+								<div class="group">
+									<label for="pass" class="label">Nickname</label> <input name="nickname" type="text" class="input">
+								</div>
+								<div class="group">
+									<label for="pass" class="label">CellphoneNum</label> <input name="cellphoneNum" type="text" class="input">
+								</div>
+								<div class="group">
+									<input type="submit" class="button" value="Sign Up">
+								</div>
+								<div class="hr"></div>
+								<div class="foot-lnk">
+									<label for="tab-1">Already Member?</a>
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>
