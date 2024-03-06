@@ -4,20 +4,19 @@
 <%@ include file="../common/head.jspf"%>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    var signInTab = document.querySelector('.sign-in');
-    var signUpTab = document.querySelector('.sign-up');
-    var loginWrap = document.querySelector('.login-wrap');
+	document.addEventListener('DOMContentLoaded', function() {
+		var signInTab = document.querySelector('.sign-in');
+		var signUpTab = document.querySelector('.sign-up');
+		var loginWrap = document.querySelector('.login-wrap');
 
-    signInTab.addEventListener('click', function() {
-        loginWrap.style.height = '625px';
-    });
+		signInTab.addEventListener('click', function() {
+			loginWrap.style.height = '625px';
+		});
 
-    signUpTab.addEventListener('click', function() {
-        loginWrap.style.height = '1000px';
-    });
-});
-
+		signUpTab.addEventListener('click', function() {
+			loginWrap.style.height = '1000px';
+		});
+	});
 </script>
 
 <style>
@@ -59,7 +58,6 @@ a {
 	box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0
 		rgba(0, 0, 0, .19);
 }
-
 
 .login-html {
 	width: 100%;
@@ -209,15 +207,17 @@ a {
 	text-align: center;
 }
 
-.login-html .sign-in:checked+.tab+.sign-up+.tab+.login-form .sign-in-htm {
-    transform: rotate(0);
-    height: 625px; /* 변경된 높이 */
+.login-html .sign-in:checked+.tab+.sign-up+.tab+.login-form .sign-in-htm
+	{
+	transform: rotate(0);
+	height: 625px; /* 변경된 높이 */
 }
 
 .login-html .sign-up:checked+.tab+.login-form .sign-up-htm {
-    transform: rotate(0);
-    height: 1000px; /* 변경된 높이 */
+	transform: rotate(0);
+	height: 1000px; /* 변경된 높이 */
 }
+
 
 </style>
 
@@ -256,7 +256,12 @@ a {
 						<div class="join-form">
 							<form action="../member/doJoin" method="POST">
 								<div class="group">
-									<label for="user" class="label">Username</label> <input name="loginId" type="text" class="input">
+									<label for="user" class="label">ID</label> <input name="loginId" type="text" class="input">
+								</div>
+								<div class="group">
+									<label for="user" class="label">ID</label> <input name="loginId" id="loginId" type="text" class="input">
+									<button onclick="checkDuplicate()">중복 체크</button>
+									<span id="idCheckMessage"></span>
 								</div>
 								<div class="group">
 									<label for="pass" class="label">Password</label> <input name="loginPw" type="password" class="input"

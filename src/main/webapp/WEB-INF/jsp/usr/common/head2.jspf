@@ -62,12 +62,10 @@
 							<div class="card-image">
 								<a href="../article/list"> <img
 									src="https://ouch-cdn2.icons8.com/41Pv7w9rcbn7II_gB2vwvVCQRYE5mvpca1ZbsvMujR0/rs:fit:368:368/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNjE5/LzRlZjE1YTgyLTI3/NjYtNDlkNC1hMGE3/LWY4ZjRmNzhjM2M5/NS5wbmc.png"></a>
-							</div> <a href="../article/list"> <span>커뮤니티</span> <!-- <span>Shop All <span class="material-symbols-outlined">
-									arrow_forward </span></span> -->
-						</a>
+							</div> <a href="../article/list"> <span>커뮤니티</span></a> <a href="../article/list?boardId=1&page=1"><span>NOTICE</span></a>
+							<a href="../article/list?boardId=2&page=1"><span>FREE</span></a> <a href="../article/list?boardId=3&page=1"><span>QnA</span></a>
 						</li>
-					</ul>
-					<c:if test="${rq.isLogined() }">
+					</ul> <c:if test="${rq.isLogined() }">
 						<li><a href="#">메뉴</a>
 							<ul class="subnav">
 								<li class="card-med" id="serv-groom">
@@ -87,14 +85,13 @@
 									arrow_forward </span></span> -->
 								</a>
 							</ul></li>
+
+					</c:if> <c:if test="${!rq.isLogined() }">
+						<li><a href="../member/login">LOGIN &amp; JOIN</a></li>
+					</c:if> <c:if test="${rq.isLogined() }">
+						<li><a onclick="if(confirm('로그아웃 할래?') == false) return false;" class="hover:underline"
+							href="../member/doLogout">LOGOUT</a></li>
 					</c:if>
-				<c:if test="${!rq.isLogined() }">
-					<li><a href="../member/login">LOGIN &amp; JOIN</a></li>
-				</c:if>
-				<c:if test="${rq.isLogined() }">
-					<li><a onclick="if(confirm('로그아웃 할래?') == false) return false;" class="hover:underline"
-						href="../member/doLogout">LOGOUT</a></li>
-				</c:if>
 				<li><a href="#">회원 탈퇴</a></li>
 			</ul>
 			<div id="utility">

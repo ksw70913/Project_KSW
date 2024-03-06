@@ -1,6 +1,64 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<link rel="stylesheet" href="/resource/main.css" />
+<script src="/resource/common.js" defer="defer"></script>
+<link rel="stylesheet" href="/resource/theme.css" />
+<script src="/resource/theme.js" defer="defer"></script>
+<style>
+footer {
+	color: #ffffff; /* 푸터 텍스트의 색상을 흰색으로 설정 */
+	text-align: center;
+	display: flex;
+	justify-content: center;
+}
+</style>
+<footer>
 
-</body>
-</html>
+	<div>
+
+		<!-- 		<div class="btn-group">
+			<button class="btn-filled-dark">
+				<span class="material-symbols-outlined"> pin_drop </span>Find a Store
+			</button>
+			<button class="btn-outline-dark btn-hover-color">
+				<span class="material-symbols-outlined"> contact_support </span> Contact Us
+			</button>
+		</div> -->
+		<div class="clock">
+			<td><span id="Seoul"></span></td>
+		</div>
+	</div>
+	<br />
+	<!-- 	<ul> -->
+	<!-- 		교과서 등록 -->
+	<!-- 		<li><a href="#">국여</a></li> -->
+	<!-- 		<li><a href="#">수학</a></li> -->
+	<!-- 		<li><a href="#">영어</a></li> -->
+	<!-- 		<li><a href="#">과학</a></li> -->
+	<!-- 		<li><a href="#">도덕</a></li> -->
+	<!-- 		<li><a href="#">Aquariums</a></li> -->
+	<!-- 		<li><a href="#">Rocks &amp; Decorations</a></li> -->
+	<!-- 	</ul> -->
+
+	<!-- 	<ul> -->
+	<!-- 		나의 정보 -->
+	<!-- 		<li><a href="#">내 정보</a></li> -->
+	<!-- 		<li><a href="#">회원 수정</a></li> -->
+	<!-- 		<li><a href="#">회원 탈퇴</a></li> -->
+	<!-- 		<li><a href="#">Fish</a></li> -->
+	<!-- 	</ul> -->
+
+
+	<!-- 	<ul> -->
+	<!-- 		네비게이션 -->
+	<!-- 		<li><a href="#">내 학교 찾기</a></li> -->
+	<!-- 		<li><a href="#">길 안내</a></li> -->
+	<!-- 	</ul> -->
+	<!-- 	<ul> -->
+	<!-- 		로그인 &amp; 회원가입 -->
+	<!-- 		<li><a href="#">로그인</a></li> -->
+	<!-- 		<li><a href="#">회원가입</a></li> -->
+	<!-- 	</ul> -->
+
+
+</footer>

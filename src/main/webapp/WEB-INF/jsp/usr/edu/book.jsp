@@ -110,6 +110,8 @@
         }
 
         searchData(1); // 페이지가 로드될 때 검색 수행
+        
+
 
     </script>
 </body>
