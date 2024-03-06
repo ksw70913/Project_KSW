@@ -1,8 +1,11 @@
 package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.service.MemberService;
@@ -193,4 +196,14 @@ public class UsrMemberController {
 
 		return Ut.jsReplace(modifyRd.getResultCode(), modifyRd.getMsg(), "../member/myPage");
 	}
+
+	@PostMapping("/idOverlap")
+	public ResponseEntity<String> idCheck(@RequestParam("loginId") String id) {
+		// 아이디 중복 여부를 확인하는 비즈니스 로직을 수행합니다.
+		boolean isOverlap = memberService.isIDCheck(id);
+
+		// 클라이언트에게 결과를 전달합니다.
+		return ResponseEntity.ok(isOverlap ? "false" : "true");
+	}
+
 }

@@ -105,10 +105,10 @@
 	<h1>학교로 가는 안전한 길!</h1>
 	<h1>온라인으로 만나는 학습 동기 부여!</h1>
 	<div class="btn-group">
-		<button class="btn-filled-dark">
+		<button class="btn-filled-dark nav">
 			<span class="material-symbols-outlined"> 길 찾기 </span> (바로가기)
 		</button>
-		<button class="btn-outline-dark btn-hover-color">
+		<button class="btn-outline-dark btn-hover-color edu">
 			<span class="material-symbols-outlined"> 학습 상태 </span> (바로가기)
 		</button>
 	</div>
@@ -132,7 +132,7 @@
 				<li><a href="#">도덕</a></li>
 
 				<button class="btn-outline-light">
-					바로가기<span class="material-symbols-outlined"> arrow_forward </span>
+					바로가기
 				</button>
 
 			</ul>
@@ -151,7 +151,8 @@
 				<li><a href="#">정보 수정</a></li>
 				<li><a href="#">회원 탈퇴</a></li>
 				<button class="btn-outline-dark">
-					바로가기<span class="material-symbols-outlined"> arrow_forward </span>
+					바로가기
+<!-- 					<span class="material-symbols-outlined"> arrow_forward </span> -->
 				</button>
 			</ul>
 
@@ -168,7 +169,7 @@
 				<li><a href="#">길 안내</a></li>
 				<li><a href="#">Furniture</a></li>
 				<button class="btn-outline-dark">
-					바로가기<span class="material-symbols-outlined"> arrow_forward </span>
+					바로가기
 				</button>
 			</ul>
 
@@ -182,9 +183,9 @@
 				로그인 &amp; 회원가입
 				<li><a href="#">로그인</a></li>
 				<li><a href="#">회원가입</a></li>
-				<li><a href="#">Rocks &amp; Decorations</a></li>
+				<li><a href="#">비밀번호 찾기</a></li>
 				<button class="btn-outline-light">
-					바로가기<span class="material-symbols-outlined"> arrow_forward </span>
+					바로가기
 				</button>
 			</ul>
 

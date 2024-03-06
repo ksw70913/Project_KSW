@@ -1,10 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="pageTitle" value="교과목 검색"></c:set>
+<%@ include file="../common/head2.jspf"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>�н� ��Ȳ</title>
+<title>학습 현황</title>
 </head>
 <body>
 
@@ -22,3 +24,4 @@
 
 </body>
 </html>
+<%@ include file="../common/foot.jspf"%>

@@ -94,4 +94,12 @@ public interface MemberRepository {
 			""")
 	public void modifyWithoutPw(int loginedMemberId, String name, String nickname, String cellphoneNum, String email);
 
+	
+	@Select("""
+			SELECT COUNT(*) 
+			FROM `member`
+			WHERE loginId = #{id}			
+			""")
+	public int idCheck(String id);
+
 }

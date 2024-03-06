@@ -64,4 +64,13 @@ public class MemberService {
 		return ResultData.from("S-1", "회원정보 수정 완료");
 	}
 
+	public boolean isIDCheck(String id) {
+		int isIDCheck = memberRepository.idCheck(id);
+		
+		if(isIDCheck == 1) {			
+			return false;			
+		}
+		return true;
+	}
+
 }
