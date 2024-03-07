@@ -18,6 +18,49 @@
 		});
 	});
 </script>
+<script>
+	$(document).ready(function() {
+		$("#checkDuplicate").click(function() {
+			var id = $("#loginId").val();
+
+			if (id.trim() === '') {
+				$("#idCheckMessage").text("아이디를 입력해주세요.");
+				return;
+			}
+
+			$.ajax({
+				type : "POST",
+				url : "/idCheck",
+				data : {
+					id : id
+				},
+				success : function(data) {
+					if (data === "true") {
+						$("#idCheckMessage").text("사용 가능한 아이디입니다.");
+					} else if (data === "false") {
+						$("#idCheckMessage").text("중복된 아이디입니다.");
+					}
+				},
+				error : function() {
+					$("#idCheckMessage").text("서버와의 통신 중 오류가 발생했습니다.");
+				}
+			});
+		});
+
+		$("#signupForm").submit(function() {
+			// Disable duplicate checking
+			$("#checkDuplicate").prop("disabled", true);
+
+			// Check if the ID is available
+			if ($("#idCheckMessage").text() !== "사용 가능한 아이디입니다.") {
+				alert("아이디를 다시 확인해주세요.");
+				// Re-enable duplicate checking
+				$("#checkDuplicate").prop("disabled", false);
+				return false;
+			}
+		});
+	});
+</script>
 
 <style>
 nav {
@@ -217,8 +260,6 @@ a {
 	transform: rotate(0);
 	height: 1000px; /* 변경된 높이 */
 }
-
-
 </style>
 
 
@@ -254,13 +295,13 @@ a {
 					</form>
 					<div class="sign-up-htm">
 						<div class="join-form">
-							<form action="../member/doJoin" method="POST">
-								<div class="group">
-									<label for="user" class="label">ID</label> <input name="loginId" type="text" class="input">
-								</div>
+							<form action="../member/doJoin" method="POST" id="signupForm">
+								<!-- 								<div class="group"> -->
+								<!-- 									<label for="user" class="label">ID</label> <input name="loginId" type="text" class="input"> -->
+								<!-- 								</div> -->
 								<div class="group">
 									<label for="user" class="label">ID</label> <input name="loginId" id="loginId" type="text" class="input">
-									<button onclick="checkDuplicate()">중복 체크</button>
+									<button type="button" id="checkDuplicate">중복 체크</button>
 									<span id="idCheckMessage"></span>
 								</div>
 								<div class="group">
