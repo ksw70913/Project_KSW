@@ -329,6 +329,22 @@ ON R.id = RP_SUM.relId
 SET R.goodReactionPoint = RP_SUM.goodReactionPoint,
 R.badReactionPoint = RP_SUM.badReactionPoint;
 
+CREATE TABLE `Project_KSW`.`book` (  
+  `no` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `교육과정` VARCHAR(20),
+  `출판년도` INT,
+  `국/검/인정` TEXT,
+  `자료형태` TEXT,
+  `학교급` TEXT,
+  `학교구분` TEXT,
+  `서명` TEXT,
+  `저자` VARCHAR(10),
+  `발행처` TEXT,
+  `정가` DOUBLE(20,2),
+  `사용학년` INT
+);
+
+
 ###############################################
 
 SELECT * FROM article;
