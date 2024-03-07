@@ -260,6 +260,22 @@ a {
 	transform: rotate(0);
 	height: 1000px; /* 변경된 높이 */
 }
+
+#checkDuplicate {
+	padding: 10px 20px;
+	background-color: #ff6b6b; /* Changed button color */
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 14px; /* Reduced font size */
+	transition: background-color 0.3s ease;
+	margin-top: 5px;
+}
+
+#checkDuplicate:hover {
+	background-color: #d63031; /* Darker color on hover */
+}
 </style>
 
 
