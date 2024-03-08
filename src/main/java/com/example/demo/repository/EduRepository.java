@@ -19,7 +19,7 @@ public interface EduRepository {
 	@Select("""
 			<script>
 			SELECT COUNT(*) AS cnt
-			FROM book AS B
+			FROM book
 			WHERE 4
 			<if test="boardId != 0">
 				AND boardId = #{boardId}
@@ -27,14 +27,14 @@ public interface EduRepository {
 			<if test="searchKeyword != ''">
 				<choose>
 					<when test="searchKeywordTypeCode == 'title'">
-						AND B.서명 LIKE CONCAT('%',#{searchKeyword},'%')
+						AND title LIKE CONCAT('%',#{searchKeyword},'%')
 					</when>
-					<when test="searchKeywordTypeCode == 'body'">
-						AND B.사용학년 LIKE CONCAT('%',#{searchKeyword},'%')
+					<when test="searchKeywordTypeCode == 'grade'">
+						AND grade LIKE CONCAT('%',#{searchKeyword},'%')
 					</when>
 					<otherwise>
-						AND B.서명 LIKE CONCAT('%',#{searchKeyword},'%')
-						OR B.사용학년 LIKE CONCAT('%',#{searchKeyword},'%')
+						AND title LIKE CONCAT('%',#{searchKeyword},'%')
+						OR grade LIKE CONCAT('%',#{searchKeyword},'%')
 					</otherwise>
 				</choose>
 			</if>
@@ -53,15 +53,15 @@ public interface EduRepository {
 			</if>
 			<if test="searchKeyword != ''">
 				<choose>
-					<when test="searchKeywordTypeCode == '서명'">
-						AND 서명 LIKE CONCAT('%',#{searchKeyword},'%')
+					<when test="searchKeywordTypeCode == 'title'">
+						AND title LIKE CONCAT('%',#{searchKeyword},'%')
 					</when>
-					<when test="searchKeywordTypeCode == '사용학년'">
-						AND 사용학년 LIKE CONCAT('%',#{searchKeyword},'%')
+					<when test="searchKeywordTypeCode == 'grade'">
+						AND grade LIKE CONCAT('%',#{searchKeyword},'%')
 					</when>
 					<otherwise>
-						AND 서명 LIKE CONCAT('%',#{searchKeyword},'%')
-						OR 사용학년 LIKE CONCAT('%',#{searchKeyword},'%')
+						AND title LIKE CONCAT('%',#{searchKeyword},'%')
+						OR grade LIKE CONCAT('%',#{searchKeyword},'%')
 					</otherwise>
 				</choose>
 			</if>
