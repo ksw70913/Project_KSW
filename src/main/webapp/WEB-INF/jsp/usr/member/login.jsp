@@ -14,7 +14,7 @@
 		});
 
 		signUpTab.addEventListener('click', function() {
-			loginWrap.style.height = '1000px';
+			loginWrap.style.height = '1050px';
 		});
 	});
 </script>

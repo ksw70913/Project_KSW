@@ -750,9 +750,34 @@ footer ul li {
 	#locate p {
 		width: 40%;
 	}
-	
 	footer {
 		flex-direction: row;
 		text-align: left;
 	}
+}
+
+
+.sidebar {
+	position: fixed;
+	top: 50%;
+	right: 0;
+	transform: translateY(-50%);
+	width: 150px; /* Adjust the width as needed */
+	background-color: #fff;
+	/* Match the background color of your main content */
+	border: 1px solid #ccc; /* Add a border for separation */
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+	padding: 10px; /* Adjust the padding as needed */
+	z-index: 999;
+}
+
+.sidebar .clock {
+	text-align: center;
+	font-size: 14px; /* Adjust the font size as needed */
+	color: #333; /* Match the text color with your main content */
+}
+
+/* Style for the clock */
+.sidebar .clock span {
+	font-weight: bold; /* Make the clock text bold */
 }

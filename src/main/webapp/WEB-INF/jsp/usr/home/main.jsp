@@ -250,6 +250,12 @@ footer {
 </style>
 
 
+<div class="sidebar">
+    <div class="clock">
+        <span id="Seoul"></span>
+    </div>
+</div>
+
 <footer>
 
 	<div>
@@ -262,11 +268,6 @@ footer {
 				<span class="material-symbols-outlined"> contact_support </span> Contact Us
 			</button>
 		</div> -->
-		<div class="clock">
-			<td><span id="Seoul"></span></td>
-		</div>
-	</div>
-	<br />
 	<!-- 	<ul> -->
 	<!-- 		교과서 등록 -->
 	<!-- 		<li><a href="#">국여</a></li> -->

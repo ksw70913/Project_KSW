@@ -104,3 +104,9 @@
 	</header>
 	<h1 style="font-size: 2rem;">${pageTitle }</h1>
 	<hr />
+
+	<div class="sidebar">
+		<div class="clock">
+			<span id="Seoul"></span>
+		</div>
+	</div>
