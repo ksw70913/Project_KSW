@@ -344,8 +344,67 @@ CREATE TABLE `Project_KSW`.`book` (
   `사용학년` INT
 );
 
+CREATE TABLE `Project_KSW`.`book` (  
+  `no` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `교육과정` VARCHAR(20),
+  `출판년도` INT,
+  `국/검/인정` TEXT,
+  `자료형태` TEXT,
+  `학교급` TEXT,
+  `학교구분` TEXT,
+  `서명` TEXT,
+  `저자` VARCHAR(10),
+  `발행처` TEXT,
+  `정가` DOUBLE(20,2),
+  `사용학년` INT
+);
+
+CREATE TABLE `Project_KSW`.`child_protection_zone` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `학교급` VARCHAR(20) DEFAULT '0',
+  `시설명` VARCHAR(50) DEFAULT '0',
+  `도로명주소` VARCHAR(255) DEFAULT '0',
+  `지번주소` VARCHAR(255) DEFAULT '0',
+  `위도` DOUBLE DEFAULT 0,
+  `경도` DOUBLE DEFAULT 0,
+  `관리기관명` TEXT DEFAULT '0',
+  `관할경찰서` TEXT DEFAULT '0',
+  `CCTV설치여부` VARCHAR(5) DEFAULT '0',
+  `CCTV설치대수` INT DEFAULT 0,
+  `보호구역도로폭` TEXT DEFAULT '0',
+  `데이터표준일자` TEXT DEFAULT '0',
+  `제공자코드` INT DEFAULT 0,
+  `제공기관명` TEXT DEFAULT '0'
+);
+
+CREATE TABLE `Project_KSW`.`school` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `학교ID` VARCHAR(50),
+  `학교명` VARCHAR(50),
+  `학교급` VARCHAR(50),
+  `설립일` TEXT,
+  `설립형태` VARCHAR(10),
+  `본교분교구분` VARCHAR(10),
+  `상태` VARCHAR(10),
+  `지번주소` TEXT,
+  `도로명주소` TEXT,
+  `교육청코드` INT,
+  `교육청명` VARCHAR(50),
+  `교육지원청코드` INT,
+  `교육지원청명` VARCHAR(50),
+  `위도` DOUBLE,
+  `경도` DOUBLE,
+  `데이터베이스날짜` INT,
+  `제공기관코드` TEXT
+)
+
 
 ###############################################
+SELECT * FROM book
+
+SELECT * FROM `child_protection_zone`
+
+SELECT * FROM school
 
 SELECT * FROM article;
 
