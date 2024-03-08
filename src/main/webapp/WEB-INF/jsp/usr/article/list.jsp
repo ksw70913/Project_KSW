@@ -2,12 +2,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="#{board.code } ARTICLE LIST"></c:set>
 <%@ include file="../common/head2.jspf"%>
-
-<style>
-section {
-background-color: #F4CFC6;
-}
-</style>
+<%
+int cPage = (int) request.getAttribute("page");
+int totalPage = (int) request.getAttribute("totalPage");
+int pageSize = (int) request.getAttribute("pageSize");
+int pageGroup = (int) request.getAttribute("pageGroup");
+int from = (int) request.getAttribute("from");
+int end = (int) request.getAttribute("end");
+String searchKeyword = (String) request.getAttribute("searchKeyword");
+%>
 
 <section class="mt-8 text-xl px-4">
 	<div class="mx-auto overflow-x-auto">
@@ -43,19 +46,15 @@ background-color: #F4CFC6;
 				<th>조회수</th>
 				<th>좋아요</th>
 				<th>싫어요</th>
-
 			</tr>
 		</thead>
 		<tbody>
+
 			<c:forEach var="article" items="${articles }">
 				<tr class="hover">
-
 					<td>${article.id }</td>
 					<td>${article.regDate.substring(0,10) }</td>
-					<td><a href="detail?id=${article.id }">${article.title } <c:if test="${article.extra__repliesCnt > 0 }">
-								<span style="color: red;">[${article.extra__repliesCnt }]</span>
-							</c:if>
-					</a></td>
+					<td><a href="detail?id=${article.id }">${article.title }</a></td>
 					<td>${article.extra__writer }</td>
 					<td>${article.hitCount }</td>
 					<td>${article.goodReactionPoint }</td>
@@ -66,38 +65,55 @@ background-color: #F4CFC6;
 	</table>
 	</div>
 
-	<!-- 	동적 페이징 -->
-	<div class="pagination flex justify-center mt-3">
-		<c:set var="paginationLen" value="3" />
-		<c:set var="startPage" value="${page -  paginationLen  >= 1 ? page - paginationLen : 1}" />
-		<c:set var="endPage" value="${page +  paginationLen  <= pagesCount ? page + paginationLen : pagesCount}" />
-
-		<c:set var="baseUri" value="?boardId=${boardId }" />
-		<c:set var="baseUri" value="${baseUri }&searchKeywordTypeCode=${searchKeywordTypeCode}" />
-		<c:set var="baseUri" value="${baseUri }&searchKeyword=${searchKeyword}" />
-
-		<c:if test="${startPage > 1 }">
-			<a class="btn btn-sm" href="${baseUri }&page=1">1</a>
-			<button class="btn btn-sm btn-disabled">...</button>
-		</c:if>
-
-		<c:forEach begin="${startPage }" end="${endPage }" var="i">
-			<a class="btn btn-sm ${param.page == i ? 'btn-active' : '' }" href="${baseUri }&page=${i }">${i }</a>
-		</c:forEach>
-
-		<c:if test="${endPage < pagesCount }">
-			<button class="btn btn-sm btn-disabled">...</button>
-			<a class="btn btn-sm" href="${baseUri }&page=${pagesCount }">${pagesCount }</a>
-		</c:if>
-
-	</div>
-
-	<!-- 	원래 페이징 -->
 	<div class="pagination flex justify-center mt-3">
 		<div class="btn-group">
-			<c:forEach begin="1" end="${pagesCount }" var="i">
-				<a class="btn btn-sm ${param.page == i ? 'btn-active' : '' }" href="?page=${i }&boardId=${param.boardId}">${i }</a>
+			<%
+			if (pageGroup * pageSize > totalPage) {
+				end = totalPage;
+			}
+
+			if (from < 1) {
+				from = 1;
+			}
+
+			if (end > totalPage) {
+				end = totalPage;
+			}
+			int beforeBtn = cPage - pageSize;
+
+			if (beforeBtn < 1) {
+				beforeBtn = 1;
+			}
+
+			int afterBtn = pageGroup * pageSize + 1;
+
+			if (cPage > 1) {
+			%>
+			<a
+				href="?boardId=${board.id }&page=1&searchKeywordTypeCode=${param.searchKeywordTypeCode }&searchKeyword=${param.searchKeyword }">◀◀</a>
+			<%
+			}
+			%>
+			<a
+				href="?boardId=${board.id }&page=<%=beforeBtn%>&searchKeywordTypeCode=${param.searchKeywordTypeCode }&searchKeyword=${param.searchKeyword }">◁</a>
+			<c:forEach begin="<%=from%>" end="<%=end%>" var="i">
+				<a class="btn btn-sm ${param.page == i ? 'btn-active' : '' }"
+					href="?boardId=${param.boardId }&page=${i }&searchKeywordTypeCode=${param.searchKeywordTypeCode }&searchKeyword=${param.searchKeyword } ">${i }</a>
 			</c:forEach>
+			<%
+			if (afterBtn < totalPage) {
+			%>
+			<a
+				href="?boardId=${board.id }&page=<%=afterBtn%>&searchKeywordTypeCode=${param.searchKeywordTypeCode }&searchKeyword=${param.searchKeyword }">▷</a>
+			<%
+			}
+			if (cPage < totalPage) {
+			%>
+			<a
+				href="?boardId=${board.id }&page=<%=totalPage%>&searchKeywordTypeCode=${param.searchKeywordTypeCode }&searchKeyword=${param.searchKeyword }">▶▶</a>
+			<%
+			}
+			%>
 		</div>
 	</div>
 </section>

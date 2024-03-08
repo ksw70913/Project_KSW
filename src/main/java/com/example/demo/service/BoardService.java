@@ -17,7 +17,6 @@ public class BoardService {
 	}
 
 	public Board getBoardById(int boardId) {
-
 		return boardRepository.getBoardById(boardId);
 	}
 
