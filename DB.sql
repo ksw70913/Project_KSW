@@ -104,7 +104,7 @@ CREATE TABLE board(
     id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
     regDate DATETIME NOT NULL,
     updateDate DATETIME NOT NULL,
-    `code` CHAR(50) NOT NULL UNIQUE COMMENT 'notice(공지사항), free(자유), QnA(질의응답) ...',
+    `code` CHAR(50) NOT NULL UNIQUE COMMENT 'notice(공지사항), free(자유), QnA(질의응답), primary(초등학교), middle(중학교), high(고등학교), special(특수학교)',
     `name` CHAR(20) NOT NULL UNIQUE COMMENT '게시판 이름',
     delStatus TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '삭제 여부 (0=삭제 전, 1=삭제 후)',
     delDate DATETIME COMMENT '삭제 날짜'
@@ -128,6 +128,31 @@ SET regDate = NOW(),
 updateDate = NOW(),
 `code` = 'QnA',
 `name` = '질의응답';
+
+INSERT INTO board
+SET regDate = NOW(),
+updateDate = NOW(),
+`code` = 'primary',
+`name` = '초등학교';
+
+INSERT INTO board
+SET regDate = NOW(),
+updateDate = NOW(),
+`code` = 'middle',
+`name` = '중학교';
+
+INSERT INTO board
+SET regDate = NOW(),
+updateDate = NOW(),
+`code` = 'high',
+`name` = '고등학교';
+
+INSERT INTO board
+SET regDate = NOW(),
+updateDate = NOW(),
+`code` = 'special',
+`name` = '특수학교';
+
 
 ALTER TABLE article ADD COLUMN boardId INT(10) UNSIGNED NOT NULL AFTER `memberId`;
 
@@ -330,10 +355,10 @@ SET R.goodReactionPoint = RP_SUM.goodReactionPoint,
 R.badReactionPoint = RP_SUM.badReactionPoint;
 
 CREATE TABLE `Project_KSW`.`book` (  
-  `no` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `교육과정` VARCHAR(20),
   `출판년도` INT,
-  `국/검/인정` TEXT,
+  `국검인정` TEXT,
   `자료형태` TEXT,
   `학교급` TEXT,
   `학교구분` TEXT,
@@ -344,20 +369,22 @@ CREATE TABLE `Project_KSW`.`book` (
   `사용학년` INT
 );
 
-CREATE TABLE `Project_KSW`.`book` (  
-  `no` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `교육과정` VARCHAR(20),
-  `출판년도` INT,
-  `국/검/인정` TEXT,
-  `자료형태` TEXT,
-  `학교급` TEXT,
-  `학교구분` TEXT,
-  `서명` TEXT,
-  `저자` VARCHAR(10),
-  `발행처` TEXT,
-  `정가` DOUBLE(20,2),
-  `사용학년` INT
-);
+ALTER TABLE `Project_KSW`.`book`
+CHANGE COLUMN `Curriculum` `curriculum` VARCHAR(20),
+CHANGE COLUMN `PublicationYear` `publicationyear` INT,
+CHANGE COLUMN `StateSwordRecognition` `stateswordrecognition` TEXT,
+CHANGE COLUMN `DataType` `datatype` TEXT,
+CHANGE COLUMN `SchoolLevel` `schoolLevel` TEXT,
+CHANGE COLUMN `SchoolClassification` `schoolclassification` TEXT,
+CHANGE COLUMN `Signature` `title` TEXT,
+CHANGE COLUMN `Author` `author` VARCHAR(10),
+CHANGE COLUMN `Publisher` `publisher` TEXT,
+CHANGE COLUMN `Price` `price` DOUBLE(20,2),
+CHANGE COLUMN `Grade` `grade` INT;
+
+SELECT *
+FROM book
+
 
 CREATE TABLE `Project_KSW`.`child_protection_zone` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -398,9 +425,24 @@ CREATE TABLE `Project_KSW`.`school` (
   `제공기관코드` TEXT
 )
 
+ALTER TABLE `Project_KSW`.`book`
+ADD COLUMN `boardId` INT UNSIGNED NOT NULL AFTER `학교급`;
+
+UPDATE `Project_KSW`.`book`
+SET `boardId` = 
+    CASE 
+        WHEN `학교급` = '초등학교' THEN 4
+        WHEN `학교급` = '중학교' THEN 5
+        WHEN `학교급` = '고등학교' THEN 6
+        WHEN `학교급` = '특수학교' THEN 7
+        ELSE 0  -- Set a default value if needed
+    END;
 
 ###############################################
 SELECT * FROM book
+
+SELECT * FROM book
+WHERE 사용학년 = 1
 
 SELECT * FROM `child_protection_zone`
 
@@ -548,6 +590,14 @@ ON A.id = RP.relId AND RP.relTypeCode = 'article'
 GROUP BY A.id
 ORDER BY A.id DESC;
 
+SELECT B.*
+FROM book B
+WHERE 1
+AND boardId = 4
+AND `서명` LIKE CONCAT ('%','','%')
+ORDER BY B.id ASC
+LIMIT 0,10
+
 
 SELECT *, COUNT(*)
 FROM reactionPoint AS RP
@@ -563,5 +613,3 @@ SUM(IF(RP.point > 0,RP.point,0)) AS goodReactionPoint,
 SUM(IF(RP.point < 0,RP.point * -1,0)) AS badReactionPoint
 FROM reactionPoint AS RP
 GROUP BY RP.relTypeCode,RP.relId
-
-
