@@ -148,11 +148,11 @@
 			</div>
 			<ul>
 				교과서 등록
-				<li><a href="#">초등학교</a></li>
-				<li><a href="#">중학교</a></li>
-				<li><a href="#">고등학교</a></li>
+				<li><a href="../edu/book?boardId=4&page=1">초등학교</a></li>
+				<li><a href="../edu/book?boardId=5&page=1">중학교</a></li>
+				<li><a href="../edu/book?boardId=6&page=1">고등학교</a></li>
 
-				<button class="btn-outline-light">바로가기</button>
+				<button class="btn-outline-light books">바로가기</button>
 
 			</ul>
 
@@ -166,11 +166,10 @@
 			</div>
 			<ul>
 				나의 정보
-				<li><a href="#">내 정보</a></li>
-				<li><a href="#">정보 수정</a></li>
+				<li><a href="/usr/member/myPage">내 정보</a></li>
+				<li><a href="/usr/member/doCheckPw">정보 수정</a></li>
 				<li><a href="#">회원 탈퇴</a></li>
-				<button class="btn-outline-dark">
-					바로가기
+				<button class="btn-outline-dark">					바로가기
 					<!-- 					<span class="material-symbols-outlined"> arrow_forward </span> -->
 				</button>
 			</ul>

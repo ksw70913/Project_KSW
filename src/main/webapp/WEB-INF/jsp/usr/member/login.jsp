@@ -62,6 +62,24 @@
 	});
 </script>
 
+<script>
+	$(document).ready(
+			function() {
+				$("input[name='loginPw'], input[name='loginPw2']").on(
+						"input",
+						function() {
+							var password = $("#loginPw").val(); // Targeting by ID instead of name
+							var confirmPassword = $("#loginPw2").val(); // Targeting by ID instead of name
+							if (password !== confirmPassword) {
+								$("#passwordMatchMessage").text(
+										"Password does not match."); // Update message content
+							} else {
+								$("#passwordMatchMessage").text(""); // Clear message content if passwords match
+							}
+						});
+			});
+</script>
+
 <style>
 nav {
 	margin: 0;
@@ -276,6 +294,10 @@ a {
 #checkDuplicate:hover {
 	background-color: #d63031; /* Darker color on hover */
 }
+
+#passwordMatchMessage {
+	color: red; /* Change text color to red */
+}
 </style>
 
 
@@ -312,22 +334,20 @@ a {
 					<div class="sign-up-htm">
 						<div class="join-form">
 							<form action="../member/doJoin" method="POST" id="signupForm">
-								<!-- 								<div class="group"> -->
-								<!-- 									<label for="user" class="label">ID</label> <input name="loginId" type="text" class="input"> -->
-								<!-- 								</div> -->
 								<div class="group">
 									<label for="user" class="label">ID</label> <input name="loginId" id="loginId" type="text" class="input">
 									<button type="button" id="checkDuplicate">중복 체크</button>
 									<span id="idCheckMessage"></span>
 								</div>
-								<div class="group">
-									<label for="pass" class="label">Password</label> <input name="loginPw" type="password" class="input"
-										data-type="password">
+								<div class="group loginPw">
+									<label for="pass" class="label">Password</label> <input id="loginPw" name="loginPw" type="password"
+										class="input" data-type="password">
 								</div>
-								<div class="group">
-									<label for="pass" class="label">Repeat Password</label> <input name="loginPw2" type="password" class="input"
-										data-type="password">
+								<div class="group loginPw2">
+									<label for="pass" class="label">Repeat Password</label> <input id="loginPw2" name="loginPw2" type="password"
+										class="input" data-type="password">
 								</div>
+								<div id="passwordMatchMessage"></div>
 								<div class="group">
 									<label for="pass" class="label">Email Address</label> <input name="email" type="text" class="input">
 								</div>
