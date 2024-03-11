@@ -35,14 +35,13 @@
 						<li><a href="../article/list?boardId=3&page=1">QnA</a></li>
 					</ul></li>
 				<c:if test="${!rq.isLogined() }">
-					<li><a href="../member/login">LOGIN</a></li>
+					<li><a href="${rq.loginUri }">LOGIN</a></li>
 					<!-- 	<li><a class="a-btn custom-btn btn-3" href="../member/join"><span>JOIN</span></a></li> -->
 				</c:if>
 				<c:if test="${rq.isLogined() }">
 					<li><a href="../article/write">WRITE</a></li>
 					<li><a href="/usr/member/myPage">>MYPAGE</a></li>
-					<li><a onclick="if(confirm('로그아웃 할래?') == false) return false;" class="hover:underline"
-						href="../member/doLogout">LOGOUT</a></li>
+					<li><a onclick="if(confirm('로그아웃 할래?') == false) return false;" class="hover:underline" href="${rq.loginUri }">LOGOUT</a></li>
 				</c:if>
 			</ul>
 		</div>

@@ -65,33 +65,56 @@
 							</div> <a href="../article/list"> <span>커뮤니티</span></a> <a href="../article/list?boardId=1&page=1"><span>NOTICE</span></a>
 							<a href="../article/list?boardId=2&page=1"><span>FREE</span></a> <a href="../article/list?boardId=3&page=1"><span>QnA</span></a>
 						</li>
-					</ul> <c:if test="${rq.isLogined() }">
-						<li><a href="#">메뉴</a>
-							<ul class="subnav">
-								<li class="card-med" id="serv-groom">
-									<div class="card-image">
-										<a href="/usr/member/myPage"> <img
-											src="https://ouch-cdn2.icons8.com/T11rfGmMKgcStJyAFKNgtOfE79cadabx0DVMnvzA9Pk/rs:fit:368:313/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNDQx/LzFlYWU4MWY3LWQ1/ZjYtNDM2Ny1hZjM5/LWVmNTFmMGM5Njk4/MS5wbmc.png"></a>
-									</div> <a href="/usr/member/myPage"> <span>내 정보</span> <!-- <span>More Info <span class="material-symbols-outlined">
-									arrow_forward </span></span> -->
-								</a>
-								</li>
+					</ul></li>
+				<c:if test="${rq.isLogined() }">
+					<li><a href="#">교과서</a>
+						<ul class="subnav">
+							<li class="card-med" id="sup-fish">
+								<div class="card-image">
+									<a href="../edu/book"> <img
+										src="https://ouch-cdn2.icons8.com/41Pv7w9rcbn7II_gB2vwvVCQRYE5mvpca1ZbsvMujR0/rs:fit:368:368/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNjE5/LzRlZjE1YTgyLTI3/NjYtNDlkNC1hMGE3/LWY4ZjRmNzhjM2M5/NS5wbmc.png"></a>
+								</div> <a href="../edu/book"> <span>교과서</span></a> <a href="../edu/book?boardId=4&page=1"><span>초등학교</span></a> <a
+								href="../edu/book?boardId=5&page=1"><span>중학교</span></a> <a href="../edu/book?boardId=6&page=1"><span>고등학교</span></a>
+							</li>
 
-								<li class="card-med" id="serv-board">
-									<div class="card-image">
-										<a href="../article/write"> <img
-											src="https://ouch-cdn2.icons8.com/F5Ea1suZtMYimKDkJr0CJLO_1bju6-bTyT1EuDKEg8s/rs:fit:368:254/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMjcx/LzVjMzE4NWM0LWZh/NTMtNGQ1OS05ZTM2/LTZjYzBhNGU3ODg0/NC5wbmc.png"></a>
-									</div> <a href="../article/write"> <span>글 쓰기</span> <!-- <span>More Info<span class="material-symbols-outlined">
+							<li class="card-med" id="serv-board">
+								<div class="card-image">
+									<a href="../article/write"> <img
+										src="https://ouch-cdn2.icons8.com/F5Ea1suZtMYimKDkJr0CJLO_1bju6-bTyT1EuDKEg8s/rs:fit:368:254/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMjcx/LzVjMzE4NWM0LWZh/NTMtNGQ1OS05ZTM2/LTZjYzBhNGU3ODg0/NC5wbmc.png"></a>
+								</div> <a href="../article/write"> <span>글 쓰기</span> <!-- <span>More Info<span class="material-symbols-outlined">
 									arrow_forward </span></span> -->
-								</a>
-							</ul></li>
+							</a>
+						</ul></li>
+				</c:if>
+				<c:if test="${rq.isLogined() }">
+					<li><a href="#">메뉴</a>
+						<ul class="subnav">
+							<li class="card-med" id="serv-groom">
+								<div class="card-image">
+									<a href="/usr/member/myPage"> <img
+										src="https://ouch-cdn2.icons8.com/T11rfGmMKgcStJyAFKNgtOfE79cadabx0DVMnvzA9Pk/rs:fit:368:313/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNDQx/LzFlYWU4MWY3LWQ1/ZjYtNDM2Ny1hZjM5/LWVmNTFmMGM5Njk4/MS5wbmc.png"></a>
+								</div> <a href="/usr/member/myPage"> <span>내 정보</span> <!-- <span>More Info <span class="material-symbols-outlined">
+									arrow_forward </span></span> -->
+							</a>
+							</li>
 
-					</c:if> <c:if test="${!rq.isLogined() }">
-						<li><a href="../member/login">LOGIN &amp; JOIN</a></li>
-					</c:if> <c:if test="${rq.isLogined() }">
-						<li><a onclick="if(confirm('로그아웃 할래?') == false) return false;" class="hover:underline"
-							href="../member/doLogout">LOGOUT</a></li>
-					</c:if>
+							<li class="card-med" id="serv-board">
+								<div class="card-image">
+									<a href="../article/write"> <img
+										src="https://ouch-cdn2.icons8.com/F5Ea1suZtMYimKDkJr0CJLO_1bju6-bTyT1EuDKEg8s/rs:fit:368:254/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMjcx/LzVjMzE4NWM0LWZh/NTMtNGQ1OS05ZTM2/LTZjYzBhNGU3ODg0/NC5wbmc.png"></a>
+								</div> <a href="../article/write"> <span>글 쓰기</span> <!-- <span>More Info<span class="material-symbols-outlined">
+									arrow_forward </span></span> -->
+							</a>
+						</ul></li>
+
+				</c:if>
+				<c:if test="${!rq.isLogined() }">
+					<li><a href="${rq.loginUri }">LOGIN &amp; JOIN</a></li>
+				</c:if>
+				<c:if test="${rq.isLogined() }">
+					<li><a onclick="if(confirm('로그아웃 하시겠습니까?') == false) return false;" class="hover:underline"
+						href="${rq.loginUri }">LOGOUT</a></li>
+				</c:if>
 				<li><a href="#">회원 탈퇴</a></li>
 			</ul>
 			<div id="utility">

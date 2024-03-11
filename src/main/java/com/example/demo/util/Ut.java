@@ -1,6 +1,8 @@
 package com.example.demo.util;
 
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Array;
+import java.net.URLEncoder;
 import java.util.Map;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -93,6 +95,17 @@ public class Ut {
 			// 실제 프로덕션 환경에서는 로깅 프레임워크를 사용하거나 적절한 예외 처리를 해야 합니다.
 			return null;
 		}
+	}
+
+	public static String getEncodedCurrentUri(String currentUri) {
+
+		try {
+			return URLEncoder.encode(currentUri, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			return currentUri;
+		}
+
 	}
 
 }

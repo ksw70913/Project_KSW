@@ -64,33 +64,56 @@
 						</div> <a href="../article/list"> <span>커뮤니티</span></a> <a href="../article/list?boardId=1&page=1"><span>NOTICE</span></a>
 						<a href="../article/list?boardId=2&page=1"><span>FREE</span></a> <a href="../article/list?boardId=3&page=1"><span>QnA</span></a>
 					</li>
-				</ul> <c:if test="${rq.isLogined() }">
-					<li><a href="#">메뉴</a>
-						<ul class="subnav">
-							<li class="card-med" id="serv-groom">
-								<div class="card-image">
-									<a href="/usr/member/myPage"> <img
-										src="https://ouch-cdn2.icons8.com/T11rfGmMKgcStJyAFKNgtOfE79cadabx0DVMnvzA9Pk/rs:fit:368:313/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNDQx/LzFlYWU4MWY3LWQ1/ZjYtNDM2Ny1hZjM5/LWVmNTFmMGM5Njk4/MS5wbmc.png"></a>
-								</div> <a href="/usr/member/myPage"> <span>내 정보</span> <!-- <span>More Info <span class="material-symbols-outlined">
-									arrow_forward </span></span> -->
-							</a>
-							</li>
+				</ul></li>
+			<c:if test="${rq.isLogined() }">
+				<li><a href="#">교과서</a>
+					<ul class="subnav">
+						<li class="card-med" id="sup-dog">
+							<div class="card-image">
+								<a href="../edu/book"> <img
+									src="https://ouch-cdn2.icons8.com/5ccPOQq69UKQcbmXfjvOScfFc9NXKG0Xu6DPNQ8b0f8/rs:fit:368:247/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMTEw/LzFlODdiYzcyLTBl/OWEtNDFlNS05N2Ey/LTMzYTA4MDQ5MWU1/OC5wbmc.png"></a>
+							</div> <a href="../edu/book"> <span>교과서</span></a> <a href="../edu/book?boardId=4&page=1"><span>초등학교</span></a> <a
+							href="../edu/book?boardId=5&page=1"><span>중학교</span></a> <a href="../edu/book?boardId=6&page=1"><span>고등학교</span></a>
+						</li>
 
-							<li class="card-med" id="serv-board">
-								<div class="card-image">
-									<a href="../article/write"> <img
-										src="https://ouch-cdn2.icons8.com/F5Ea1suZtMYimKDkJr0CJLO_1bju6-bTyT1EuDKEg8s/rs:fit:368:254/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMjcx/LzVjMzE4NWM0LWZh/NTMtNGQ1OS05ZTM2/LTZjYzBhNGU3ODg0/NC5wbmc.png"></a>
-								</div> <a href="../article/write"> <span>글 쓰기</span> <!-- <span>More Info<span class="material-symbols-outlined">
+						<li class="card-med" id="serv-board">
+							<div class="card-image">
+								<a href="../article/write"> <img
+									src="https://ouch-cdn2.icons8.com/F5Ea1suZtMYimKDkJr0CJLO_1bju6-bTyT1EuDKEg8s/rs:fit:368:254/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMjcx/LzVjMzE4NWM0LWZh/NTMtNGQ1OS05ZTM2/LTZjYzBhNGU3ODg0/NC5wbmc.png"></a>
+							</div> <a href="../article/write"> <span>글 쓰기</span> <!-- <span>More Info<span class="material-symbols-outlined">
 									arrow_forward </span></span> -->
-							</a>
-						</ul></li>
+						</a>
+					</ul></li>
+			</c:if>
+			<c:if test="${rq.isLogined() }">
+				<li><a href="#">메뉴</a>
+					<ul class="subnav">
+						<li class="card-med" id="serv-groom">
+							<div class="card-image">
+								<a href="/usr/member/myPage"> <img
+									src="https://ouch-cdn2.icons8.com/T11rfGmMKgcStJyAFKNgtOfE79cadabx0DVMnvzA9Pk/rs:fit:368:313/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNDQx/LzFlYWU4MWY3LWQ1/ZjYtNDM2Ny1hZjM5/LWVmNTFmMGM5Njk4/MS5wbmc.png"></a>
+							</div> <a href="/usr/member/myPage"> <span>내 정보</span> <!-- <span>More Info <span class="material-symbols-outlined">
+									arrow_forward </span></span> -->
+						</a>
+						</li>
 
-				</c:if> <c:if test="${!rq.isLogined() }">
-					<li><a href="../member/login">LOGIN &amp; JOIN</a></li>
-				</c:if> <c:if test="${rq.isLogined() }">
-					<li><a onclick="if(confirm('로그아웃 할래?') == false) return false;" class="hover:underline"
-						href="../member/doLogout">LOGOUT</a></li>
-				</c:if>
+						<li class="card-med" id="serv-board">
+							<div class="card-image">
+								<a href="../article/write"> <img
+									src="https://ouch-cdn2.icons8.com/F5Ea1suZtMYimKDkJr0CJLO_1bju6-bTyT1EuDKEg8s/rs:fit:368:254/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMjcx/LzVjMzE4NWM0LWZh/NTMtNGQ1OS05ZTM2/LTZjYzBhNGU3ODg0/NC5wbmc.png"></a>
+							</div> <a href="../article/write"> <span>글 쓰기</span> <!-- <span>More Info<span class="material-symbols-outlined">
+									arrow_forward </span></span> -->
+						</a>
+					</ul></li>
+
+			</c:if>
+			<c:if test="${!rq.isLogined() }">
+				<li><a href="../member/login">LOGIN &amp; JOIN</a></li>
+			</c:if>
+			<c:if test="${rq.isLogined() }">
+				<li><a onclick="if(confirm('로그아웃 할래?') == false) return false;" class="hover:underline"
+					href="../member/doLogout">LOGOUT</a></li>
+			</c:if>
 			<li><a href="#">회원 탈퇴</a></li>
 		</ul>
 		<div id="utility">
@@ -125,15 +148,11 @@
 			</div>
 			<ul>
 				교과서 등록
-				<li><a href="#">국어</a></li>
-				<li><a href="#">수학</a></li>
-				<li><a href="#">영어</a></li>
-				<li><a href="#">과학</a></li>
-				<li><a href="#">도덕</a></li>
+				<li><a href="#">초등학교</a></li>
+				<li><a href="#">중학교</a></li>
+				<li><a href="#">고등학교</a></li>
 
-				<button class="btn-outline-light">
-					바로가기
-				</button>
+				<button class="btn-outline-light">바로가기</button>
 
 			</ul>
 
@@ -152,7 +171,7 @@
 				<li><a href="#">회원 탈퇴</a></li>
 				<button class="btn-outline-dark">
 					바로가기
-<!-- 					<span class="material-symbols-outlined"> arrow_forward </span> -->
+					<!-- 					<span class="material-symbols-outlined"> arrow_forward </span> -->
 				</button>
 			</ul>
 
@@ -168,9 +187,7 @@
 				<li><a href="#">내 학교 찾기</a></li>
 				<li><a href="#">길 안내</a></li>
 				<li><a href="#">Furniture</a></li>
-				<button class="btn-outline-dark">
-					바로가기
-				</button>
+				<button class="btn-outline-dark">바로가기</button>
 			</ul>
 
 		</li>
@@ -184,9 +201,7 @@
 				<li><a href="#">로그인</a></li>
 				<li><a href="#">회원가입</a></li>
 				<li><a href="#">비밀번호 찾기</a></li>
-				<button class="btn-outline-light">
-					바로가기
-				</button>
+				<button class="btn-outline-light">바로가기</button>
 			</ul>
 
 		</li>
@@ -238,22 +253,19 @@
 <section id="locate"></section>
 
 <style>
-
 footer {
-    color: #ffffff; /* 푸터 텍스트의 색상을 흰색으로 설정 */
-    text-align: center;
-        display: flex;
-    justify-content: center;
+	color: #ffffff; /* 푸터 텍스트의 색상을 흰색으로 설정 */
+	text-align: center;
+	display: flex;
+	justify-content: center;
 }
-
-
 </style>
 
 
 <div class="sidebar">
-    <div class="clock">
-        <span id="Seoul"></span>
-    </div>
+	<div class="clock">
+		<span id="Seoul"></span>
+	</div>
 </div>
 
 <footer>
@@ -268,38 +280,34 @@ footer {
 				<span class="material-symbols-outlined"> contact_support </span> Contact Us
 			</button>
 		</div> -->
-	<!-- 	<ul> -->
-	<!-- 		교과서 등록 -->
-	<!-- 		<li><a href="#">국여</a></li> -->
-	<!-- 		<li><a href="#">수학</a></li> -->
-	<!-- 		<li><a href="#">영어</a></li> -->
-	<!-- 		<li><a href="#">과학</a></li> -->
-	<!-- 		<li><a href="#">도덕</a></li> -->
-	<!-- 		<li><a href="#">Aquariums</a></li> -->
-	<!-- 		<li><a href="#">Rocks &amp; Decorations</a></li> -->
-	<!-- 	</ul> -->
+		<!-- 	<ul> -->
+		<!-- 		교과서 등록 -->
+		<!-- 		<li><a href="#">국여</a></li> -->
+		<!-- 		<li><a href="#">수학</a></li> -->
+		<!-- 		<li><a href="#">영어</a></li> -->
+		<!-- 		<li><a href="#">과학</a></li> -->
+		<!-- 		<li><a href="#">도덕</a></li> -->
+		<!-- 		<li><a href="#">Aquariums</a></li> -->
+		<!-- 		<li><a href="#">Rocks &amp; Decorations</a></li> -->
+		<!-- 	</ul> -->
 
-	<!-- 	<ul> -->
-	<!-- 		나의 정보 -->
-	<!-- 		<li><a href="#">내 정보</a></li> -->
-	<!-- 		<li><a href="#">회원 수정</a></li> -->
-	<!-- 		<li><a href="#">회원 탈퇴</a></li> -->
-	<!-- 		<li><a href="#">Fish</a></li> -->
-	<!-- 	</ul> -->
-
-
-	<!-- 	<ul> -->
-	<!-- 		네비게이션 -->
-	<!-- 		<li><a href="#">내 학교 찾기</a></li> -->
-	<!-- 		<li><a href="#">길 안내</a></li> -->
-	<!-- 	</ul> -->
-	<!-- 	<ul> -->
-	<!-- 		로그인 &amp; 회원가입 -->
-	<!-- 		<li><a href="#">로그인</a></li> -->
-	<!-- 		<li><a href="#">회원가입</a></li> -->
-	<!-- 	</ul> -->
+		<!-- 	<ul> -->
+		<!-- 		나의 정보 -->
+		<!-- 		<li><a href="#">내 정보</a></li> -->
+		<!-- 		<li><a href="#">회원 수정</a></li> -->
+		<!-- 		<li><a href="#">회원 탈퇴</a></li> -->
+		<!-- 		<li><a href="#">Fish</a></li> -->
+		<!-- 	</ul> -->
 
 
+		<!-- 	<ul> -->
+		<!-- 		네비게이션 -->
+		<!-- 		<li><a href="#">내 학교 찾기</a></li> -->
+		<!-- 		<li><a href="#">길 안내</a></li> -->
+		<!-- 	</ul> -->
+		<!-- 	<ul> -->
+		<!-- 		로그인 &amp; 회원가입 -->
+		<!-- 		<li><a href="#">로그인</a></li> -->
+		<!-- 		<li><a href="#">회원가입</a></li> -->
+		<!-- 	</ul> -->
 </footer>
-
-
