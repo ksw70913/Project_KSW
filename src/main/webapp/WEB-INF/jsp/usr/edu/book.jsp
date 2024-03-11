@@ -60,7 +60,7 @@ section {
 				<tr class="hover">
 					<td>${book.id }</td>
 					<td>${book.curriculum }</td>
-					<td><a href="detail?id=${book.id }">${book.title } </a></td>
+					<td><a href="bookDetail?id=${book.id }">${book.title } </a></td>
 					<td>${book.stateswordrecognition }</td>
 					<td>${book.schoolLevel }</td>
 					<td>${book.schoolclassification }</td>

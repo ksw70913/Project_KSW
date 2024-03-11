@@ -75,4 +75,11 @@ public interface EduRepository {
 	List<Book> getForPrintBooks(int boardId, int limitFrom, int limitTake, String searchKeywordTypeCode,
 			String searchKeyword);
 
+	@Select("""
+			SELECT *
+			FROM book
+			WHERE id = #{id}
+			""")
+	Book getForPrintBook(int id);
+
 }

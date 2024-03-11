@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.service.BoardService;
 import com.example.demo.service.EduService;
+import com.example.demo.vo.Article;
 import com.example.demo.vo.Board;
 import com.example.demo.vo.Book;
+import com.example.demo.vo.Reply;
+import com.example.demo.vo.ResultData;
 import com.example.demo.vo.Rq;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -76,6 +79,17 @@ public class UsrEduController {
 		model.addAttribute("books", books);
 
 		return "/usr/edu/book";
+	}
+
+	@RequestMapping("/usr/edu/bookDetail")
+	public String showDetail(HttpServletRequest req, Model model, int id) {
+		Rq rq = (Rq) req.getAttribute("rq");
+
+		Book book = eduService.getForPrintBook(id);
+
+		model.addAttribute("book", book);
+
+		return "/usr/edu/bookDetail";
 	}
 
 	@RequestMapping("/usr/edu/education")

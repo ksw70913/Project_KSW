@@ -32,4 +32,8 @@ public class EduService {
 		return eduRepository.getForPrintBooks(boardId, limitFrom, limitTake, searchKeywordTypeCode, searchKeyword);
 
 	}
+
+	public Book getForPrintBook(int id) {
+		return eduRepository.getForPrintBook(id);
+	}
 }
