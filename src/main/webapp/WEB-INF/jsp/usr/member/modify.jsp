@@ -33,6 +33,120 @@
 		form.submit();
 	}
 </script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+	/* 주소 */
+
+	//본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
+	function execDaumPostcode() {
+		new daum.Postcode(
+				{
+					oncomplete : function(data) {
+						// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+						// 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+						// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+						var roadAddr = data.roadAddress; // 도로명 주소 변수
+						var extraRoadAddr = ''; // 참고 항목 변수
+
+						// 법정동명이 있을 경우 추가한다. (법정리는 제외)
+						// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+						if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
+							extraRoadAddr += data.bname;
+						}
+						// 건물명이 있고, 공동주택일 경우 추가한다.
+						if (data.buildingName !== '' && data.apartment === 'Y') {
+							extraRoadAddr += (extraRoadAddr !== '' ? ', '
+									+ data.buildingName : data.buildingName);
+						}
+						// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+						if (extraRoadAddr !== '') {
+							extraRoadAddr = ' (' + extraRoadAddr + ')';
+						}
+
+						// 우편번호와 주소 정보를 해당 필드에 넣는다.
+						document.getElementById('postcode').value = data.zonecode;
+						document.getElementById("roadAddress").value = roadAddr;
+						document.getElementById("jibunAddress").value = data.jibunAddress;
+
+						// 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+						if (roadAddr !== '') {
+							document.getElementById("extraAddress").value = extraRoadAddr;
+						} else {
+							document.getElementById("extraAddress").value = '';
+						}
+
+						var guideTextBox = document.getElementById("guide");
+						// 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+						if (data.autoRoadAddress) {
+							var expRoadAddr = data.autoRoadAddress
+									+ extraRoadAddr;
+							guideTextBox.innerHTML = '(예상 도로명 주소 : '
+									+ expRoadAddr + ')';
+							guideTextBox.style.display = 'block';
+
+						} else if (data.autoJibunAddress) {
+							var expJibunAddr = data.autoJibunAddress;
+							guideTextBox.innerHTML = '(예상 지번 주소 : '
+									+ expJibunAddr + ')';
+							guideTextBox.style.display = 'block';
+						} else {
+							guideTextBox.innerHTML = '';
+							guideTextBox.style.display = 'none';
+						}
+					}
+				}).open();
+	}
+</script>
+
+<style>
+/* 주소 */
+#postcode-container {
+	display: flex;
+	align-items: center;
+}
+
+#postcode {
+	flex: 1;
+	margin-right: 10px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 14px;
+}
+
+#postcode-button {
+	padding: 10px 20px;
+	background-color: #1161ee;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 14px;
+	transition: background-color 0.3s ease;
+	/* Add decoration */
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#postcode-button:hover {
+	background-color: #0056b3;
+}
+
+#address-container {
+	margin-top: 10px;
+}
+
+#roadAddress, #jibunAddress, #detailAddress, #extraAddress {
+	width: calc(100% - 10px);
+	/* Adjust width and margin according to your design */
+	margin-right: 10px;
+	margin-top: 5px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 14px;
+}
+</style>
 
 <section class="mt-8 text-xl px-4">
 	<div class="mx-auto">
@@ -78,6 +192,15 @@
 							placeholder="이메일을 입력해주세요" name="email" value="${rq.loginedMember.email }" /></td>
 					</tr>
 					<tr>
+						<th>우편주소</th>
+						<td><input type="text" id="postcode" name="postcode" value="${rq.loginedMember.postcode }" placeholder="우편번호"> <input type="button"
+							id="postcode-button" onclick="execDaumPostcode()" value="우편번호 찾기"><br> <input type="text"
+							id="roadAddress" name="roadAddress" value="${rq.loginedMember.roadAddress }" placeholder="도로명주소"> <input type="text" id="jibunAddress"
+							name="jibunAddress" value="${rq.loginedMember.jibunAddress }" placeholder="지번주소"> <span id="guide" style="color: #999; display: none"></span> <input
+							type="text" id="detailAddress" value="${rq.loginedMember.detailAddress }" name="detailAddress" placeholder="상세주소"> <input type="text"
+							id="extraAddress" placeholder="참고항목"></td>
+					</tr>
+					<tr>
 						<th>학교급</th>
 						<td><select data-value="${rq.loginedMember.schoollevel }"
 							class="select select-bordered select-sm w-full max-w-xs" name="schoollevel">
@@ -88,8 +211,8 @@
 					</tr>
 					<tr>
 						<th>학년</th>
-						<td><select data-value="${rq.loginedMember.grade }"
-							class="select select-bordered select-sm w-full max-w-xs" name="grade">
+						<td><select data-value="${rq.loginedMember.grade }" class="select select-bordered select-sm w-full max-w-xs"
+							name="grade">
 								<option value="1">1학년</option>
 								<option value="2">2학년</option>
 								<option value="3">3학년</option>

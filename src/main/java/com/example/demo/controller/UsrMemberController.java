@@ -91,11 +91,10 @@ public class UsrMemberController {
 	@RequestMapping("/usr/member/doJoin")
 	@ResponseBody
 	public String doJoin(HttpServletRequest req, String loginId, String loginPw, String loginPw2, String name,
-			String nickname, String cellphoneNum, String email, String schoollevel, int grade) {
+			String nickname, String cellphoneNum, String email, int postcode, String roadAddress, String jibunAddress,
+			String detailAddress, String schoollevel, int grade) {
 		Rq rq = (Rq) req.getAttribute("rq");
 
-		System.err.println(loginPw);
-		System.err.println(loginPw2);
 		if (rq.isLogined()) {
 			return Ut.jsHistoryBack("F-A", "이미 로그인 상태입니다");
 		}
@@ -127,8 +126,15 @@ public class UsrMemberController {
 			return Ut.jsHistoryBack("F-11", "비밀번호를 다시 확인해주세요.");
 		}
 
+		if (Ut.isNullOrEmpty(roadAddress)) {
+			return Ut.jsHistoryBack("F-11", "주소를 입력해주세요.");
+		}
+		if (Ut.isNullOrEmpty(detailAddress)) {
+			return Ut.jsHistoryBack("F-11", "상세주소를 입력해주세요.");
+		}
+
 		ResultData<Integer> joinRd = memberService.join(loginId, loginPw, name, nickname, cellphoneNum, email,
-				schoollevel, grade);
+				schoollevel, grade, postcode, roadAddress, jibunAddress, detailAddress);
 
 		if (joinRd.isFail()) {
 			return Ut.jsHistoryBack(joinRd.getResultCode(), joinRd.getMsg());
@@ -169,7 +175,8 @@ public class UsrMemberController {
 	@RequestMapping("/usr/member/doModify")
 	@ResponseBody
 	public String doModify(HttpServletRequest req, String loginPw, String name, String nickname, String cellphoneNum,
-			String email) {
+			String email, int postcode, String roadAddress, String jibunAddress, String detailAddress,
+			String schoollevel, int grade) {
 		Rq rq = (Rq) req.getAttribute("rq");
 
 		// 비밀번호 안바꿀 수도 있어서 비번 null 체크는 제거
@@ -191,9 +198,11 @@ public class UsrMemberController {
 		ResultData modifyRd;
 
 		if (Ut.isNullOrEmpty(loginPw)) {
-			modifyRd = memberService.modifyWithoutPw(rq.getLoginedMemberId(), name, nickname, cellphoneNum, email);
+			modifyRd = memberService.modifyWithoutPw(rq.getLoginedMemberId(), name, nickname, cellphoneNum, email,
+					schoollevel, grade, postcode, roadAddress, jibunAddress, detailAddress);
 		} else {
-			modifyRd = memberService.modify(rq.getLoginedMemberId(), loginPw, name, nickname, cellphoneNum, email);
+			modifyRd = memberService.modify(rq.getLoginedMemberId(), loginPw, name, nickname, cellphoneNum, email,
+					schoollevel, grade, postcode, roadAddress, jibunAddress, detailAddress);
 		}
 
 		return Ut.jsReplace(modifyRd.getResultCode(), modifyRd.getMsg(), "../member/myPage");

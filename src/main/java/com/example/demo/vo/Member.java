@@ -18,6 +18,10 @@ public class Member {
 	private String nickname;
 	private String cellphoneNum;
 	private String email;
+	private int postcode;
+	private String roadAddress;
+	private String jibunAddress;
+	private String detailAddress;
 	private String schoollevel;
 	private int grade;
 	private boolean delStatus;

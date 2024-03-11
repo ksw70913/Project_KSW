@@ -35,10 +35,15 @@ public interface MemberRepository {
 			nickname = #{nickname},
 			cellphoneNum = #{cellphoneNum},
 			email = #{email},
+			postcode = #{postcode},
+			roadAddress = #{roadAddress},
+			jibunAddress = #{jibunAddress},
+			detailAddress = #{detailAddress},
 			schoollevel = #{schoollevel},
 			grade = #{grade}
 			""")
-	public void join(String loginId, String loginPw, String name, String nickname, String cellphoneNum, String email, String schoollevel, int grade);
+	public void join(String loginId, String loginPw, String name, String nickname, String cellphoneNum, String email,
+			String schoollevel, int grade, int postcode, String roadAddress, String jibunAddress, String detailAddress);
 
 	@Select("SELECT LAST_INSERT_ID()")
 	public int getLastInsertId();
@@ -65,13 +70,32 @@ public interface MemberRepository {
 				<if test="email != null">
 					email = #{email},
 				</if>
+				<if test="schoollevel != null">
+					schoollevel = #{schoollevel},
+				</if>
+				<if test="grade != null">
+					grade = #{grade},
+				</if>
+				<if test="postcode != null">
+					postcode = #{postcode},
+				</if>
+				<if test="roadAddress != null">
+					roadAddress = #{roadAddress},
+				</if>
+				<if test="jibunAddress != null">
+					jibunAddress = #{jibunAddress},
+				</if>
+				<if test="detailAddress != null">
+					detailAddress = #{detailAddress},
+				</if>
 				updateDate= NOW()
 			</set>
 			WHERE id = #{loginedMemberId}
 			</script>
 			""")
 	public void modify(int loginedMemberId, String loginPw, String name, String nickname, String cellphoneNum,
-			String email);
+			String email, String schoollevel, int grade, int postcode, String roadAddress, String jibunAddress,
+			String detailAddress);
 
 	@Update("""
 			<script>
@@ -89,18 +113,36 @@ public interface MemberRepository {
 				<if test="email != null">
 					email = #{email},
 				</if>
+				<if test="schoollevel != null">
+					schoollevel = #{schoollevel},
+				</if>
+				<if test="grade != null">
+					grade = #{grade},
+				</if>
+				<if test="postcode != null">
+					postcode = #{postcode},
+				</if>
+				<if test="roadAddress != null">
+					roadAddress = #{roadAddress},
+				</if>
+				<if test="jibunAddress != null">
+					jibunAddress = #{jibunAddress},
+				</if>
+				<if test="detailAddress != null">
+					detailAddress = #{detailAddress},
+				</if>
 				updateDate= NOW()
 			</set>
 			WHERE id = #{loginedMemberId}
 			</script>
 			""")
-	public void modifyWithoutPw(int loginedMemberId, String name, String nickname, String cellphoneNum, String email);
+	public void modifyWithoutPw(int loginedMemberId, String name, String nickname, String cellphoneNum, String email,
+			String schoollevel, int grade, int postcode, String roadAddress, String jibunAddress, String detailAddress);
 
-	
 	@Select("""
-			SELECT COUNT(*) 
+			SELECT COUNT(*)
 			FROM `member`
-			WHERE loginId = #{id}			
+			WHERE loginId = #{id}
 			""")
 	public int idCheck(String id);
 

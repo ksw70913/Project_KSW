@@ -41,6 +41,22 @@
 					<td>${rq.loginedMember.email }</td>
 				</tr>
 				<tr>
+					<th>우편번호</th>
+					<td>${rq.loginedMember.postcode }</td>
+				</tr>
+				<tr>
+					<th>도로주소</th>
+					<td>${rq.loginedMember.roadAddress }</td>
+				</tr>
+				<tr>
+					<th>지번주소</th>
+					<td>${rq.loginedMember.jibunAddress }</td>
+				</tr>
+				<tr>
+					<th>상세주소</th>
+					<td>${rq.loginedMember.detailAddress }</td>
+				</tr>
+				<tr>
 					<th>학교급</th>
 					<td>${rq.loginedMember.schoollevel }</td>
 				</tr>

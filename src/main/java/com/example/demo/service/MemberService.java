@@ -18,7 +18,8 @@ public class MemberService {
 	}
 
 	public ResultData<Integer> join(String loginId, String loginPw, String name, String nickname, String cellphoneNum,
-			String email, String schoollevel, int grade) {
+			String email, String schoollevel, int grade, int postcode, String roadAddress, String jibunAddress,
+			String detailAddress) {
 
 		Member existsMember = getMemberByLoginId(loginId);
 
@@ -32,7 +33,8 @@ public class MemberService {
 			return ResultData.from("F-8", Ut.f("이미 사용중인 이름(%s)과 이메일(%s)입니다", name, email));
 		}
 
-		memberRepository.join(loginId, loginPw, name, nickname, cellphoneNum, email, schoollevel, grade);
+		memberRepository.join(loginId, loginPw, name, nickname, cellphoneNum, email, schoollevel, grade, postcode,
+				roadAddress, jibunAddress, detailAddress);
 
 		int id = memberRepository.getLastInsertId();
 
@@ -53,14 +55,20 @@ public class MemberService {
 	}
 
 	public ResultData modify(int loginedMemberId, String loginPw, String name, String nickname, String cellphoneNum,
-			String email) {
-		memberRepository.modify(loginedMemberId, loginPw, name, nickname, cellphoneNum, email);
+			String email, String schoollevel, int grade, int postcode, String roadAddress, String jibunAddress,
+			String detailAddress) {
+		
+		memberRepository.modify(loginedMemberId, loginPw, name, nickname, cellphoneNum, email, schoollevel, grade,
+				postcode, roadAddress, jibunAddress, detailAddress);
 		return ResultData.from("S-1", "회원정보 수정 완료");
 	}
 
 	public ResultData modifyWithoutPw(int loginedMemberId, String name, String nickname, String cellphoneNum,
-			String email) {
-		memberRepository.modifyWithoutPw(loginedMemberId, name, nickname, cellphoneNum, email);
+			String email, String schoollevel, int grade, int postcode, String roadAddress, String jibunAddress,
+			String detailAddress) {
+		
+		memberRepository.modifyWithoutPw(loginedMemberId, name, nickname, cellphoneNum, email, schoollevel, grade,
+				postcode, roadAddress, jibunAddress, detailAddress);
 		return ResultData.from("S-1", "회원정보 수정 완료");
 	}
 
