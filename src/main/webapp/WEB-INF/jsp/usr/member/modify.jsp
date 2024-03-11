@@ -193,12 +193,13 @@
 					</tr>
 					<tr>
 						<th>우편주소</th>
-						<td><input type="text" id="postcode" name="postcode" value="${rq.loginedMember.postcode }" placeholder="우편번호"> <input type="button"
-							id="postcode-button" onclick="execDaumPostcode()" value="우편번호 찾기"><br> <input type="text"
-							id="roadAddress" name="roadAddress" value="${rq.loginedMember.roadAddress }" placeholder="도로명주소"> <input type="text" id="jibunAddress"
-							name="jibunAddress" value="${rq.loginedMember.jibunAddress }" placeholder="지번주소"> <span id="guide" style="color: #999; display: none"></span> <input
-							type="text" id="detailAddress" value="${rq.loginedMember.detailAddress }" name="detailAddress" placeholder="상세주소"> <input type="text"
-							id="extraAddress" placeholder="참고항목"></td>
+						<td><input type="text" id="postcode" name="postcode" value="${rq.loginedMember.postcode }" placeholder="우편번호"
+							readonly> <input type="button" id="postcode-button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
+							<input type="text" id="roadAddress" name="roadAddress" value="${rq.loginedMember.roadAddress }"
+							placeholder="도로명주소" readonly> <input type="text" id="jibunAddress" name="jibunAddress"
+							value="${rq.loginedMember.jibunAddress }" placeholder="지번주소" readonly> <span id="guide"
+							style="color: #999; display: none"></span> <input type="text" id="detailAddress"
+							value="${rq.loginedMember.detailAddress }" name="detailAddress" placeholder="상세주소"></td>
 					</tr>
 					<tr>
 						<th>학교급</th>

@@ -365,34 +365,34 @@ a {
 
 /* 주소 */
 #postcode-container {
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 #postcode {
-    flex: 1;
-    margin-right: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
+	flex: 1;
+	margin-right: 10px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 14px;
 }
 
 #postcode-button {
-    padding: 10px 20px;
-    background-color: #1161ee;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
-    /* Add decoration */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	padding: 10px 20px;
+	background-color: #1161ee;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 14px;
+	transition: background-color 0.3s ease;
+	/* Add decoration */
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 #postcode-button:hover {
-    background-color: #0056b3;
+	background-color: #0056b3;
 }
 
 #address-container {
@@ -472,11 +472,12 @@ a {
 									<label for="pass" class="label">전화번호</label> <input name="cellphoneNum" type="text" class="input">
 								</div>
 								<div class="group">
-									<input type="text" id="postcode" name="postcode" placeholder="우편번호"> <input type="button" id= "postcode-button" onclick="execDaumPostcode()"
-										value="우편번호 찾기"><br> <input type="text" id="roadAddress" name="roadAddress" placeholder="도로명주소"> <input
-										type="text" id="jibunAddress" name="jibunAddress" placeholder="지번주소"> <span id="guide" style="color: #999; display: none"></span>
-									<input type="text" id="detailAddress" name="detailAddress" placeholder="상세주소"> <input type="text" id="extraAddress"
-										placeholder="참고항목">
+									<input type="text" id="postcode" name="postcode" placeholder="우편번호" readonly> <input type="button"
+										id="postcode-button" onclick="execDaumPostcode()" value="우편번호 찾기"><br> <input type="text"
+										id="roadAddress" name="roadAddress" placeholder="도로명주소" readonly> <input type="text" id="jibunAddress"
+										name="jibunAddress" placeholder="지번주소" readonly> <span id="guide" style="color: #999; display: none"></span>
+									<input type="text" id="detailAddress" name="detailAddress" placeholder="상세주소"> <input type="text"
+										id="extraAddress" placeholder="참고항목" readonly>
 								</div>
 								<div class="group">
 									<label for="pass" class="label">학교급</label> <select class="select select-bordered select-sm w-full max-w-xs"
