@@ -18,7 +18,7 @@ public class MemberService {
 	}
 
 	public ResultData<Integer> join(String loginId, String loginPw, String name, String nickname, String cellphoneNum,
-			String email) {
+			String email, String schoollevel, int grade) {
 
 		Member existsMember = getMemberByLoginId(loginId);
 
@@ -32,7 +32,7 @@ public class MemberService {
 			return ResultData.from("F-8", Ut.f("이미 사용중인 이름(%s)과 이메일(%s)입니다", name, email));
 		}
 
-		memberRepository.join(loginId, loginPw, name, nickname, cellphoneNum, email);
+		memberRepository.join(loginId, loginPw, name, nickname, cellphoneNum, email, schoollevel, grade);
 
 		int id = memberRepository.getLastInsertId();
 
@@ -66,9 +66,9 @@ public class MemberService {
 
 	public boolean isIDCheck(String id) {
 		int isIDCheck = memberRepository.idCheck(id);
-		
-		if(isIDCheck == 1) {			
-			return false;			
+
+		if (isIDCheck == 1) {
+			return false;
 		}
 		return true;
 	}

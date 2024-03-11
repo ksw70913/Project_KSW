@@ -91,7 +91,7 @@ public class UsrMemberController {
 	@RequestMapping("/usr/member/doJoin")
 	@ResponseBody
 	public String doJoin(HttpServletRequest req, String loginId, String loginPw, String loginPw2, String name,
-			String nickname, String cellphoneNum, String email) {
+			String nickname, String cellphoneNum, String email, String schoollevel, int grade) {
 		Rq rq = (Rq) req.getAttribute("rq");
 
 		System.err.println(loginPw);
@@ -124,10 +124,10 @@ public class UsrMemberController {
 		}
 
 		if (loginPw.equals(loginPw2) == false) {
-			return Ut.jsHistoryBack("F-9", "비밀번호를 다시 확인해주세요.");
+			return Ut.jsHistoryBack("F-11", "비밀번호를 다시 확인해주세요.");
 		}
 
-		ResultData<Integer> joinRd = memberService.join(loginId, loginPw, name, nickname, cellphoneNum, email);
+		ResultData<Integer> joinRd = memberService.join(loginId, loginPw, name, nickname, cellphoneNum, email, schoollevel, grade);
 
 		if (joinRd.isFail()) {
 			return Ut.jsHistoryBack(joinRd.getResultCode(), joinRd.getMsg());

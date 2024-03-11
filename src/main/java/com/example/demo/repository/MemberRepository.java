@@ -34,9 +34,11 @@ public interface MemberRepository {
 			`name` = #{name},
 			nickname = #{nickname},
 			cellphoneNum = #{cellphoneNum},
-			email = #{email}
+			email = #{email},
+			schoollevel = #{schoollevel},
+			grade = #{grade}
 			""")
-	public void join(String loginId, String loginPw, String name, String nickname, String cellphoneNum, String email);
+	public void join(String loginId, String loginPw, String name, String nickname, String cellphoneNum, String email, String schoollevel, int grade);
 
 	@Select("SELECT LAST_INSERT_ID()")
 	public int getLastInsertId();

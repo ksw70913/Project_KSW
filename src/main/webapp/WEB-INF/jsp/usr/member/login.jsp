@@ -14,7 +14,7 @@
 		});
 
 		signUpTab.addEventListener('click', function() {
-			loginWrap.style.height = '1050px';
+			loginWrap.style.height = '1300px';
 		});
 	});
 </script>
@@ -335,43 +335,63 @@ a {
 						<div class="join-form">
 							<form action="../member/doJoin" method="POST" id="signupForm">
 								<div class="group">
-									<label for="user" class="label">ID</label> <input name="loginId" id="loginId" type="text" class="input">
+									<label for="user" class="label">아이디</label> <input name="loginId" id="loginId" type="text" class="input">
 									<button type="button" id="checkDuplicate">중복 체크</button>
 									<span id="idCheckMessage"></span>
 								</div>
 								<div class="group loginPw">
-									<label for="pass" class="label">Password</label> <input id="loginPw" name="loginPw" type="password"
-										class="input" data-type="password">
+									<label for="pass" class="label">비밀번호</label> <input id="loginPw" name="loginPw" type="password" class="input"
+										data-type="password">
 								</div>
 								<div class="group loginPw2">
-									<label for="pass" class="label">Repeat Password</label> <input id="loginPw2" name="loginPw2" type="password"
+									<label for="pass" class="label">비밀번호 확인</label> <input id="loginPw2" name="loginPw2" type="password"
 										class="input" data-type="password">
 								</div>
 								<div id="passwordMatchMessage"></div>
 								<div class="group">
-									<label for="pass" class="label">Email Address</label> <input name="email" type="text" class="input">
+									<label for="pass" class="label">이메일</label> <input name="email" type="text" class="input">
 								</div>
 								<div class="group">
-									<label for="pass" class="label">Name</label> <input name="name" type="text" class="input">
+									<label for="pass" class="label">이름</label> <input name="name" type="text" class="input">
 								</div>
 								<div class="group">
-									<label for="pass" class="label">Nickname</label> <input name="nickname" type="text" class="input">
+									<label for="pass" class="label">닉네임</label> <input name="nickname" type="text" class="input">
 								</div>
 								<div class="group">
-									<label for="pass" class="label">CellphoneNum</label> <input name="cellphoneNum" type="text" class="input">
+									<label for="pass" class="label">전화번호</label> <input name="cellphoneNum" type="text" class="input">
 								</div>
 								<div class="group">
-									<input type="submit" class="button" value="Sign Up">
+									<label for="pass" class="label">학교급</label> <select class="select select-bordered select-sm w-full max-w-xs"
+										name="schoollevel">
+										<option value="signature">초등학교</option>
+										<option value="grade">중학교</option>
+										<option value="signature,grade">고등학교</option>
+									</select>
 								</div>
-								<div class="hr"></div>
-								<div class="foot-lnk">
-									<label for="tab-1">Already Member?</a>
+								<div class="group">
+									<label for="pass" class="label">학년</label> <select class="select select-bordered select-sm w-full max-w-xs"
+										name="grade">
+										<option value="1">1학년</option>
+										<option value="2">2학년</option>
+										<option value="3">3학년</option>
+										<option value="4">4학년</option>
+										<option value="5">5학년</option>
+										<option value="6">6학년</option>
+									</select>
 								</div>
-							</form>
 						</div>
+						<div class="group">
+							<input type="submit" class="button" value="Sign Up">
+						</div>
+						<div class="hr"></div>
+						<div class="foot-lnk">
+							<label for="tab-1">Already Member?</a>
+						</div>
+						</form>
 					</div>
 				</div>
 			</div>
+		</div>
 		</div>
 	</nav>
 </section>
