@@ -113,7 +113,7 @@
 				</c:if>
 				<c:if test="${rq.isLogined() }">
 					<li><a onclick="if(confirm('로그아웃 하시겠습니까?') == false) return false;" class="hover:underline"
-						href="${rq.loginUri }">LOGOUT</a></li>
+						href="${rq.logoutUri }">LOGOUT</a></li>
 				</c:if>
 				<li><a href="#">회원 탈퇴</a></li>
 			</ul>

@@ -41,6 +41,14 @@
 					<td>${rq.loginedMember.email }</td>
 				</tr>
 				<tr>
+					<th>학교급</th>
+					<td>${rq.loginedMember.schoollevel }</td>
+				</tr>
+				<tr>
+					<th>학년</th>
+					<td>${rq.loginedMember.grade }</td>
+				</tr>
+				<tr>
 					<th></th>
 					<td><a href="../member/checkPw" class="btn btn-active btn-ghost">회원정보 수정</a></td>
 				</tr>

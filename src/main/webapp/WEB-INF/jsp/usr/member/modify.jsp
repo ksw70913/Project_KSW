@@ -49,52 +49,59 @@
 					</tr>
 					<tr>
 						<th>새 비밀번호</th>
-						<td>
-							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
-								placeholder="새 비밀번호를 입력해주세요" name="loginPw" />
-						</td>
+						<td><input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+							placeholder="새 비밀번호를 입력해주세요" name="loginPw" /></td>
 					</tr>
 					<tr>
 						<th>새 비밀번호 확인</th>
-						<td>
-							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
-								placeholder="새 비밀번호 확인을 입력해주세요" name="loginPwConfirm" />
-						</td>
+						<td><input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+							placeholder="새 비밀번호 확인을 입력해주세요" name="loginPwConfirm" /></td>
 					</tr>
 					<tr>
 						<th>이름</th>
-						<td>
-							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
-								placeholder="이름을 입력해주세요" name="name" value="${rq.loginedMember.name }" />
-						</td>
+						<td><input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+							placeholder="이름을 입력해주세요" name="name" value="${rq.loginedMember.name }" /></td>
 					</tr>
 					<tr>
 						<th>닉네임</th>
-						<td>
-							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
-								placeholder="닉네임을 입력해주세요" name="nickname" value="${rq.loginedMember.nickname }" />
-						</td>
+						<td><input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+							placeholder="닉네임을 입력해주세요" name="nickname" value="${rq.loginedMember.nickname }" /></td>
 					</tr>
 					<tr>
 						<th>전화번호</th>
-						<td>
-							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
-								placeholder="전화번호를 입력해주세요" name="cellphoneNum" value="${rq.loginedMember.cellphoneNum }" />
-						</td>
+						<td><input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+							placeholder="전화번호를 입력해주세요" name="cellphoneNum" value="${rq.loginedMember.cellphoneNum }" /></td>
 					</tr>
 					<tr>
 						<th>이메일</th>
-						<td>
-							<input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
-								placeholder="이메일을 입력해주세요" name="email" value="${rq.loginedMember.email }" />
-						</td>
+						<td><input class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" type="text"
+							placeholder="이메일을 입력해주세요" name="email" value="${rq.loginedMember.email }" /></td>
+					</tr>
+					<tr>
+						<th>학교급</th>
+						<td><select data-value="${rq.loginedMember.schoollevel }"
+							class="select select-bordered select-sm w-full max-w-xs" name="schoollevel">
+								<option value="primary">초등학교</option>
+								<option value="middle">중학교</option>
+								<option value="high">고등학교</option>
+						</select></td>
+					</tr>
+					<tr>
+						<th>학년</th>
+						<td><select data-value="${rq.loginedMember.grade }"
+							class="select select-bordered select-sm w-full max-w-xs" name="grade">
+								<option value="1">1학년</option>
+								<option value="2">2학년</option>
+								<option value="3">3학년</option>
+								<option value="4">4학년</option>
+								<option value="5">5학년</option>
+								<option value="6">6학년</option>
+						</select></td>
 					</tr>
 
 					<tr>
 						<th></th>
-						<td>
-							<input class="btn btn-outline btn-info" type="submit" value="수정" />
-						</td>
+						<td><input class="btn btn-outline btn-info" type="submit" value="수정" /></td>
 					</tr>
 				</tbody>
 			</table>

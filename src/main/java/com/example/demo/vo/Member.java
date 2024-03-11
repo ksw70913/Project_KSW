@@ -18,6 +18,8 @@ public class Member {
 	private String nickname;
 	private String cellphoneNum;
 	private String email;
+	private String schoollevel;
+	private int grade;
 	private boolean delStatus;
 	private String delDate;
 

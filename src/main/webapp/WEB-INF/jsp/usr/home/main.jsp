@@ -167,7 +167,7 @@
 			<ul>
 				나의 정보
 				<li><a href="/usr/member/myPage">내 정보</a></li>
-				<li><a href="/usr/member/doCheckPw">정보 수정</a></li>
+				<li><a href="/usr/member/checkPw">정보 수정</a></li>
 				<li><a href="#">회원 탈퇴</a></li>
 				<button class="btn-outline-dark">					바로가기
 					<!-- 					<span class="material-symbols-outlined"> arrow_forward </span> -->

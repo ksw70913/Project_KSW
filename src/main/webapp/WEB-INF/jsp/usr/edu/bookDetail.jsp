@@ -3,6 +3,45 @@
 <c:set var="pageTitle" value="BOOK DETAIL"></c:set>
 <%@ include file="../common/head2.jspf"%>
 
+<style>
+/* Custom CSS for styling */
+
+/* Table styling */
+.table-container {
+	margin-top: 20px;
+}
+
+.table-box-1 {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.table-box-1 th, .table-box-1 td {
+	padding: 10px;
+	border: 1px solid #ccc;
+}
+
+/* Add button styling */
+.add-button-container {
+	margin-top: 20px;
+	text-align: center;
+}
+
+.add-button {
+	padding: 10px 20px;
+	background-color: #007bff; /* Blue color for button */
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
+	transition: background-color 0.3s ease;
+}
+
+.add-button:hover {
+	background-color: #0056b3; /* Darker blue color on hover */
+}
+</style>
 <section class="mt-8 text-xl px-4 ">
 	<div class="">
 		<table class="table-box-1 " border="1">
@@ -55,7 +94,26 @@
 					<th>학년</th>
 					<td>${book.grade }</td>
 				</tr>
+			</tbody>
+		</table>
+	</div>
+</section>
 
+
+
+<section class="mt-8 text-xl px-4">
+	<div>
+		<table class="table-box-1" border="1">
+			<tbody>
+				<!-- Book details rows -->
+				<!-- Insert your book details rows here -->
+
+				<!-- Add button row -->
+				<tr>
+					<th colspan="2">
+						<button onclick="window.location.href = '/addBookPage';">추가하기</button>
+					</th>
+				</tr>
 			</tbody>
 		</table>
 	</div>

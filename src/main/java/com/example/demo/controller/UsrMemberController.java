@@ -127,7 +127,8 @@ public class UsrMemberController {
 			return Ut.jsHistoryBack("F-11", "비밀번호를 다시 확인해주세요.");
 		}
 
-		ResultData<Integer> joinRd = memberService.join(loginId, loginPw, name, nickname, cellphoneNum, email, schoollevel, grade);
+		ResultData<Integer> joinRd = memberService.join(loginId, loginPw, name, nickname, cellphoneNum, email,
+				schoollevel, grade);
 
 		if (joinRd.isFail()) {
 			return Ut.jsHistoryBack(joinRd.getResultCode(), joinRd.getMsg());
