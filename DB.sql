@@ -23,6 +23,12 @@ CREATE TABLE `member`(
     nickname CHAR(20) NOT NULL,
     cellphoneNum CHAR(20) NOT NULL,
     email CHAR(50) NOT NULL,
+    postcode INT NOT NULL,
+    roadAddress TEXT NOT NULL,
+    jibunAddress TEXT NOT NULL,
+    detailAddress TEXT NOT NULL,
+    schoollevel CHAR(20) NOT NULL,
+    grade INT NOT NULL,
     delStatus TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '탈퇴 여부 (0=탈퇴 전, 1=탈퇴 후)',
     delDate DATETIME COMMENT '탈퇴 날짜'
 );
@@ -64,7 +70,9 @@ loginPw = 'admin',
 `name` = '관리자',
 nickname = '관리자',
 cellphoneNum = '01012341234',
-email = 'abcd@gmail.com';
+email = 'abcd@gmail.com',
+schoollevel = 'primary',
+grade = 4;
 
 # (일반)
 INSERT INTO `member`
@@ -75,7 +83,9 @@ loginPw = 'test1',
 `name` = '회원1',
 nickname = '회원1',
 cellphoneNum = '01043214321',
-email = 'abcde@gmail.com';
+email = 'abcde@gmail.com',
+schoollevel = 'middle',
+grade = 2;
 
 # (일반)
 INSERT INTO `member`
@@ -86,7 +96,9 @@ loginPw = 'test2',
 `name` = '회원2',
 nickname = '회원2',
 cellphoneNum = '01056785678',
-email = 'abcdef@gmail.com';
+email = 'abcdef@gmail.com',
+schoollevel = 'high',
+grade = 3;
 
 ALTER TABLE article ADD COLUMN memberId INT(10) UNSIGNED NOT NULL AFTER updateDate;
 
@@ -613,3 +625,8 @@ SUM(IF(RP.point > 0,RP.point,0)) AS goodReactionPoint,
 SUM(IF(RP.point < 0,RP.point * -1,0)) AS badReactionPoint
 FROM reactionPoint AS RP
 GROUP BY RP.relTypeCode,RP.relId
+
+				SELECT *
+				FROM board
+				WHERE id = 4
+				AND delStatus = 0;
