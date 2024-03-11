@@ -33,10 +33,9 @@
 		form.submit();
 	}
 </script>
+
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-	/* 주소 */
-
 	//본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
 	function execDaumPostcode() {
 		new daum.Postcode(
@@ -193,13 +192,14 @@
 					</tr>
 					<tr>
 						<th>우편주소</th>
-						<td><input type="text" id="postcode" name="postcode" value="${rq.loginedMember.postcode }" placeholder="우편번호"
-							readonly> <input type="button" id="postcode-button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
-							<input type="text" id="roadAddress" name="roadAddress" value="${rq.loginedMember.roadAddress }"
-							placeholder="도로명주소" readonly> <input type="text" id="jibunAddress" name="jibunAddress"
-							value="${rq.loginedMember.jibunAddress }" placeholder="지번주소" readonly> <span id="guide"
-							style="color: #999; display: none"></span> <input type="text" id="detailAddress"
-							value="${rq.loginedMember.detailAddress }" name="detailAddress" placeholder="상세주소"></td>
+						<td><input type="text" id="postcode" name="postcode" placeholder="우편번호" readonly
+							value="${rq.loginedMember.postcode }"> <input type="button" id="postcode-button"
+							onclick="execDaumPostcode()" value="우편번호 찾기"><br> <input type="text" id="roadAddress"
+							name="roadAddress" placeholder="도로명주소" readonly value="${rq.loginedMember.roadAddress }"> <input
+							type="text" id="jibunAddress" name="jibunAddress" placeholder="지번주소" readonly
+							value="${rq.loginedMember.jibunAddress }"> <span id="guide" style="color: #999; display: none"></span> <input
+							type="text" id="detailAddress" name="detailAddress" placeholder="상세주소" value="${rq.loginedMember.detailAddress }">
+							<input type="text" id="extraAddress" placeholder="참고항목" readonly></td>
 					</tr>
 					<tr>
 						<th>학교급</th>
