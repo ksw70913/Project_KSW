@@ -7,13 +7,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.service.BoardService;
 import com.example.demo.service.EduService;
-import com.example.demo.vo.Article;
+import com.example.demo.util.Ut;
 import com.example.demo.vo.Board;
 import com.example.demo.vo.Book;
-import com.example.demo.vo.Reply;
+import com.example.demo.vo.Learning;
 import com.example.demo.vo.ResultData;
 import com.example.demo.vo.Rq;
 
@@ -90,6 +91,23 @@ public class UsrEduController {
 		model.addAttribute("book", book);
 
 		return "/usr/edu/bookDetail";
+	}
+
+	@RequestMapping("/usr/edu/addBook")
+	@ResponseBody
+	public String addBook(HttpServletRequest req, int id, String title) {
+		Rq rq = (Rq) req.getAttribute("rq");
+
+		Learning bookStatus = eduService.getLearning(rq.getLoginedMemberId(), id);
+		
+		if (bookStatus != null) {
+			return Ut.jsHistoryBack("F-1", "이미 추가한 교과서입니다.");
+		}
+		
+		ResultData<Integer> addBookRd = eduService.addBook(rq.getLoginedMemberId(), id, title);
+		
+
+		return Ut.jsReplace(addBookRd.getResultCode(), addBookRd.getMsg(), "../edu/bookDetail?id=" + id);
 	}
 
 	@RequestMapping("/usr/edu/education")

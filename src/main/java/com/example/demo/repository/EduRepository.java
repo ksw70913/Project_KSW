@@ -2,10 +2,12 @@ package com.example.demo.repository;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import com.example.demo.vo.Book;
+import com.example.demo.vo.Learning;
 
 @Mapper
 public interface EduRepository {
@@ -81,5 +83,23 @@ public interface EduRepository {
 			WHERE id = #{id}
 			""")
 	Book getForPrintBook(int id);
+
+	@Select("""
+			SELECT *
+			FROM learning
+			WHERE memberId = #{loginedMemberId}
+			AND bookId = #{id}
+			""")
+	Learning getLearning(int loginedMemberId, int id);
+
+	@Insert("""
+			INSERT INTO
+			learning SET
+			memberId = #{loginedMemberId},
+			bookId = #{id},
+			title = #{title},
+			learning = 0
+			""")
+	void addBook(int loginedMemberId, int id, String title);
 
 }

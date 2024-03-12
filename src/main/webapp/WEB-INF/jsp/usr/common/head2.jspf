@@ -132,4 +132,5 @@
 		<div class="clock">
 			<span id="Seoul"></span>
 		</div>
+		<div id="weather-info"></div>
 	</div>

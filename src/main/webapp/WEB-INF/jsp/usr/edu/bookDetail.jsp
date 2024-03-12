@@ -102,21 +102,26 @@
 
 
 <section class="mt-8 text-xl px-4">
-	<div>
-		<table class="table-box-1" border="1">
-			<tbody>
-				<!-- Book details rows -->
-				<!-- Insert your book details rows here -->
+	<form action="../edu/addBook" method="POST">
+		<div>
+			<input type="hidden" name="id" value="${book.id }" />
+			<input type="hidden" name="title" value="${book.title }" />
+			<table class="table-box-1" border="1">
+				<tbody>
+					<!-- Book details rows -->
+					<!-- Insert your book details rows here -->
 
-				<!-- Add button row -->
-				<tr>
-					<th colspan="2">
-						<button onclick="window.location.href = '/addBookPage';">추가하기</button>
-					</th>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+					<!-- Add button row -->
+
+					<tr>
+						<th colspan="2">
+							<button type="submit">추가하기</button>
+						</th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</form>
 </section>
 
 

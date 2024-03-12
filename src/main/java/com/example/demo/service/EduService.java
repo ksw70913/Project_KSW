@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.repository.EduRepository;
+import com.example.demo.util.Ut;
 import com.example.demo.vo.Book;
+import com.example.demo.vo.Learning;
+import com.example.demo.vo.ResultData;
 
 @Service
 public class EduService {
@@ -35,5 +38,15 @@ public class EduService {
 
 	public Book getForPrintBook(int id) {
 		return eduRepository.getForPrintBook(id);
+	}
+
+	public Learning getLearning(int loginedMemberId, int id) {
+		return eduRepository.getLearning(loginedMemberId, id);
+	}
+
+	public ResultData<Integer> addBook(int loginedMemberId, int id, String title) {
+		eduRepository.addBook(loginedMemberId, id, title);
+		
+		return ResultData.from("S-1", "교과서가 등록되었습니다.");
 	}
 }

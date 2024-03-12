@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="API TEST4"></c:set>
 
-<%@ include file="../common/head.jspf"%>
+<%@ include file="../common/head2.jspf"%>
 
 <!DOCTYPE html>
 <html>
