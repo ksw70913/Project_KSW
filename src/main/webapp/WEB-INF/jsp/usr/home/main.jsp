@@ -169,7 +169,8 @@
 				<li><a href="/usr/member/myPage">내 정보</a></li>
 				<li><a href="/usr/member/checkPw">정보 수정</a></li>
 				<li><a href="#">회원 탈퇴</a></li>
-				<button class="btn-outline-dark">					바로가기
+				<button class="btn-outline-dark">
+					바로가기
 					<!-- 					<span class="material-symbols-outlined"> arrow_forward </span> -->
 				</button>
 			</ul>
@@ -265,7 +266,10 @@ footer {
 	<div class="clock">
 		<span id="Seoul"></span>
 	</div>
+	<div id="weather-info"></div>
 </div>
+
+
 
 <footer>
 
