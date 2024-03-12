@@ -99,19 +99,24 @@ public class UsrEduController {
 		Rq rq = (Rq) req.getAttribute("rq");
 
 		Learning bookStatus = eduService.getLearning(rq.getLoginedMemberId(), id);
-		
+
 		if (bookStatus != null) {
 			return Ut.jsHistoryBack("F-1", "이미 추가한 교과서입니다.");
 		}
-		
+
 		ResultData<Integer> addBookRd = eduService.addBook(rq.getLoginedMemberId(), id, title);
-		
 
 		return Ut.jsReplace(addBookRd.getResultCode(), addBookRd.getMsg(), "../edu/bookDetail?id=" + id);
 	}
 
 	@RequestMapping("/usr/edu/education")
-	public String showEducation() {
+	public String showEducation(HttpServletRequest req, Model model) {
+		Rq rq = (Rq) req.getAttribute("rq");
+
+//		Learning bookStatus = eduService.getBookStatus(rq.getLoginedMemberId());
+//		
+//		
+//		model.addAttribute("bookStatus", bookStatus);
 
 		return "/usr/edu/education";
 	}

@@ -92,6 +92,13 @@ public interface EduRepository {
 			""")
 	Learning getLearning(int loginedMemberId, int id);
 
+	@Select("""
+			SELECT *
+			FROM learning
+			WHERE memberId = #{loginedMemberId}
+			""")
+	Learning getBookStatus(int loginedMemberId);
+
 	@Insert("""
 			INSERT INTO
 			learning SET

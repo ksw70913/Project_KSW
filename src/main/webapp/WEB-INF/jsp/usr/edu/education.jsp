@@ -8,61 +8,103 @@
 <meta charset="UTF-8">
 <title>학습 현황</title>
 <style>
-body {
-	font-family: Arial, sans-serif;
-	background-color: #f2f2f2;
-	margin: 0;
-	padding: 20px;
+.graph-container {
 	display: flex;
-	flex-direction: column;
+	justify-content: center;
 	align-items: center;
+	height: 100vh; /* Adjust height as needed */
 }
 
-h1, h2 {
+.graph {
 	text-align: center;
-	color: #333;
+	padding: 20px;
+	background-color: #f0f0f0;
+	border-radius: 10px;
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-label {
-	font-size: 18px;
-	margin-top: 10px;
+.button-container {
+	margin-top: 20px;
 }
 
-input[type="number"] {
-	font-size: 16px;
-	padding: 8px;
-	margin: 5px;
-}
-
-button {
-	font-size: 18px;
+.button-container button {
 	padding: 10px 20px;
-	margin: 10px;
-	background-color: #2ecc71;
+	background-color: #007bff; /* Example color */
 	color: white;
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
+	transition: background-color 0.3s ease;
 }
 
-button:hover {
-	background-color: #27ae60;
+.button-container button:hover {
+	background-color: #0056b3; /* Example color */
 }
 
-canvas {
-	border: 2px solid #333;
-	border-radius: 50%;
+.graph h1 {
+	font-size: 24px;
+	margin-bottom: 10px;
+}
+
+.graph h2 {
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+
+.graph label {
+	display: block;
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+
+.graph input[type="number"] {
+	font-size: 16px;
+	padding: 8px;
+	margin-bottom: 10px;
+}
+
+.graph button {
+	font-size: 18px;
+	padding: 10px 20px;
+	background-color: #DB7F67;
+	color: #ffffff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.graph button:hover {
+	background-color: #C56A51;
+}
+
+.graph canvas {
 	margin-top: 20px;
+	border: 2px solid #DB7F67;
+	border-radius: 50%;
 }
 </style>
 </head>
 <body>
-	<h1>교과목 선택</h1>
-	<h2>Circular Graph</h2>
-	<label for="inputNumber">0부터 100 사이의 숫자를 입력하세요:</label>
-	<input type="number" id="inputNumber" min="0" max="100" value="50">
-	<button onclick="drawCircularGraph()">그래프 그리기</button>
-	<canvas id="graphCanvas" width="200" height="200"></canvas>
+
+
+
+	<div class="graph-container">
+		<div class="graph">
+			<h1>교과목 선택</h1>
+			<h2>Circular Graph</h2>
+			<label for="inputNumber">0부터 100 사이의 숫자를 입력하세요:</label> <input type="number" id="inputNumber" min="0" max="100"
+				value="50">
+			<div class="button-container">
+				<button onclick="drawCircularGraph()">그래프 그리기</button>
+			</div>
+			<canvas id="graphCanvas" width="200" height="200"></canvas>
+		</div>
+	</div>
+
+
+
+
 
 	<script>
 		function drawCircularGraph() {
@@ -83,12 +125,13 @@ canvas {
 			const centerX = canvas.width / 2;
 			const centerY = canvas.height / 2;
 
-			// Radius of the circular graph
+			// Calculate radius based on canvas size
 			const radius = Math.min(canvas.width, canvas.height) / 2 - 20;
 
 			// Draw circular graph
 			ctx.beginPath();
-			ctx.arc(centerX, centerY, radius, 0, endAngle);
+			ctx.arc(centerX, centerY, radius, -0.5 * Math.PI, endAngle - 0.5
+					* Math.PI);
 			ctx.strokeStyle = '#2ecc71'; // Green color
 			ctx.lineWidth = 30;
 			ctx.lineCap = 'round'; // Rounded line ends
