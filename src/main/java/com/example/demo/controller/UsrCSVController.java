@@ -17,4 +17,16 @@ public class UsrCSVController {
 	public String readAndSaveToDB() {
 		return csvService.readAndSaveToDB();
 	}
+	
+	@GetMapping("/readAndSaveToDBchildzone")
+	@ResponseBody
+	public String readAndSaveToDBchildzone() {
+		return csvService.readAndSaveToDBchildzone();
+	}
+	
+	@GetMapping("/readAndSaveToDBSchool")
+	@ResponseBody
+	public String readAndSaveToDBSchool() {
+		return csvService.readAndSaveToDBSchool();
+	}
 }
