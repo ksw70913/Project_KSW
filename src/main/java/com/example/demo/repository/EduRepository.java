@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.example.demo.vo.Book;
 import com.example.demo.vo.Learning;
@@ -53,17 +54,17 @@ public interface EduRepository {
 			<if test="boardId != 0">
 				AND boardId = #{boardId}
 			</if>
-			<if test="searchKeyword != ''">
+			<if test="searchKeywordTypeCode != ''">
 				<choose>
 					<when test="searchKeywordTypeCode == 'title'">
 						AND title LIKE CONCAT('%',#{searchKeyword},'%')
 					</when>
-					<when test="searchKeywordTypeCode == 'grade'">
-						AND grade LIKE CONCAT('%',#{searchKeyword},'%')
+					<when test="searchKeywordTypeCode == 'author'">
+						AND author LIKE CONCAT('%',#{searchKeyword},'%')
 					</when>
 					<otherwise>
 						AND title LIKE CONCAT('%',#{searchKeyword},'%')
-						OR grade LIKE CONCAT('%',#{searchKeyword},'%')
+						OR author LIKE CONCAT('%',#{searchKeyword},'%')
 					</otherwise>
 				</choose>
 			</if>
@@ -108,5 +109,21 @@ public interface EduRepository {
 			learning = 0
 			""")
 	void addBook(int loginedMemberId, int id, String title);
+
+	@Select("""
+			SELECT *
+			FROM learning
+			WHERE memberId = #{loginedMemberId}
+			AND bookId = 102208
+						""")
+	Learning getStatus(int loginedMemberId);
+
+	@Update("""
+			UPDATE learning
+			SET learning = #{learning}
+			WHERE id = 2
+			AND memberId = #{loginedMemberId}
+			""")
+	void doLearning(int loginedMemberId, int learning);
 
 }

@@ -69,6 +69,10 @@ public class MyWebMVCConfigurer implements WebMvcConfigurer {
 //		좋아요 관련
 		ir.addPathPatterns("/usr/reactionPoint/doGoodReaction");
 		ir.addPathPatterns("/usr/reactionPoint/doBadReaction");
+		
+//		교육 관련
+		ir.addPathPatterns("/usr/edu/addBook");
+		ir.addPathPatterns("/usr/edu/education");
 
 		ir = registry.addInterceptor(needLogoutInterceptor);
 		ir.addPathPatterns("/usr/member/login");

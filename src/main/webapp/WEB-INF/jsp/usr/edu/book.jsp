@@ -28,9 +28,9 @@ section {
 					data-value="${param.searchKeywordTypeCode }" class="select select-bordered select-sm w-full max-w-xs"
 					name="searchKeywordTypeCode">
 					<option value="signature">제목</option>
-					<option value="grade">사용학년</option>
-					<option value="signature,grade">제목+사용학년</option>
-				</select> <input value="${param.searchKeyword }" name="searchKeyword" type="text" placeholder="searchKeyword?"
+					<option value="author">저자</option>
+					<option value="signature,grade">제목+저자</option>
+				</select><input value="${param.searchKeyword }" name="searchKeyword" type="text" placeholder="searchKeyword?"
 					class="input-sm input input-bordered w-48 max-w-xs" />
 				<button class="btn btn-ghost btn-sm" type="submit">검색</button>
 			</form>
@@ -38,10 +38,13 @@ section {
 	</div>
 	<table class="table-box-1 table" border="1">
 		<colgroup>
+			<col style="width: 5%" />
+			<col style="width: 15%" />
+			<col style="width: 46%" />
+			<col style="width: 5%" />
+			<col style="width: 5%" />
 			<col style="width: 10%" />
-			<col style="width: 20%" />
-			<col style="width: 60%" />
-			<col style="width: 10%" />
+			<col style="width: 14%" />
 		</colgroup>
 		<thead>
 			<tr>
@@ -50,8 +53,8 @@ section {
 				<th>제목</th>
 				<th>출판년도</th>
 				<th>학교급</th>
-				<th>학교구분</th>
-				<th>사용학년</th>
+				<th>저자</th>
+				<th>출판사</th>
 
 			</tr>
 		</thead>
@@ -61,15 +64,15 @@ section {
 					<td>${book.id }</td>
 					<td>${book.curriculum }</td>
 					<td><a href="bookDetail?id=${book.id }">${book.title } </a></td>
-					<td>${book.stateswordrecognition }</td>
+					<td>${book.publicationyear }</td>
 					<td>${book.schoolLevel }</td>
-					<td>${book.schoolclassification }</td>
-					<td>${book.grade }</td>
+					<td>${book.author }</td>
+					<td>${book.publisher }</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
-	</div>
+
 
 	<div class="pagination flex justify-center mt-3">
 		<div class="btn-group">

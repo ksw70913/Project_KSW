@@ -53,4 +53,14 @@ public class EduService {
 	public List<Learning> getBookStatus(int loginedMemberId) {
 		return eduRepository.getBookStatus(loginedMemberId);
 	}
+
+	public Learning getStatus(int loginedMemberId) {
+		return eduRepository.getStatus(loginedMemberId);
+	}
+
+	public ResultData<Integer> doLearning(int loginedMemberId, int learning) {
+		eduRepository.doLearning(loginedMemberId, learning);
+		
+		return ResultData.from("S-1", "수치가 수정되었습니다.");
+	}
 }

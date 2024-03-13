@@ -35,7 +35,7 @@ public class UsrEduController {
 	@RequestMapping("/usr/edu/book")
 	public String showBook(HttpServletRequest req, Model model, @RequestParam(defaultValue = "4") int boardId,
 			@RequestParam(defaultValue = "1") int page,
-			@RequestParam(defaultValue = "서명,사용학년") String searchKeywordTypeCode,
+			@RequestParam(defaultValue = "title,author") String searchKeywordTypeCode,
 			@RequestParam(defaultValue = "") String searchKeyword) {
 
 		Rq rq = (Rq) req.getAttribute("rq");
@@ -114,11 +114,21 @@ public class UsrEduController {
 		Rq rq = (Rq) req.getAttribute("rq");
 
 		List<Learning> bookStatus = eduService.getBookStatus(rq.getLoginedMemberId());
-		
-		
+		Learning Status = eduService.getStatus(rq.getLoginedMemberId());
+
 		model.addAttribute("bookStatus", bookStatus);
+		model.addAttribute("Status", Status);
 
 		return "/usr/edu/education";
 	}
 
+	@RequestMapping("/usr/edu/doLearning")
+	@ResponseBody
+	public String doLearning(HttpServletRequest req, int learning) {
+		Rq rq = (Rq) req.getAttribute("rq");
+		
+		ResultData<Integer> doLearningRd = eduService.doLearning(rq.getLoginedMemberId(), learning);
+
+		return Ut.jsReplace(doLearningRd.getResultCode(), doLearningRd.getMsg(), "../edu/education");
+	}
 }
