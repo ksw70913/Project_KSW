@@ -124,10 +124,11 @@ public class UsrEduController {
 
 	@RequestMapping("/usr/edu/doLearning")
 	@ResponseBody
-	public String doLearning(HttpServletRequest req, int learning) {
+	public String doLearning(HttpServletRequest req,int id, int learning) {
 		Rq rq = (Rq) req.getAttribute("rq");
 		
-		ResultData<Integer> doLearningRd = eduService.doLearning(rq.getLoginedMemberId(), learning);
+		System.err.println(id);
+		ResultData<Integer> doLearningRd = eduService.doLearning(rq.getLoginedMemberId(),id, learning);
 
 		return Ut.jsReplace(doLearningRd.getResultCode(), doLearningRd.getMsg(), "../edu/education");
 	}

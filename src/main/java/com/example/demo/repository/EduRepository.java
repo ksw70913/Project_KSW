@@ -121,9 +121,9 @@ public interface EduRepository {
 	@Update("""
 			UPDATE learning
 			SET learning = #{learning}
-			WHERE id = 2
+			WHERE id = #{id}
 			AND memberId = #{loginedMemberId}
 			""")
-	void doLearning(int loginedMemberId, int learning);
+	void doLearning(int loginedMemberId, int id, int learning);
 
 }

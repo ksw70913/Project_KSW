@@ -58,9 +58,9 @@ public class EduService {
 		return eduRepository.getStatus(loginedMemberId);
 	}
 
-	public ResultData<Integer> doLearning(int loginedMemberId, int learning) {
-		eduRepository.doLearning(loginedMemberId, learning);
-		
+	public ResultData<Integer> doLearning(int loginedMemberId, int id, int learning) {
+		eduRepository.doLearning(loginedMemberId, id, learning);
+
 		return ResultData.from("S-1", "수치가 수정되었습니다.");
 	}
 }
