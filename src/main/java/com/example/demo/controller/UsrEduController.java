@@ -113,10 +113,10 @@ public class UsrEduController {
 	public String showEducation(HttpServletRequest req, Model model) {
 		Rq rq = (Rq) req.getAttribute("rq");
 
-//		Learning bookStatus = eduService.getBookStatus(rq.getLoginedMemberId());
-//		
-//		
-//		model.addAttribute("bookStatus", bookStatus);
+		List<Learning> bookStatus = eduService.getBookStatus(rq.getLoginedMemberId());
+		
+		
+		model.addAttribute("bookStatus", bookStatus);
 
 		return "/usr/edu/education";
 	}

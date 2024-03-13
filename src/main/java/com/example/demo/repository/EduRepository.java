@@ -97,7 +97,7 @@ public interface EduRepository {
 			FROM learning
 			WHERE memberId = #{loginedMemberId}
 			""")
-	Learning getBookStatus(int loginedMemberId);
+	List<Learning> getBookStatus(int loginedMemberId);
 
 	@Insert("""
 			INSERT INTO

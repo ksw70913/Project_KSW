@@ -88,7 +88,6 @@
 <body>
 
 
-
 	<div class="graph-container">
 		<div class="graph">
 			<h1>교과목 선택</h1>

@@ -50,7 +50,7 @@ public class EduService {
 		return ResultData.from("S-1", "교과서가 등록되었습니다.");
 	}
 
-	public Learning getBookStatus(int loginedMemberId) {
+	public List<Learning> getBookStatus(int loginedMemberId) {
 		return eduRepository.getBookStatus(loginedMemberId);
 	}
 }

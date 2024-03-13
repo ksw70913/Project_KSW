@@ -19,6 +19,6 @@ public class Book {
 	private String author;
 	private String publisher;
 	private double price;
-	private int grade;
+	private String grade;
 
 }
