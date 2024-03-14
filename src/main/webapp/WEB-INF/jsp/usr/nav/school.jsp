@@ -1,38 +1,199 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="pageTitle" value="í•™êµ ê¸¸ì°¾ê¸°"></c:set>
+
+<%@ include file="../common/head2.jspf"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>ì§€ë„ ì´ë™ì‹œí‚¤ê¸°</title>
+
+<script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=8iNXBpO9RuasFtAJ1J2chh2BBTj39kI7R3Lvd0Ib"></script>
+<script type="text/javascript">
+	var map;
+	var marker_s, marker_e, marker_p1, marker_p2;
+	var totalMarkerArr = [];
+	var drawInfoArr = [];
+	var resultdrawArr = [];
+
+	function initTmap() {
+		// 1. ì§€ë„ ë„ìš°ê¸°
+		map = new Tmapv2.Map("map_div", {
+			center : new Tmapv2.LatLng(36.35101072771798, 127.38031136394397),
+			width : "100%",
+			height : "400px",
+			zoom : 17,
+			zoomControl : true,
+			scrollwheel : true
+		});
+
+		// 2. ì‹œì‘, ë„ì°© ì‹¬ë³¼ì°ê¸°
+		// ì‹œì‘
+		marker_s = new Tmapv2.Marker({
+			position : new Tmapv2.LatLng(36.35101072771798, 127.38031136394397),
+			icon : "/IMG/markerstart.png",
+			iconSize : new Tmapv2.Size(24, 38),
+			map : map
+		});
+
+		// ë„ì°©
+		marker_e = new Tmapv2.Marker({
+			position : new Tmapv2.LatLng(36.35652700147078, 127.37353926118062),
+			icon : "/IMG/markerend.png",
+			iconSize : new Tmapv2.Size(24, 38),
+			map : map
+		});
+
+		// 3. ê²½ë¡œíƒìƒ‰ API ì‚¬ìš©ìš”ì²­
+		var headers = {};
+		headers["appKey"] = "8iNXBpO9RuasFtAJ1J2chh2BBTj39kI7R3Lvd0Ib";
+
+		$
+				.ajax({
+					method : "POST",
+					headers : headers,
+					url : "https://apis.openapi.sk.com/tmap/routes/pedestrian?version=1&format=json&callback=result",
+					async : false,
+					data : {
+						"startX" : "127.38031136394397",
+						"startY" : "36.35101072771798",
+						"endX" : "127.37353926118062",
+						"endY" : "36.35652700147078",
+						"reqCoordType" : "WGS84GEO",
+						"resCoordType" : "EPSG3857",
+						"startName" : "ì¶œë°œì§€",
+						"endName" : "ë„ì°©ì§€"
+					},
+					success : function(response) {
+						var resultData = response.features;
+
+						//ê²°ê³¼ ì¶œë ¥
+						var tDistance = "ì´ ê±°ë¦¬ : "
+								+ ((resultData[0].properties.totalDistance) / 1000)
+										.toFixed(1) + "km,";
+						var tTime = " ì´ ì‹œê°„ : "
+								+ ((resultData[0].properties.totalTime) / 60)
+										.toFixed(0) + "ë¶„";
+
+						$("#result").text(tDistance + tTime);
+
+						//ê¸°ì¡´ ê·¸ë ¤ì§„ ë¼ì¸ & ë§ˆì»¤ê°€ ìˆë‹¤ë©´ ì´ˆê¸°í™”
+						if (resultdrawArr.length > 0) {
+							for ( var i in resultdrawArr) {
+								resultdrawArr[i].setMap(null);
+							}
+							resultdrawArr = [];
+						}
+
+						drawInfoArr = [];
+
+						for ( var i in resultData) { //forë¬¸ [S]
+							var geometry = resultData[i].geometry;
+							var properties = resultData[i].properties;
+							var polyline_;
+
+							if (geometry.type == "LineString") {
+								for ( var j in geometry.coordinates) {
+									// ê²½ë¡œë“¤ì˜ ê²°ê³¼ê°’(êµ¬ê°„)ë“¤ì„ í¬ì¸íŠ¸ ê°ì²´ë¡œ ë³€í™˜ 
+									var latlng = new Tmapv2.Point(
+											geometry.coordinates[j][0],
+											geometry.coordinates[j][1]);
+									// í¬ì¸íŠ¸ ê°ì²´ë¥¼ ë°›ì•„ ì¢Œí‘œê°’ìœ¼ë¡œ ë³€í™˜
+									var convertPoint = new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(
+											latlng);
+									// í¬ì¸íŠ¸ê°ì²´ì˜ ì •ë³´ë¡œ ì¢Œí‘œê°’ ë³€í™˜ ê°ì²´ë¡œ ì €ì¥
+									var convertChange = new Tmapv2.LatLng(
+											convertPoint._lat,
+											convertPoint._lng);
+									// ë°°ì—´ì— ë‹´ê¸°
+									drawInfoArr.push(convertChange);
+								}
+							} else {
+								var markerImg = "";
+								var pType = "";
+								var size;
+
+								if (properties.pointType == "S") { //ì¶œë°œì§€ ë§ˆì»¤
+									markerImg = "/IMG/markerstart.png";
+									pType = "S";
+									size = new Tmapv2.Size(24, 38);
+								} else if (properties.pointType == "E") { //ë„ì°©ì§€ ë§ˆì»¤
+									markerImg = "/IMG/markerend.png";
+									pType = "E";
+									size = new Tmapv2.Size(24, 38);
+								} else { //ê° í¬ì¸íŠ¸ ë§ˆì»¤
+									markerImg = "http://topopen.tmap.co.kr/imgs/point.png";
+									pType = "P";
+									size = new Tmapv2.Size(8, 8);
+								}
+
+								// ê²½ë¡œë“¤ì˜ ê²°ê³¼ê°’ë“¤ì„ í¬ì¸íŠ¸ ê°ì²´ë¡œ ë³€í™˜ 
+								var latlon = new Tmapv2.Point(
+										geometry.coordinates[0],
+										geometry.coordinates[1]);
+
+								// í¬ì¸íŠ¸ ê°ì²´ë¥¼ ë°›ì•„ ì¢Œí‘œê°’ìœ¼ë¡œ ë‹¤ì‹œ ë³€í™˜
+								var convertPoint = new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(
+										latlon);
+
+								var routeInfoObj = {
+									markerImage : markerImg,
+									lng : convertPoint._lng,
+									lat : convertPoint._lat,
+									pointType : pType
+								};
+
+								// Marker ì¶”ê°€
+								marker_p = new Tmapv2.Marker(
+										{
+											position : new Tmapv2.LatLng(
+													routeInfoObj.lat,
+													routeInfoObj.lng),
+											icon : routeInfoObj.markerImage,
+											iconSize : size,
+											map : map
+										});
+							}
+						}//forë¬¸ [E]
+						drawLine(drawInfoArr);
+					},
+					error : function(request, status, error) {
+						console.log("code:" + request.status + "\n"
+								+ "message:" + request.responseText + "\n"
+								+ "error:" + error);
+					}
+				});
+
+	}
+
+	function addComma(num) {
+		var regexp = /\B(?=(\d{3})+(?!\d))/g;
+		return num.toString().replace(regexp, ',');
+	}
+
+	function drawLine(arrPoint) {
+		var polyline_;
+
+		polyline_ = new Tmapv2.Polyline({
+			path : arrPoint,
+			strokeColor : "#DD0000",
+			strokeWeight : 6,
+			map : map
+		});
+		resultdrawArr.push(polyline_);
+	}
+</script>
 </head>
-<body>
-<!--     <div id="dataContainer"></div> -->
+<body onload="initTmap();">
 
-    <script>
-        async function getData() {
-            const API_KEY = 'uIOtZMu1BLpFtpMuzWkQRuFICA3QtxIYqybibr8HXZwaMVhmaEr1yAeXAxODa50Alw%2FxoMIvPRKtHonY1y3CBA%3D%3D';
-            const url = 'http://api.data.go.kr/openapi/tn_pubr_public_elesch_mskul_lc_api?serviceKey=' + API_KEY + '&pageNo=1&numOfRows=10&type=JSON';
-            const response = await fetch(url);
-            const data = await response.json();
-            console.log("data", data);
-            
-//             // µ¥ÀÌÅÍ¸¦ HTML¿¡ Ãß°¡
-//             const dataContainer = document.getElementById('dataContainer');
-//             dataContainer.innerHTML = ''; // µ¥ÀÌÅÍ¸¦ Ãß°¡ÇÏ±â Àü¿¡ ±âÁ¸ ³»¿ëÀ» ºñ¿öÁİ´Ï´Ù.
-
-//             if (data && data.data && data.data.length >= 3) { // ¹è¿­ÀÌ Á¸ÀçÇÏ°í ÃÖ¼ÒÇÑ ¼¼ ¹øÂ° ¿ä¼Ò°¡ ÀÖÀ» ¶§
-//                 const thirdData = data.data[2]; // ¼¼ ¹øÂ° µ¥ÀÌÅÍ ¼±ÅÃ
-//                 const dataItem = document.createElement('div');
-//                 dataItem.textContent = JSON.stringify(thirdData);
-//                 dataContainer.appendChild(dataItem);
-//             } else {
-//                 dataContainer.textContent = 'µ¥ÀÌÅÍ¸¦ ºÒ·¯¿ÀÁö ¸øÇß½À´Ï´Ù.'; // µ¥ÀÌÅÍ°¡ ¾ø´Â °æ¿ì ¿¡·¯ ¸Ş½ÃÁö Ç¥½Ã
-//             }
-        }
-
-        getData();
-    </script>
-
-    123
+	<!-- 190430 ê¸°ì¡´ ì§€ë„ë¥¼ ëª¨ë‘ ì´ë¯¸ì§€ ì²˜ë¦¬ ìœ„í•´ ì£¼ì„ ì²˜ë¦¬ S -->
+	<div id="map_wrap" class="map_wrap3">
+		<div id="map_div"></div>
+	</div>
+	<div class="map_act_btn_wrap clear_box"></div>
+	<p id="result"></p>
+	<br />
 </body>
 </html>

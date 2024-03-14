@@ -39,5 +39,6 @@ public class UsrNavController {
 
 		return "/usr/nav/school";
 	}
+	
 
 }
