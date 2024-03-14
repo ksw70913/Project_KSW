@@ -167,10 +167,11 @@
 					}
 				});
 
-		// 3. POI 통합 검색 API 요청
+		// 2. POI 통합 검색 API 요청
 		$("#btn_select")
 				.click(
 						function() {
+
 							var searchKeyword = $('#searchKeyword').val();
 							var headers = {};
 							headers["appKey"] = "8iNXBpO9RuasFtAJ1J2chh2BBTj39kI7R3Lvd0Ib";
@@ -190,16 +191,17 @@
 										success : function(response) {
 											var resultpoisData = response.searchPoiInfo.pois.poi;
 
+											// 기존 마커, 팝업 제거
 											if (markerArr.length > 0) {
 												for ( var i in markerArr) {
 													markerArr[i].setMap(null);
 												}
-												markerArr = [];
 											}
-
-											var positionBounds = new Tmapv2.LatLngBounds();
+											var innerHtml = ""; // Search Reulsts 결과값 노출 위한 변수
+											var positionBounds = new Tmapv2.LatLngBounds(); //맵에 결과물 확인 하기 위한 LatLngBounds객체 생성
 
 											for ( var k in resultpoisData) {
+
 												var noorLat = Number(resultpoisData[k].noorLat);
 												var noorLon = Number(resultpoisData[k].noorLon);
 												var name = resultpoisData[k].name;
@@ -208,6 +210,7 @@
 														noorLon, noorLat);
 												var projectionCng = new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(
 														pointCng);
+
 												var lat = projectionCng._lat;
 												var lon = projectionCng._lng;
 
@@ -217,6 +220,7 @@
 												marker = new Tmapv2.Marker(
 														{
 															position : markerPosition,
+															//icon : "/upload/tmap/marker/pin_b_m_a.png",
 															icon : "https://tmapapi.tmapmobility.com/upload/tmap/marker/pin_b_m_"
 																	+ k
 																	+ ".png",
@@ -226,13 +230,18 @@
 															map : map
 														});
 
+												innerHtml += "<li><img src='https://tmapapi.tmapmobility.com/upload/tmap/marker/pin_b_m_" + k + ".png' style='vertical-align:middle;'/><span>"
+														+ name + "</span></li>";
+
 												markerArr.push(marker);
 												positionBounds
-														.extend(markerPosition);
+														.extend(markerPosition); // LatLngBounds의 객체 확장
 											}
 
-											map.panToBounds(positionBounds);
+											$("#searchResult").html(innerHtml); //searchResult 결과값 노출
+											map.panToBounds(positionBounds); // 확장된 bounds의 중심으로 이동시키기
 											map.zoomOut();
+
 										},
 										error : function(request, status, error) {
 											console.log("code:"
