@@ -20,5 +20,6 @@ public class Book {
 	private String publisher;
 	private double price;
 	private String grade;
+	private int boardId;
 
 }

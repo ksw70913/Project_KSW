@@ -43,7 +43,6 @@ public class UsrEduController {
 		Board board = boardService.getBoardById(boardId);
 
 		int booksCount = eduService.getBooksCount(boardId, searchKeywordTypeCode, searchKeyword);
-		System.err.println(booksCount);
 		if (board == null) {
 			return rq.historyBackOnView("없는 게시판이야");
 		}
@@ -60,9 +59,8 @@ public class UsrEduController {
 		int from = ((pageGroup - 1) * pageSize) + 1; // 한번에 보여줄 때의 첫번째 페이지 번호
 		int end = pageGroup * pageSize; // 한번에 보여줄 때의 마지막 페이지 번호
 
-		List<Book> books = eduService.getForPrintBooks(boardId, itemsInAPage, page, searchKeywordTypeCode,
-				searchKeyword);
-
+		List<Book> book = eduService.getForPrintBooks(itemsInAPage, page, searchKeywordTypeCode, searchKeyword,
+				boardId);
 		req.setAttribute("searchKeyword", searchKeyword);
 		req.setAttribute("page", page);
 		req.setAttribute("totalPage", totalPage);
@@ -77,7 +75,7 @@ public class UsrEduController {
 		model.addAttribute("searchKeywordTypeCode", searchKeywordTypeCode);
 		model.addAttribute("searchKeyword", searchKeyword);
 		model.addAttribute("booksCount", booksCount);
-		model.addAttribute("books", books);
+		model.addAttribute("books", book);
 
 		return "/usr/edu/book";
 	}
@@ -124,11 +122,11 @@ public class UsrEduController {
 
 	@RequestMapping("/usr/edu/doLearning")
 	@ResponseBody
-	public String doLearning(HttpServletRequest req,int id, int learning) {
+	public String doLearning(HttpServletRequest req, int id, int learning) {
 		Rq rq = (Rq) req.getAttribute("rq");
-		
+
 		System.err.println(id);
-		ResultData<Integer> doLearningRd = eduService.doLearning(rq.getLoginedMemberId(),id, learning);
+		ResultData<Integer> doLearningRd = eduService.doLearning(rq.getLoginedMemberId(), id, learning);
 
 		return Ut.jsReplace(doLearningRd.getResultCode(), doLearningRd.getMsg(), "../edu/education");
 	}

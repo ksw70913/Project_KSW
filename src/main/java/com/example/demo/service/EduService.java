@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.repository.EduRepository;
-import com.example.demo.util.Ut;
 import com.example.demo.vo.Book;
 import com.example.demo.vo.Learning;
 import com.example.demo.vo.ResultData;
@@ -27,13 +26,13 @@ public class EduService {
 		return eduRepository.getBooksCount(boardId, searchKeywordTypeCode, searchKeyword);
 	}
 
-	public List<Book> getForPrintBooks(int boardId, int itemsInAPage, int page, String searchKeywordTypeCode,
-			String searchKeyword) {
+	public List<Book> getForPrintBooks(int itemsInAPage, int page, String searchKeywordTypeCode, String searchKeyword,
+			int boardId) {
+
 		int limitFrom = (page - 1) * itemsInAPage;
 		int limitTake = itemsInAPage;
 
-		return eduRepository.getForPrintBooks(boardId, limitFrom, limitTake, searchKeywordTypeCode, searchKeyword);
-
+		return eduRepository.getForPrintBooks(limitFrom, limitTake, searchKeywordTypeCode, searchKeyword, boardId);
 	}
 
 	public Book getForPrintBook(int id) {
@@ -63,4 +62,5 @@ public class EduService {
 
 		return ResultData.from("S-1", "수치가 수정되었습니다.");
 	}
+
 }

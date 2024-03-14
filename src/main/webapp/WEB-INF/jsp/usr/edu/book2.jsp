@@ -68,7 +68,7 @@ section {
 					<td>${book.schoolLevel }</td>
 					<td>${book.author }</td>
 					<td>${book.publisher }</td>
-					<td>${ book.boardId} </td>
+					<td>${book.boardId }</td>
 				</tr>
 			</c:forEach>
 		</tbody>

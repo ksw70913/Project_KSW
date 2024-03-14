@@ -17,17 +17,19 @@
 	margin-top: 50px;
 }
 
-.books {
-	position: absolute;
+.bookStatus {
+	position: absolute; /
 	top: 50px;
-	right: 20%;
 	font-size: 1.2em;
+	margin-right: 20%;
 }
 
 .changeLearning {
-	top: 50px; /* Adjust position as needed */
+	margin-top: 200px; 
+	top : 50px; /* Adjust position as needed */
 	right: 10%;
 	font-size: 1.2em;
+	top: 50px;
 }
 
 .graph canvas {
@@ -37,7 +39,7 @@
 
 .option-label {
 	position: absolute;
-	top: 0;
+	top: 200px;
 	left: 50%;
 	transform: translateX(-50%);
 	font-size: 24px;
@@ -45,14 +47,14 @@
 }
 
 .learning-label {
-	margin-top: 20px;
+	margin-top: 50px;
 	font-size: 18px;
 }
 </style>
-</head>
 <body>
 	<!-- 과목 선택 -->
 	<div class="bookStatus">
+		<!-- 옵션 선택 상자 -->
 		<select id="bookStatus" onchange="drawGraph()">
 			<c:forEach var="Status" items="${bookStatus}" varStatus="loop">
 				<option value="${Status.id}" data-learning="${Status.learning}">${Status.title}</option>
@@ -60,6 +62,7 @@
 		</select>
 	</div>
 
+	<!-- 학습 내용 수정 폼 -->
 	<div class="changeLearning">
 		<form id="learningForm" action="../edu/doLearning" method="POST">
 			<input type="hidden" name="id" id="selectedOptionId" value="" /> 학습현황 <input type="text" name="learning" /> <input
@@ -67,26 +70,30 @@
 		</form>
 	</div>
 
+	<!-- 그래프 컨테이너 -->
 	<div class="graph-container">
 		<canvas id="graphCanvas" width="200" height="200"></canvas>
 		<div class="option-label" id="optionLabel"></div>
 		<div class="learning-label" id="learningLabel"></div>
 	</div>
 
-
-
+	<!-- 그래프 그리는 자바스크립트 -->
 	<script>
 		function drawGraph() {
+			// 콘솔에 그래프 그리기 로그 표시
 			console.log("Drawing circular graph...");
+			// 캔버스 요소 가져오기
 			const canvas = document.getElementById('graphCanvas');
 			const select = document.getElementById('bookStatus');
 			const selectedOption = select.options[select.selectedIndex];
 
+			// 캔버스가 없으면 오류 메시지 표시하고 함수 종료
 			if (!canvas) {
 				console.error("Canvas element not found.");
 				return;
 			}
 
+			// 캔버스 컨텍스트 가져오기
 			const ctx = canvas.getContext('2d');
 			const centerX = canvas.width / 2;
 			const centerY = canvas.height / 2;
@@ -96,17 +103,20 @@
 			const percentage = parseFloat(learningValue) / 100;
 			const endAngle = (2 * percentage * Math.PI) + startAngle;
 
+			// 옵션 레이블과 학습 레이블 내용 설정
 			document.getElementById('optionLabel').textContent = selectedOption.textContent;
 			document.getElementById('learningLabel').textContent = "Learning: "
 					+ learningValue + "%";
 
-			// Set the selected option id in the form
+			// 선택한 옵션 ID를 폼에 설정
 			document.getElementById('selectedOptionId').value = selectedOption.value;
 
+			// 캔버스 초기화
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			// 그래프 그리기 시작
 			ctx.beginPath();
 			ctx.arc(centerX, centerY, radius, startAngle, endAngle);
-			ctx.strokeStyle = '#2ecc71'; // Green color
+			ctx.strokeStyle = '#2ecc71'; // 그린 색상
 			ctx.lineWidth = 30;
 			ctx.lineCap = 'round';
 			ctx.stroke();

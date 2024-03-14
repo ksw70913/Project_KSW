@@ -49,34 +49,34 @@ public interface EduRepository {
 	@Select("""
 			<script>
 			SELECT *
-			FROM book
+			FROM book B
 			WHERE 1
 			<if test="boardId != 0">
 				AND boardId = #{boardId}
 			</if>
-			<if test="searchKeywordTypeCode != ''">
+			<if test="searchKeyword != ''">
 				<choose>
 					<when test="searchKeywordTypeCode == 'title'">
-						AND title LIKE CONCAT('%',#{searchKeyword},'%')
+						AND B.title LIKE CONCAT('%',#{searchKeyword},'%')
 					</when>
-					<when test="searchKeywordTypeCode == 'author'">
-						AND author LIKE CONCAT('%',#{searchKeyword},'%')
+					<when test="searchKeywordTypeCode == 'body'">
+						AND B.body LIKE CONCAT('%',#{searchKeyword},'%')
 					</when>
 					<otherwise>
-						AND title LIKE CONCAT('%',#{searchKeyword},'%')
-						OR author LIKE CONCAT('%',#{searchKeyword},'%')
+						AND B.title LIKE CONCAT('%',#{searchKeyword},'%')
+						OR B.body LIKE CONCAT('%',#{searchKeyword},'%')
 					</otherwise>
 				</choose>
 			</if>
-			GROUP BY id
-			ORDER BY id DESC
+			GROUP BY B.id
+			ORDER BY B.id DESC
 			<if test="limitFrom >= 0 ">
 				LIMIT #{limitFrom}, #{limitTake}
 			</if>
 			</script>
 			""")
-	List<Book> getForPrintBooks(int boardId, int limitFrom, int limitTake, String searchKeywordTypeCode,
-			String searchKeyword);
+	List<Book> getForPrintBooks(int limitFrom, int limitTake, String searchKeywordTypeCode, String searchKeyword,
+			int boardId);
 
 	@Select("""
 			SELECT *
