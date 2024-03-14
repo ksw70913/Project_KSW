@@ -112,10 +112,8 @@ public class UsrEduController {
 		Rq rq = (Rq) req.getAttribute("rq");
 
 		List<Learning> bookStatus = eduService.getBookStatus(rq.getLoginedMemberId());
-		Learning Status = eduService.getStatus(rq.getLoginedMemberId());
 
 		model.addAttribute("bookStatus", bookStatus);
-		model.addAttribute("Status", Status);
 
 		return "/usr/edu/education";
 	}

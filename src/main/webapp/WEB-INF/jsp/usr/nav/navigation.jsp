@@ -20,57 +20,27 @@
 
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=85425c32b3a10c0c8fef41ad4e316852"></script>
 	<script>
-		var lat;
-		var lon;
-// 		주차장
-		async function getData2() {
-			const API_KEY = 'sXaDVMwIwuh2aZb8F9GvAYdPmMxf134ec9pyG%2FtL1HvM2XEm0%2FWMuWh69sVIN48d1%2BPkD3tHpaH%2F%2Bd8Pg%2FWw6g%3D%3D';
-			const url = 'https://www.yuseong.go.kr/ys_parking/ysparkingList/ORP/getJSONData.do?_wadl&type=json';
-			const response = await fetch(url);
-			const data = await response.json();
-			
-			console.log("data", data);
-			console.log(data.response);
-			console.log(data.response.body);
-			console.log(data.response.header);
-			console.log(data.response.body.items);
-			console.log(data.response.body.items[0]);
-			console.log(data.response.body.items[0].item.addr);
-			console.log(data.response.body.items[0].item.latitude);
-			console.log(data.response.body.items[0].item.longitude);
-			
-			lat = data.response.body.items[0].item.latitude;
-			lon = data.response.body.items[0].item.longitude;
-		}
-
-		getData2();
-
-// 		카카오지도
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
-			center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-			level : 3
-		// 지도의 확대 레벨
+			center : new kakao.maps.LatLng(36.35157, 127.38046), // 지도의 중심좌표
+			level : 3, // 지도의 확대 레벨
+			mapTypeId : kakao.maps.MapTypeId.ROADMAP
+		// 지도종류
 		};
 
-		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+		// 지도를 생성한다 
+		var map = new kakao.maps.Map(mapContainer, mapOption);
 
-		function setCenter() {
-			// 이동할 위도 경도 위치를 생성합니다 
-			var moveLatLon = new kakao.maps.LatLng(33.452613, 126.570888);
+		// 지도에 확대 축소 컨트롤을 생성한다
+		var zoomControl = new kakao.maps.ZoomControl();
 
-			// 지도 중심을 이동 시킵니다
-			map.setCenter(moveLatLon);
-		}
+		// 지도의 우측에 확대 축소 컨트롤을 추가한다
+		map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
-		function panTo() {
-			// 이동할 위도 경도 위치를 생성합니다 
-			var moveLatLon = new kakao.maps.LatLng(lat, lon);
-
-			// 지도 중심을 부드럽게 이동시킵니다
-			// 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
-			map.panTo(moveLatLon);
-		}
+		// 지도 중심 좌표 변화 이벤트를 등록한다
+		kakao.maps.event.addListener(map, 'center_changed', function() {
+			console.log('지도의 중심 좌표는 ' + map.getCenter().toString() + ' 입니다.');
+		});
 	</script>
 </body>
 </html>
