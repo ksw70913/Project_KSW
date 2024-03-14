@@ -12,10 +12,8 @@
 
 <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=8iNXBpO9RuasFtAJ1J2chh2BBTj39kI7R3Lvd0Ib"></script>
 <script type="text/javascript">
-	var map;
-	var marker_s, marker_e, marker_p1, marker_p2;
-	var totalMarkerArr = [];
-	var drawInfoArr = [];
+	var map, marker;
+	var markerArr = [];
 	var resultdrawArr = [];
 
 	function initTmap() {
@@ -31,7 +29,7 @@
 
 		// 2. 시작, 도착 심볼찍기
 		// 시작
-		marker_s = new Tmapv2.Marker(
+		var marker_s = new Tmapv2.Marker(
 				{
 					position : new Tmapv2.LatLng(36.35101072771798,
 							127.38031136394397),
@@ -41,7 +39,7 @@
 				});
 
 		// 도착
-		marker_e = new Tmapv2.Marker(
+		var marker_e = new Tmapv2.Marker(
 				{
 					position : new Tmapv2.LatLng(36.35652700147078,
 							127.37353926118062),
@@ -49,7 +47,6 @@
 					iconSize : new Tmapv2.Size(24, 38),
 					map : map
 				});
-
 		// 3. 경로탐색 API 사용요청
 		var headers = {};
 		headers["appKey"] = "8iNXBpO9RuasFtAJ1J2chh2BBTj39kI7R3Lvd0Ib";
@@ -73,7 +70,7 @@
 					success : function(response) {
 						var resultData = response.features;
 
-						//결과 출력
+						// 결과 출력
 						var tDistance = "총 거리 : "
 								+ ((resultData[0].properties.totalDistance) / 1000)
 										.toFixed(1) + "km,";
@@ -83,7 +80,7 @@
 
 						$("#result").text(tDistance + tTime);
 
-						//기존 그려진 라인 & 마커가 있다면 초기화
+						// 기존 그려진 라인 & 마커가 있다면 초기화
 						if (resultdrawArr.length > 0) {
 							for ( var i in resultdrawArr) {
 								resultdrawArr[i].setMap(null);
@@ -93,7 +90,7 @@
 
 						drawInfoArr = [];
 
-						for ( var i in resultData) { //for문 [S]
+						for ( var i in resultData) { // for문 [S]
 							var geometry = resultData[i].geometry;
 							var properties = resultData[i].properties;
 							var polyline_;
@@ -119,15 +116,15 @@
 								var pType = "";
 								var size;
 
-								if (properties.pointType == "S") { //출발지 마커
+								if (properties.pointType == "S") { // 출발지 마커
 									markerImg = "https://tmapapi.tmapmobility.com/upload/tmap/marker/pin_r_m_s.png";
 									pType = "S";
 									size = new Tmapv2.Size(24, 38);
-								} else if (properties.pointType == "E") { //도착지 마커
+								} else if (properties.pointType == "E") { // 도착지 마커
 									markerImg = "https://tmapapi.tmapmobility.com/upload/tmap/marker/pin_r_m_e.png";
 									pType = "E";
 									size = new Tmapv2.Size(24, 38);
-								} else { //각 포인트 마커
+								} else { // 각 포인트 마커
 									markerImg = "http://topopen.tmap.co.kr/imgs/point.png";
 									pType = "P";
 									size = new Tmapv2.Size(8, 8);
@@ -160,7 +157,7 @@
 											map : map
 										});
 							}
-						}//for문 [E]
+						} // for문 [E]
 						drawLine(drawInfoArr);
 					},
 					error : function(request, status, error) {
@@ -169,7 +166,85 @@
 								+ "error:" + error);
 					}
 				});
+
+		// 3. POI 통합 검색 API 요청
+		$("#btn_select")
+				.click(
+						function() {
+							var searchKeyword = $('#searchKeyword').val();
+							var headers = {};
+							headers["appKey"] = "8iNXBpO9RuasFtAJ1J2chh2BBTj39kI7R3Lvd0Ib";
+
+							$
+									.ajax({
+										method : "GET",
+										headers : headers,
+										url : "https://apis.openapi.sk.com/tmap/pois?version=1&format=json&callback=result",
+										async : false,
+										data : {
+											"searchKeyword" : searchKeyword,
+											"resCoordType" : "EPSG3857",
+											"reqCoordType" : "WGS84GEO",
+											"count" : 10
+										},
+										success : function(response) {
+											var resultpoisData = response.searchPoiInfo.pois.poi;
+
+											if (markerArr.length > 0) {
+												for ( var i in markerArr) {
+													markerArr[i].setMap(null);
+												}
+												markerArr = [];
+											}
+
+											var positionBounds = new Tmapv2.LatLngBounds();
+
+											for ( var k in resultpoisData) {
+												var noorLat = Number(resultpoisData[k].noorLat);
+												var noorLon = Number(resultpoisData[k].noorLon);
+												var name = resultpoisData[k].name;
+
+												var pointCng = new Tmapv2.Point(
+														noorLon, noorLat);
+												var projectionCng = new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(
+														pointCng);
+												var lat = projectionCng._lat;
+												var lon = projectionCng._lng;
+
+												var markerPosition = new Tmapv2.LatLng(
+														lat, lon);
+
+												marker = new Tmapv2.Marker(
+														{
+															position : markerPosition,
+															icon : "https://tmapapi.tmapmobility.com/upload/tmap/marker/pin_b_m_"
+																	+ k
+																	+ ".png",
+															iconSize : new Tmapv2.Size(
+																	24, 38),
+															title : name,
+															map : map
+														});
+
+												markerArr.push(marker);
+												positionBounds
+														.extend(markerPosition);
+											}
+
+											map.panToBounds(positionBounds);
+											map.zoomOut();
+										},
+										error : function(request, status, error) {
+											console.log("code:"
+													+ request.status + "\n"
+													+ "message:"
+													+ request.responseText
+													+ "\n" + "error:" + error);
+										}
+									});
+						});
 	}
+
 	function addComma(num) {
 		var regexp = /\B(?=(\d{3})+(?!\d))/g;
 		return num.toString().replace(regexp, ',');
@@ -189,12 +264,24 @@
 </script>
 </head>
 <body onload="initTmap();">
-	<!-- 190430 기존 지도를 모두 이미지 처리 위해 주석 처리 S -->
-	<div id="map_wrap" class="map_wrap3">
-		<div id="map_div"></div>
+	<div>
+		<input type="text" class="text_custom" id="searchKeyword" name="searchKeyword" value="서울시">
+		<button id="btn_select">적용하기</button>
 	</div>
-	<div class="map_act_btn_wrap clear_box"></div>
-	<p id="result"></p>
-	<br />
+	<div>
+		<div style="width: 30%; float: left;">
+			<div class="title">
+				<strong>Search</strong> Results
+			</div>
+			<div class="rst_wrap">
+				<div class="rst mCustomScrollbar">
+					<ul id="searchResult" name="searchResult">
+						<li>검색결과</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="map_div" class="map_wrap" style="float: left"></div>
+	</div>
 </body>
 </html>

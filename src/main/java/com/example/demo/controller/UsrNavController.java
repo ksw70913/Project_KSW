@@ -41,4 +41,18 @@ public class UsrNavController {
 	}
 	
 
+	@RequestMapping("/usr/nav/test")
+	public String showTest() {
+
+		return "/usr/nav/test";
+	}
+
+	@RequestMapping("/usr/nav/test2")
+	public String showTest2() {
+
+		return "/usr/nav/test2";
+	}
+	
+	
+
 }
