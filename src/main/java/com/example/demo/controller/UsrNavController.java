@@ -39,33 +39,22 @@ public class UsrNavController {
 		return "/usr/nav/navigation";
 	}
 
+
 	@RequestMapping("/usr/nav/school")
-	public String showSchool() {
-
-		return "/usr/nav/school";
-	}
-
-	@RequestMapping("/usr/nav/test")
-	public String showTest(HttpServletRequest req, Model model) {
+	public String showSchool(HttpServletRequest req, Model model) {
 		Rq rq = (Rq) req.getAttribute("rq");
 
 		Member memberInfo = rq.getLoginedMember();
 		
-		System.err.println(memberInfo);
-		System.err.println(123);
-
 		model.addAttribute("memberInfo", memberInfo);
-		return "/usr/nav/test";
+		return "/usr/nav/school";
 	}
-
+	
 	@RequestMapping("/usr/nav/navi")
 	public String showNavi(HttpServletRequest req, Model model) {
 		Rq rq = (Rq) req.getAttribute("rq");
 
 		Member memberInfo = rq.getLoginedMember();
-		
-		System.err.println(memberInfo);
-		System.err.println(123);
 		
 		model.addAttribute("memberInfo", memberInfo);
 

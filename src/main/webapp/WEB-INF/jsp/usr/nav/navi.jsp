@@ -19,7 +19,7 @@
 	function initTmap() {
 		// 지도 띄우기
 		map = new Tmapv2.Map("map_div", {
-			center : new Tmapv2.LatLng(36.35101072771798, 127.38031136394397),
+			center: new Tmapv2.LatLng(${memberInfo.latitude}, ${memberInfo.longitude}),
 			width : "100%",
 			height : "400px",
 			zoom : 17,
@@ -303,7 +303,7 @@
 			strokeWeight : 6,
 			map : map
 		});
-		resultdrawArr.push(polyline_);
+		resultdrawArr.pusah(polyline_);
 	}
 
 	// 이름 위도 경도 가져오기
