@@ -27,6 +27,8 @@ CREATE TABLE `member`(
     roadAddress TEXT NOT NULL,
     jibunAddress TEXT NOT NULL,
     detailAddress TEXT NOT NULL,
+    latitude DOUBLE NOT NULL,
+    longitude DOUBLE NOT NULL,
     schoollevel CHAR(20) NOT NULL,
     grade INT NOT NULL,
     delStatus TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '탈퇴 여부 (0=탈퇴 전, 1=탈퇴 후)',
@@ -116,7 +118,7 @@ CREATE TABLE board(
     id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
     regDate DATETIME NOT NULL,
     updateDate DATETIME NOT NULL,
-    `code` CHAR(50) NOT NULL UNIQUE COMMENT 'notice(공지사항), free(자유), QnA(질의응답), primary(초등학교), middle(중학교), high(고등학교), special(특수학교)',
+    `code` CHAR(50) NOT NULL UNIQUE COMMENT 'notice(공지사항), free(자유), QnA(질의응답), primary(초등학교), middle(중학교), high(고등학교)',
     `name` CHAR(20) NOT NULL UNIQUE COMMENT '게시판 이름',
     delStatus TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '삭제 여부 (0=삭제 전, 1=삭제 후)',
     delDate DATETIME COMMENT '삭제 날짜'
@@ -158,12 +160,6 @@ SET regDate = NOW(),
 updateDate = NOW(),
 `code` = 'high',
 `name` = '고등학교';
-
-INSERT INTO board
-SET regDate = NOW(),
-updateDate = NOW(),
-`code` = 'special',
-`name` = '특수학교';
 
 
 ALTER TABLE article ADD COLUMN boardId INT(10) UNSIGNED NOT NULL AFTER `memberId`;
@@ -383,8 +379,11 @@ CREATE TABLE `Project_KSW`.`book` (
   `grade` TEXT
 );
 
+SET GLOBAL max_allowed_packet = 1024*1024*32;
+
 ALTER TABLE `Project_KSW`.`book`
 ADD COLUMN `boardId` INT UNSIGNED NOT NULL AFTER `schoolLevel`;
+
 
 UPDATE `Project_KSW`.`book`
 SET `boardId` = 
@@ -460,12 +459,10 @@ SELECT * FROM learning
 WHERE memberId = 4 
 AND bookId = 1
 
-SELECT * FROM book2
-
 SELECT * FROM book
 WHERE 사용학년 = 1
 
-SELECT * FROM `child_protection_zone`
+SELECT * FROM childzone
 
 SELECT * FROM school
 
@@ -635,7 +632,29 @@ SUM(IF(RP.point < 0,RP.point * -1,0)) AS badReactionPoint
 FROM reactionPoint AS RP
 GROUP BY RP.relTypeCode,RP.relId
 
-				SELECT *
-				FROM board
-				WHERE id = 4
-				AND delStatus = 0;
+select *
+from book
+where title like concat('%','수학','%')
+and author like concat('%','교육부','%')
+
+SELECT *
+FROM book
+where boardId = 6
+
+SELECT *
+FROM learning
+
+update learning
+set learning = 20
+where id = 2
+
+
+select *
+from book
+where 1
+and boardId = 4
+AND title like concat('%','','%')
+and author like concat('%','교육','%')
+group by id
+order by id desc
+limit 0, 10
