@@ -27,35 +27,22 @@ public class UsrNavController {
 	@Autowired
 	private Rq rq;
 
-	@RequestMapping("/usr/nav/navigation")
-	public String showNavigation(HttpServletRequest req, Model model) {
-
-		Rq rq = (Rq) req.getAttribute("rq");
-
-		List<ChildZone> childzone = navService.getChildzones();
-
-		model.addAttribute("childzone", childzone);
-
-		return "/usr/nav/navigation";
-	}
-
-
 	@RequestMapping("/usr/nav/school")
 	public String showSchool(HttpServletRequest req, Model model) {
 		Rq rq = (Rq) req.getAttribute("rq");
 
 		Member memberInfo = rq.getLoginedMember();
-		
+
 		model.addAttribute("memberInfo", memberInfo);
 		return "/usr/nav/school";
 	}
-	
+
 	@RequestMapping("/usr/nav/navi")
 	public String showNavi(HttpServletRequest req, Model model) {
 		Rq rq = (Rq) req.getAttribute("rq");
 
 		Member memberInfo = rq.getLoginedMember();
-		
+
 		model.addAttribute("memberInfo", memberInfo);
 
 		return "/usr/nav/navi";

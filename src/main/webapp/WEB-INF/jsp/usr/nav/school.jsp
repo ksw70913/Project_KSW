@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="pageTitle" value="학교 길찾기"></c:set>
+<c:set var="pageTitle" value="내 주변학교 찾기"></c:set>
 
 <%@ include file="../common/head2.jspf"%>
 

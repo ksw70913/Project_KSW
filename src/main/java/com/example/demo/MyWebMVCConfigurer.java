@@ -73,6 +73,10 @@ public class MyWebMVCConfigurer implements WebMvcConfigurer {
 //		교육 관련
 		ir.addPathPatterns("/usr/edu/addBook");
 		ir.addPathPatterns("/usr/edu/education");
+		
+//		네비 관련
+		ir.addPathPatterns("/usr/nav/navi");
+		ir.addPathPatterns("/usr/nav/school");
 
 		ir = registry.addInterceptor(needLogoutInterceptor);
 		ir.addPathPatterns("/usr/member/login");
