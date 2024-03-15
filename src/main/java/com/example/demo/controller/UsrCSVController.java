@@ -12,9 +12,9 @@ public class UsrCSVController {
 	@Autowired
 	private CSVService csvService;
 
-	@GetMapping("/readAndSaveToDBook")
+	@GetMapping("/readAndSaveToDB")
 	@ResponseBody
-	public String readAndSaveToDBook() {
+	public String readAndSaveToDB() {
 		return csvService.readAndSaveToDB();
 	}
 	
