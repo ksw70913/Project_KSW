@@ -22,6 +22,8 @@ public class Member {
 	private String roadAddress;
 	private String jibunAddress;
 	private String detailAddress;
+	private double latitude;
+	private double longitude;
 	private String schoollevel;
 	private int grade;
 	private boolean delStatus;

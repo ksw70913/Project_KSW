@@ -8,6 +8,7 @@
 <script src="/resource/common.js" defer="defer"></script>
 <link rel="stylesheet" href="/resource/theme.css" />
 <script src="/resource/theme.js" defer="defer"></script>
+<script src="/resource/main.js" defer="defer"></script>
 <!-- 테일윈드 불러오기 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" />
 
@@ -43,9 +44,9 @@
 					</li>
 					<li class="card-med" id="sup-cat">
 						<div class="card-image">
-							<a href="../nav/navigation"> <img
+							<a href="../nav/navi"> <img
 								src="https://ouch-cdn2.icons8.com/US6gJ6fHUOJqruLB7KDe5zEa82iDSp7OdO-bv-aLtvU/rs:fit:368:310/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNjU5/LzdmOWU1ZjU0LTMx/ZDQtNDgwNS1iM2E2/LWM3NzgyMTcyNzJh/NC5wbmc.png"></a>
-						</div> <a href="../nav/navigation"> <span>학교 길찾기</span> <!-- <span>Shop All <span class="material-symbols-outlined">
+						</div> <a href="../nav/navi"> <span>학교 길찾기</span> <!-- <span>Shop All <span class="material-symbols-outlined">
 									arrow_forward </span></span> -->
 					</a>
 					</li>

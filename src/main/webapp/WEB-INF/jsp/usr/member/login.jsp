@@ -81,6 +81,8 @@
 </script>
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=85425c32b3a10c0c8fef41ad4e316852&libraries=services"
+	type="text/javascript"></script>
 <script>
 	//본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
 	function execDaumPostcode() {
@@ -139,6 +141,21 @@
 							guideTextBox.innerHTML = '';
 							guideTextBox.style.display = 'none';
 						}
+						// Find latitude and longitude coordinates
+						const geocoder = new kakao.maps.services.Geocoder();
+						geocoder
+								.addressSearch(
+										data.roadAddress,
+										function(result, status) {
+											if (status === kakao.maps.services.Status.OK) {
+												var latitude = result[0].y;
+												var longitude = result[0].x;
+												document
+														.getElementById('latitude').value = latitude;
+												document
+														.getElementById('longitude').value = longitude;
+											}
+										});
 					}
 				}).open();
 	}
@@ -477,7 +494,8 @@ a {
 										id="roadAddress" name="roadAddress" placeholder="도로명주소" readonly> <input type="text" id="jibunAddress"
 										name="jibunAddress" placeholder="지번주소" readonly> <span id="guide" style="color: #999; display: none"></span>
 									<input type="text" id="detailAddress" name="detailAddress" placeholder="상세주소"> <input type="text"
-										id="extraAddress" placeholder="참고항목" readonly>
+										id="extraAddress" placeholder="참고항목" readonly> <input type="hidden" id="latitude" name="latitude"
+										readonly> <input type="hidden" id="longitude" name="longitude" readonly>
 								</div>
 								<div class="group">
 									<label for="pass" class="label">학교급</label> <select class="select select-bordered select-sm w-full max-w-xs"

@@ -19,7 +19,7 @@ public class MemberService {
 
 	public ResultData<Integer> join(String loginId, String loginPw, String name, String nickname, String cellphoneNum,
 			String email, String schoollevel, int grade, int postcode, String roadAddress, String jibunAddress,
-			String detailAddress) {
+			String detailAddress, double latitude, double longitude) {
 
 		Member existsMember = getMemberByLoginId(loginId);
 
@@ -34,7 +34,7 @@ public class MemberService {
 		}
 
 		memberRepository.join(loginId, loginPw, name, nickname, cellphoneNum, email, schoollevel, grade, postcode,
-				roadAddress, jibunAddress, detailAddress);
+				roadAddress, jibunAddress, detailAddress, latitude, longitude);
 
 		int id = memberRepository.getLastInsertId();
 
@@ -56,19 +56,19 @@ public class MemberService {
 
 	public ResultData modify(int loginedMemberId, String loginPw, String name, String nickname, String cellphoneNum,
 			String email, String schoollevel, int grade, int postcode, String roadAddress, String jibunAddress,
-			String detailAddress) {
+			String detailAddress, double latitude, double longitude) {
 		
 		memberRepository.modify(loginedMemberId, loginPw, name, nickname, cellphoneNum, email, schoollevel, grade,
-				postcode, roadAddress, jibunAddress, detailAddress);
+				postcode, roadAddress, jibunAddress, detailAddress,latitude, longitude);
 		return ResultData.from("S-1", "회원정보 수정 완료");
 	}
 
 	public ResultData modifyWithoutPw(int loginedMemberId, String name, String nickname, String cellphoneNum,
 			String email, String schoollevel, int grade, int postcode, String roadAddress, String jibunAddress,
-			String detailAddress) {
+			String detailAddress, double latitude, double longitude) {
 		
 		memberRepository.modifyWithoutPw(loginedMemberId, name, nickname, cellphoneNum, email, schoollevel, grade,
-				postcode, roadAddress, jibunAddress, detailAddress);
+				postcode, roadAddress, jibunAddress, detailAddress, latitude, longitude);
 		return ResultData.from("S-1", "회원정보 수정 완료");
 	}
 

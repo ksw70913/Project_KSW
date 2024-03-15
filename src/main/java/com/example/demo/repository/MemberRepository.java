@@ -40,10 +40,12 @@ public interface MemberRepository {
 			jibunAddress = #{jibunAddress},
 			detailAddress = #{detailAddress},
 			schoollevel = #{schoollevel},
+			latitude = #{latitude},
+			longitude = #{longitude},
 			grade = #{grade}
 			""")
 	public void join(String loginId, String loginPw, String name, String nickname, String cellphoneNum, String email,
-			String schoollevel, int grade, int postcode, String roadAddress, String jibunAddress, String detailAddress);
+			String schoollevel, int grade, int postcode, String roadAddress, String jibunAddress, String detailAddress, double latitude, double longitude);
 
 	@Select("SELECT LAST_INSERT_ID()")
 	public int getLastInsertId();
@@ -88,6 +90,12 @@ public interface MemberRepository {
 				<if test="detailAddress != null">
 					detailAddress = #{detailAddress},
 				</if>
+				<if test="latitude != null">
+					latitude = #{latitude},
+				</if>
+				<if test="longitude != null">
+					longitude = #{longitude},
+				</if>				
 				updateDate= NOW()
 			</set>
 			WHERE id = #{loginedMemberId}
@@ -95,7 +103,7 @@ public interface MemberRepository {
 			""")
 	public void modify(int loginedMemberId, String loginPw, String name, String nickname, String cellphoneNum,
 			String email, String schoollevel, int grade, int postcode, String roadAddress, String jibunAddress,
-			String detailAddress);
+			String detailAddress, double latitude, double longitude);
 
 	@Update("""
 			<script>
@@ -131,13 +139,20 @@ public interface MemberRepository {
 				<if test="detailAddress != null">
 					detailAddress = #{detailAddress},
 				</if>
+				<if test="latitude != null">
+					latitude = #{latitude},
+				</if>
+				<if test="longitude != null">
+					longitude = #{longitude},
+				</if>
 				updateDate= NOW()
 			</set>
 			WHERE id = #{loginedMemberId}
 			</script>
 			""")
 	public void modifyWithoutPw(int loginedMemberId, String name, String nickname, String cellphoneNum, String email,
-			String schoollevel, int grade, int postcode, String roadAddress, String jibunAddress, String detailAddress);
+			String schoollevel, int grade, int postcode, String roadAddress, String jibunAddress, String detailAddress,
+			double latitude, double longitude);
 
 	@Select("""
 			SELECT COUNT(*)

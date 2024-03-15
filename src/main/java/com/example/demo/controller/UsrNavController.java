@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.service.MemberService;
 import com.example.demo.service.NavService;
 import com.example.demo.vo.ChildZone;
+import com.example.demo.vo.Member;
 import com.example.demo.vo.Rq;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,6 +20,9 @@ public class UsrNavController {
 
 	@Autowired
 	private NavService navService;
+
+	@Autowired
+	private MemberService memberService;
 
 	@Autowired
 	private Rq rq;
@@ -39,20 +44,32 @@ public class UsrNavController {
 
 		return "/usr/nav/school";
 	}
-	
 
 	@RequestMapping("/usr/nav/test")
-	public String showTest() {
+	public String showTest(HttpServletRequest req, Model model) {
+		Rq rq = (Rq) req.getAttribute("rq");
 
+		Member memberInfo = rq.getLoginedMember();
+		
+		System.err.println(memberInfo);
+		System.err.println(123);
+
+		model.addAttribute("memberInfo", memberInfo);
 		return "/usr/nav/test";
 	}
 
-	@RequestMapping("/usr/nav/test2")
-	public String showTest2() {
+	@RequestMapping("/usr/nav/navi")
+	public String showNavi(HttpServletRequest req, Model model) {
+		Rq rq = (Rq) req.getAttribute("rq");
 
-		return "/usr/nav/test2";
+		Member memberInfo = rq.getLoginedMember();
+		
+		System.err.println(memberInfo);
+		System.err.println(123);
+		
+		model.addAttribute("memberInfo", memberInfo);
+
+		return "/usr/nav/navi";
 	}
-	
-	
 
 }
