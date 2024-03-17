@@ -27,9 +27,9 @@ section {
 				<input type="hidden" name="boardId" value="${param.boardId }" /> <select
 					data-value="${param.searchKeywordTypeCode }" class="select select-bordered select-sm w-full max-w-xs"
 					name="searchKeywordTypeCode">
-					<option value="title">제목</option>
+					<option value="signature">제목</option>
 					<option value="author">저자</option>
-					<option value="title,author">제목+저자</option>
+					<option value="signature,grade">제목+저자</option>
 				</select><input value="${param.searchKeyword }" name="searchKeyword" type="text" placeholder="searchKeyword?"
 					class="input-sm input input-bordered w-48 max-w-xs" />
 				<button class="btn btn-ghost btn-sm" type="submit">검색</button>

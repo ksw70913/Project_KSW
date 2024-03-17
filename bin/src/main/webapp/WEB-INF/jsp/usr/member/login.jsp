@@ -72,9 +72,9 @@
 							var confirmPassword = $("#loginPw2").val(); // Targeting by ID instead of name
 							if (password !== confirmPassword) {
 								$("#passwordMatchMessage").text(
-										"비밀번호가 일치하지 않습니다."); // Update message content
+										"Password does not match."); // Update message content
 							} else {
-								$("#passwordMatchMessage").text("비밀번호가 일치합니다."); // Clear message content if passwords match
+								$("#passwordMatchMessage").text(""); // Clear message content if passwords match
 							}
 						});
 			});

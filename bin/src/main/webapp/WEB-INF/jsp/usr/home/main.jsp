@@ -44,9 +44,9 @@
 					</li>
 					<li class="card-med" id="sup-cat">
 						<div class="card-image">
-							<a href="../nav/school"> <img
+							<a href="../nav/navi"> <img
 								src="https://ouch-cdn2.icons8.com/US6gJ6fHUOJqruLB7KDe5zEa82iDSp7OdO-bv-aLtvU/rs:fit:368:310/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNjU5/LzdmOWU1ZjU0LTMx/ZDQtNDgwNS1iM2E2/LWM3NzgyMTcyNzJh/NC5wbmc.png"></a>
-						</div> <a href="../nav/school"> <span>학교 길찾기</span> <!-- <span>Shop All <span class="material-symbols-outlined">
+						</div> <a href="../nav/navi"> <span>학교 길찾기</span> <!-- <span>Shop All <span class="material-symbols-outlined">
 									arrow_forward </span></span> -->
 					</a>
 					</li>
@@ -184,10 +184,10 @@
 					src="https://ouch-cdn2.icons8.com/DF-XRInvbvWS9fQSpWc_SegC3meXZK8BmE-PjrdrF3Q/rs:fit:368:396/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNzI3/LzQyYWIyNzliLWJj/ZDgtNGEyMC04MGRi/LTk3MzU4YWFmNTVk/OS5wbmc.png">
 			</div>
 			<ul>
-				커뮤니티
-				<li><a href="/usr/nav/school">공지 사항</a></li>
-				<li><a href="/usr/nav/navi">자유 게시판</a></li>
-				<li><a href="/usr/nav/navi">QnA</a></li>
+				네비게이션
+				<li><a href="#">내 학교 찾기</a></li>
+				<li><a href="#">길 안내</a></li>
+				<li><a href="#">Furniture</a></li>
 				<button class="btn-outline-dark">바로가기</button>
 			</ul>
 
@@ -221,10 +221,11 @@
 			<ul>
 				나의 학습
 				<span class="subtitle">Tail-wagging transformations are our specialty.</span>
-				<li><a href="#">교과서 찾기</a><span></span></li>
-				<li><a href="#">학습 현황</a><span></span></li>
+				<li><a href="#">Coat Care</a><span>$80</span></li>
+				<li><a href="#">Nail Care</a><span>$16</span></li>
+				<li><a href="#">Doggie Deluxe Spa Day</a><span>$160</span></li>
 				<button class="btn-filled-dark">
-					<span class="material-symbols-outlined"> 바로 가기 </span>
+					<span class="material-symbols-outlined"> calendar_month </span>Book Now
 				</button>
 
 			</ul>
@@ -239,10 +240,10 @@
 			<ul>
 				네비게이션
 				<span class="subtitle">Where fun and care never take a day off.</span>
-				<li><a href="#">학교 및 내 주변 건물 찾기</a><span></span></li>
-				<li><a href="#">길찾기</a><span></span></li>
+				<li><a href="#">Doggie Daycare</a><span>$80</span></li>
+				<li><a href="#">Short Term Boarding</a><span>$80</span></li>
 				<button class="btn-filled-dark">
-					<span class="material-symbols-outlined"> 바로 가기 </span>
+					<span class="material-symbols-outlined"> calendar_month </span>Book Now
 				</button>
 			</ul>
 

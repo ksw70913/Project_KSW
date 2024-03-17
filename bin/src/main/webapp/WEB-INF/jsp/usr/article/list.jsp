@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="pageTitle" value="#{board.code } BOOK LIST"></c:set>
+<c:set var="pageTitle" value="#{board.code } ARTICLE LIST"></c:set>
 <%@ include file="../common/head2.jspf"%>
 <%
 int cPage = (int) request.getAttribute("page");
@@ -12,25 +12,19 @@ int end = (int) request.getAttribute("end");
 String searchKeyword = (String) request.getAttribute("searchKeyword");
 %>
 
-<style>
-section {
-	background-color: #F4CFC6;
-}
-</style>
-
 <section class="mt-8 text-xl px-4">
 	<div class="mx-auto overflow-x-auto">
 		<div class="mb-4 flex">
-			<div class="badge badge-outline">${booksCount }개</div>
+			<div class="badge badge-outline">${articlesCount }개</div>
 			<div class="flex-grow"></div>
 			<form action="">
 				<input type="hidden" name="boardId" value="${param.boardId }" /> <select
 					data-value="${param.searchKeywordTypeCode }" class="select select-bordered select-sm w-full max-w-xs"
 					name="searchKeywordTypeCode">
-					<option value="title">제목</option>
-					<option value="author">저자</option>
-					<option value="title,author">제목+저자</option>
-				</select><input value="${param.searchKeyword }" name="searchKeyword" type="text" placeholder="searchKeyword?"
+					<option value="title">title</option>
+					<option value="body">body</option>
+					<option value="title,body">title+body</option>
+				</select> <input value="${param.searchKeyword }" name="searchKeyword" type="text" placeholder="searchKeyword?"
 					class="input-sm input input-bordered w-48 max-w-xs" />
 				<button class="btn btn-ghost btn-sm" type="submit">검색</button>
 			</form>
@@ -38,42 +32,38 @@ section {
 	</div>
 	<table class="table-box-1 table" border="1">
 		<colgroup>
-			<col style="width: 5%" />
-			<col style="width: 15%" />
-			<col style="width: 46%" />
-			<col style="width: 5%" />
-			<col style="width: 5%" />
 			<col style="width: 10%" />
-			<col style="width: 14%" />
+			<col style="width: 20%" />
+			<col style="width: 60%" />
+			<col style="width: 10%" />
 		</colgroup>
 		<thead>
 			<tr>
 				<th>번호</th>
-				<th>교육과정</th>
+				<th>날짜</th>
 				<th>제목</th>
-				<th>출판년도</th>
-				<th>학교급</th>
-				<th>저자</th>
-				<th>출판사</th>
-
+				<th>작성자</th>
+				<th>조회수</th>
+				<th>좋아요</th>
+				<th>싫어요</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="book" items="${books }">
+
+			<c:forEach var="article" items="${articles }">
 				<tr class="hover">
-					<td>${book.id }</td>
-					<td>${book.curriculum }</td>
-					<td><a href="bookDetail?id=${book.id }">${book.title } </a></td>
-					<td>${book.publicationyear }</td>
-					<td>${book.schoolLevel }</td>
-					<td>${book.author }</td>
-					<td>${book.publisher }</td>
-					<td>${ book.boardId} </td>
+					<td>${article.id }</td>
+					<td>${article.regDate.substring(0,10) }</td>
+					<td><a href="detail?id=${article.id }">${article.title }</a></td>
+					<td>${article.extra__writer }</td>
+					<td>${article.hitCount }</td>
+					<td>${article.goodReactionPoint }</td>
+					<td>${article.badReactionPoint }</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
-
+	</div>
 
 	<div class="pagination flex justify-center mt-3">
 		<div class="btn-group">

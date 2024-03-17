@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import com.example.demo.util.Ut;
 import com.example.demo.vo.Rq;
 
 import jakarta.servlet.http.HttpServletRequest;
