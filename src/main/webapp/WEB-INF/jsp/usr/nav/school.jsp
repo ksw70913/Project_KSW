@@ -18,7 +18,7 @@
 			function initTmap() {
 				// 1. 지도 띄우기
 				map = new Tmapv2.Map("map_div", {
-					center : new Tmapv2.LatLng(36.35101072771798, 127.38031136394397),
+					center : new Tmapv2.LatLng(${memberInfo.latitude}, ${memberInfo.longitude}),
 					width : "70%",
 					height : "400px",
 					zoom : 17,
@@ -43,8 +43,8 @@
 							"searchtypCd" : "A",
 							"radius" : 1,
 							"reqCoordType" : "WGS84GEO",
-							"centerLon" : "127.38031136394397",
-							"centerLat" : "36.35101072771798",
+							"centerLon" : "${memberInfo.longitude}",
+							"centerLat" : "${memberInfo.latitude}",
 							"count" : 10
 						},
 						success:function(response){
