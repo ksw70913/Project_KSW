@@ -23,3 +23,11 @@ document.addEventListener('DOMContentLoaded', function() {
 		window.location.href = '../edu/book'; // 버튼 클릭 시 이동할 페이지 URL
 	});
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+	const findPathButton = document.querySelector('.community');
+
+	findPathButton.addEventListener('click', function() {
+		window.location.href = '../article/list'; // 버튼 클릭 시 이동할 페이지 URL
+	});
+});

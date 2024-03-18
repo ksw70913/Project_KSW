@@ -35,10 +35,10 @@
 				<ul class="subnav">
 					<li class="card-med" id="sup-dog">
 						<div class="card-image">
-							<a href="../edu/book"><img
+							<a href="../nav/navi"><img
 								src="https://ouch-cdn2.icons8.com/qPvaAv2gxwM3l0z7dl_eoh9v6h58HlzewBUfEgX6AZE/rs:fit:368:386/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMTIv/ZmM4YjNlYmItMDNj/Ni00NGM3LTliNGUt/YTUyOWUzOGU4NTE2/LnBuZw.png"></a>
 
-						</div> <a href="../edu/book"> <span>교과서 등록 </span> <!-- <span><span class="material-symbols-outlined">
+						</div> <a href="../nav/navi"> <span>길찾기 </span> <!-- <span><span class="material-symbols-outlined">
 									</span></span> -->
 					</a>
 					</li>
@@ -46,7 +46,7 @@
 						<div class="card-image">
 							<a href="../nav/school"> <img
 								src="https://ouch-cdn2.icons8.com/US6gJ6fHUOJqruLB7KDe5zEa82iDSp7OdO-bv-aLtvU/rs:fit:368:310/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNjU5/LzdmOWU1ZjU0LTMx/ZDQtNDgwNS1iM2E2/LWM3NzgyMTcyNzJh/NC5wbmc.png"></a>
-						</div> <a href="../nav/school"> <span>학교 길찾기</span> <!-- <span>Shop All <span class="material-symbols-outlined">
+						</div> <a href="../nav/school"> <span>내 주변 찾기</span> <!-- <span>Shop All <span class="material-symbols-outlined">
 									arrow_forward </span></span> -->
 					</a>
 					</li>
@@ -60,14 +60,13 @@
 					</li>
 					<li class="card-med" id="sup-fish">
 						<div class="card-image">
-							<a href="../article/list"> <img
+							<a href="../article/write"> <img
 								src="https://ouch-cdn2.icons8.com/41Pv7w9rcbn7II_gB2vwvVCQRYE5mvpca1ZbsvMujR0/rs:fit:368:368/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNjE5/LzRlZjE1YTgyLTI3/NjYtNDlkNC1hMGE3/LWY4ZjRmNzhjM2M5/NS5wbmc.png"></a>
-						</div> <a href="../article/list"> <span>커뮤니티</span></a> <a href="../article/list?boardId=1&page=1"><span>NOTICE</span></a>
-						<a href="../article/list?boardId=2&page=1"><span>FREE</span></a> <a href="../article/list?boardId=3&page=1"><span>QnA</span></a>
+						</div> <a href="../article/write"> <span>글 쓰기</span></a>
 					</li>
 				</ul></li>
 			<c:if test="${rq.isLogined() }">
-				<li><a href="#">교과서</a>
+				<li><a href="#">게시글</a>
 					<ul class="subnav">
 						<li class="card-med" id="sup-dog">
 							<div class="card-image">
@@ -77,13 +76,13 @@
 							href="../edu/book?boardId=5&page=1"><span>중학교</span></a> <a href="../edu/book?boardId=6&page=1"><span>고등학교</span></a>
 						</li>
 
-						<li class="card-med" id="serv-board">
+						<li class="card-med" id="sup-fish">
 							<div class="card-image">
-								<a href="../article/write"> <img
-									src="https://ouch-cdn2.icons8.com/F5Ea1suZtMYimKDkJr0CJLO_1bju6-bTyT1EuDKEg8s/rs:fit:368:254/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMjcx/LzVjMzE4NWM0LWZh/NTMtNGQ1OS05ZTM2/LTZjYzBhNGU3ODg0/NC5wbmc.png"></a>
-							</div> <a href="../article/write"> <span>글 쓰기</span> <!-- <span>More Info<span class="material-symbols-outlined">
-									arrow_forward </span></span> -->
-						</a>
+								<a href="../article/list"> <img
+									src="https://ouch-cdn2.icons8.com/41Pv7w9rcbn7II_gB2vwvVCQRYE5mvpca1ZbsvMujR0/rs:fit:368:368/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNjE5/LzRlZjE1YTgyLTI3/NjYtNDlkNC1hMGE3/LWY4ZjRmNzhjM2M5/NS5wbmc.png"></a>
+							</div> <a href="../article/list"> <span>커뮤니티</span></a> <a href="../article/list?boardId=1&page=1"><span>NOTICE</span></a>
+							<a href="../article/list?boardId=2&page=1"><span>FREE</span></a> <a href="../article/list?boardId=3&page=1"><span>QnA</span></a>
+						</li>
 					</ul></li>
 			</c:if>
 			<c:if test="${rq.isLogined() }">
@@ -100,9 +99,9 @@
 
 						<li class="card-med" id="serv-board">
 							<div class="card-image">
-								<a href="../article/write"> <img
+								<a href="../edu/education"> <img
 									src="https://ouch-cdn2.icons8.com/F5Ea1suZtMYimKDkJr0CJLO_1bju6-bTyT1EuDKEg8s/rs:fit:368:254/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMjcx/LzVjMzE4NWM0LWZh/NTMtNGQ1OS05ZTM2/LTZjYzBhNGU3ODg0/NC5wbmc.png"></a>
-							</div> <a href="../article/write"> <span>글 쓰기</span> <!-- <span>More Info<span class="material-symbols-outlined">
+							</div> <a href="../edu/education"> <span>학습 현황</span> <!-- <span>More Info<span class="material-symbols-outlined">
 									arrow_forward </span></span> -->
 						</a>
 					</ul></li>
@@ -185,10 +184,10 @@
 			</div>
 			<ul>
 				커뮤니티
-				<li><a href="/usr/nav/school">공지 사항</a></li>
-				<li><a href="/usr/nav/navi">자유 게시판</a></li>
-				<li><a href="/usr/nav/navi">QnA</a></li>
-				<button class="btn-outline-dark">바로가기</button>
+				<li><a href="../article/list?boardId=1&page=1">공지 사항</a></li>
+				<li><a href="../article/list?boardId=2&page=1">자유 게시판</a></li>
+				<li><a href="../article/list?boardId=3&page=1">QnA</a></li>
+				<button class="btn-outline-dark community">바로가기</button>
 			</ul>
 
 		</li>
@@ -239,8 +238,8 @@
 			<ul>
 				네비게이션
 				<span class="subtitle">Where fun and care never take a day off.</span>
-				<li><a href="#">학교 및 내 주변 건물 찾기</a><span></span></li>
-				<li><a href="#">길찾기</a><span></span></li>
+				<li><a href="../nav/school">학교 및 내 주변 건물 찾기</a><span></span></li>
+				<li><a href="../nav/navi">길찾기</a><span></span></li>
 				<button class="btn-filled-dark">
 					<span class="material-symbols-outlined"> 바로 가기 </span>
 				</button>
