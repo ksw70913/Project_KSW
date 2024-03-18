@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="pageTitle" value="학교 길찾기"></c:set>
+<c:set var="pageTitle" value="내 주변학교 찾기"></c:set>
 
 <%@ include file="../common/head2.jspf"%>
 
@@ -11,14 +11,14 @@
 <title>지도 이동시키기</title>
 
 <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=8iNXBpO9RuasFtAJ1J2chh2BBTj39kI7R3Lvd0Ib"></script>
-		<script type="text/javascript">
+<script type="text/javascript">
 			var map, marker;
 			var markerArr = [], labelArr = [];
 			
 			function initTmap() {
 				// 1. 지도 띄우기
 				map = new Tmapv2.Map("map_div", {
-					center : new Tmapv2.LatLng(36.35101072771798, 127.38031136394397),
+					center: new Tmapv2.LatLng(${memberInfo.latitude}, ${memberInfo.longitude}),
 					width : "70%",
 					height : "400px",
 					zoom : 17,
@@ -43,8 +43,8 @@
 							"searchtypCd" : "A",
 							"radius" : 1,
 							"reqCoordType" : "WGS84GEO",
-							"centerLon" : "127.38031136394397",
-							"centerLat" : "36.35101072771798",
+							"centerLon": "${memberInfo.longitude}",
+							"centerLat": "${memberInfo.latitude}",
 							"count" : 10
 						},
 						success:function(response){
@@ -173,6 +173,7 @@
 				});
 			}
 </script>
+
 <script type="text/javascript">
 document.addEventListener('DOMContentLoaded', function() {
 	const findPathButton = document.querySelector('.directions');
@@ -182,15 +183,17 @@ document.addEventListener('DOMContentLoaded', function() {
 	});
 });
 </script>
-
 <body onload="initTmap();">
 	<div>
-		<input type="text" class="text_custom" id="searchKeyword" name="searchKeyword" value="학교">	
+		<input type="text" class="text_custom" id="searchKeyword" name="searchKeyword" value="학교">
 		<button id="btn_select">적용하기</button>
+
 	</div>
 	<div>
-		<div style="width: 30%; float:left;">
-			<div class="title"><strong>Search</strong> Results</div>
+		<div style="width: 30%; float: left;">
+			<div class="title">
+				<strong>Search</strong> Results
+			</div>
 			<div class="rst_wrap">
 				<div class="rst mCustomScrollbar">
 					<ul id="searchResult" name="searchResult">
@@ -199,9 +202,9 @@ document.addEventListener('DOMContentLoaded', function() {
 				</div>
 			</div>
 		</div>
-		<div id="map_div" class="map_wrap" style="float:left"></div>
-	</div>	
-		<br />
+		<div id="map_div" class="map_wrap" style="float: left"></div>
+	</div>
+	<br />
 	<div>
 		<button class="directions">길찾기</button>
 	</div>
