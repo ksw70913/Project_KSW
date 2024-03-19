@@ -1,5 +1,6 @@
 package com.example.demo.repository;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -45,7 +46,8 @@ public interface MemberRepository {
 			grade = #{grade}
 			""")
 	public void join(String loginId, String loginPw, String name, String nickname, String cellphoneNum, String email,
-			String schoollevel, int grade, int postcode, String roadAddress, String jibunAddress, String detailAddress, double latitude, double longitude);
+			String schoollevel, int grade, int postcode, String roadAddress, String jibunAddress, String detailAddress,
+			double latitude, double longitude);
 
 	@Select("SELECT LAST_INSERT_ID()")
 	public int getLastInsertId();
@@ -95,7 +97,7 @@ public interface MemberRepository {
 				</if>
 				<if test="longitude != null">
 					longitude = #{longitude},
-				</if>				
+				</if>
 				updateDate= NOW()
 			</set>
 			WHERE id = #{loginedMemberId}
@@ -160,5 +162,11 @@ public interface MemberRepository {
 			WHERE loginId = #{id}
 			""")
 	public int idCheck(String id);
+
+	@Delete("""
+			DELETE FROM member
+			WHERE id = #{loginedMemberId}
+			""")
+	public void doDelete(int loginedMemberId);
 
 }

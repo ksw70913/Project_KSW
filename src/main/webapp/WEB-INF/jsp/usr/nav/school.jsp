@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <style>
 .rst_wrap {
     height: 400px; /* Set the maximum height for the scrollable container */
-    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-y: auto; /* Enable verhhhhh-tical scrolling */
 }
 </style>
 

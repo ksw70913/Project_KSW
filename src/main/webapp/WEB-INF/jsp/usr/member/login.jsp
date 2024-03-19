@@ -65,19 +65,24 @@
 <script>
 	$(document).ready(
 			function() {
-				$("input[name='loginPw'], input[name='loginPw2']").on(
-						"input",
-						function() {
-							var password = $("#loginPw").val(); // Targeting by ID instead of name
-							var confirmPassword = $("#loginPw2").val(); // Targeting by ID instead of name
-							if (password !== confirmPassword) {
-								$("#passwordMatchMessage").text(
-										"비밀번호가 일치하지 않습니다."); // Update message content
-							} else {
-								$("#passwordMatchMessage").text("비밀번호가 일치합니다."); // Clear message content if passwords match
-								$("#passwordMatchMessage").css("color", "green"); // Change text color to green
-							}
-						});
+				$("input[name='loginPw'], input[name='loginPw2']")
+						.on(
+								"input",
+								function() {
+									var password = $("#loginPw").val(); // Targeting by ID instead of name
+									var confirmPassword = $("#loginPw2").val(); // Targeting by ID instead of name
+									if (password !== confirmPassword) {
+										$("#passwordMatchMessage").text(
+												"비밀번호가 일치하지 않습니다."); // Update message content
+										$("#passwordMatchMessage").css("color",
+												"red"); // Change text color to green
+									} else {
+										$("#passwordMatchMessage").text(
+												"비밀번호가 일치합니다."); // Clear message content if passwords match
+										$("#passwordMatchMessage").css("color",
+												"green"); // Change text color to green
+									}
+								});
 			});
 </script>
 
@@ -376,7 +381,6 @@ a {
 #checkDuplicate:hover {
 	background-color: #d63031; /* Darker color on hover */
 }
-
 
 /* 비밀번호 */
 #passwordMatchMessage {

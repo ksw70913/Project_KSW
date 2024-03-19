@@ -94,7 +94,7 @@ public class UsrMemberController {
 			String nickname, String cellphoneNum, String email, int postcode, String roadAddress, String jibunAddress,
 			String detailAddress, double latitude, double longitude, String schoollevel, int grade) {
 		Rq rq = (Rq) req.getAttribute("rq");
-		
+
 		System.err.println(latitude);
 		System.err.println(longitude);
 
@@ -209,6 +209,19 @@ public class UsrMemberController {
 		}
 
 		return Ut.jsReplace(modifyRd.getResultCode(), modifyRd.getMsg(), "../member/myPage");
+	}
+
+	@RequestMapping("/usr/member/doDelete")
+	@ResponseBody
+	public String doDelete(HttpServletRequest req) {
+
+		Rq rq = (Rq) req.getAttribute("rq");
+
+		ResultData DeleteRd = memberService.doDelete(rq.getLoginedMemberId());
+
+		rq.logout();
+
+		return Ut.jsReplace(DeleteRd.getResultCode(), DeleteRd.getMsg(), "../usr/home/main");
 	}
 
 	@PostMapping("/idCheck")

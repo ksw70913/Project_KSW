@@ -65,7 +65,8 @@
 					<td>${rq.loginedMember.grade }</td>
 				</tr>
 				<tr>
-					<th></th>
+					<th><a onclick="if(confirm('정말 회원탈퇴를 하시겠습니까?(복구불가)') == false) return false;" class="btn btn-active btn-ghost"
+						href="../member/doDelete">회원 탈퇴</a></th>
 					<td><a href="../member/checkPw" class="btn btn-active btn-ghost">회원정보 수정</a></td>
 				</tr>
 			</tbody>

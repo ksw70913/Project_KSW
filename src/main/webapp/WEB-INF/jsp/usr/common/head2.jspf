@@ -114,7 +114,6 @@
 					<li><a onclick="if(confirm('로그아웃 할래?') == false) return false;" class="hover:underline"
 						href="../member/doLogout">LOGOUT</a></li>
 				</c:if>
-				<li><a href="#">회원 탈퇴</a></li>
 			</ul>
 			<div id="utility">
 				<span class="material-symbols-outlined"><a href="#">↑</a> </span>

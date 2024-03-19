@@ -57,16 +57,16 @@ public class MemberService {
 	public ResultData modify(int loginedMemberId, String loginPw, String name, String nickname, String cellphoneNum,
 			String email, String schoollevel, int grade, int postcode, String roadAddress, String jibunAddress,
 			String detailAddress, double latitude, double longitude) {
-		
+
 		memberRepository.modify(loginedMemberId, loginPw, name, nickname, cellphoneNum, email, schoollevel, grade,
-				postcode, roadAddress, jibunAddress, detailAddress,latitude, longitude);
+				postcode, roadAddress, jibunAddress, detailAddress, latitude, longitude);
 		return ResultData.from("S-1", "회원정보 수정 완료");
 	}
 
 	public ResultData modifyWithoutPw(int loginedMemberId, String name, String nickname, String cellphoneNum,
 			String email, String schoollevel, int grade, int postcode, String roadAddress, String jibunAddress,
 			String detailAddress, double latitude, double longitude) {
-		
+
 		memberRepository.modifyWithoutPw(loginedMemberId, name, nickname, cellphoneNum, email, schoollevel, grade,
 				postcode, roadAddress, jibunAddress, detailAddress, latitude, longitude);
 		return ResultData.from("S-1", "회원정보 수정 완료");
@@ -79,6 +79,11 @@ public class MemberService {
 			return false;
 		}
 		return true;
+	}
+
+	public ResultData doDelete(int loginedMemberId) {
+		memberRepository.doDelete(loginedMemberId);
+		return ResultData.from("S-1", "회원탈퇴 완료");
 	}
 
 }
