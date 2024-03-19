@@ -183,6 +183,13 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+<style>
+.rst_wrap {
+    height: 400px; /* Set the maximum height for the scrollable container */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+</style>
+
 <body onload="initTmap();">
 	<div>
 		<input type="text" class="text_custom" id="searchKeyword" name="searchKeyword" value="학교">	

@@ -2,6 +2,7 @@ package com.example.demo.repository;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -125,5 +126,13 @@ public interface EduRepository {
 			AND memberId = #{loginedMemberId}
 			""")
 	void doLearning(int loginedMemberId, int id, int learning);
+	
+	
+	@Delete("""
+			DELETE FROM learning 
+			WHERE id = #{id}
+			AND memberid = #{loginedMemberId}
+			""")
+	void doDelete(int loginedMemberId, int id);
 
 }

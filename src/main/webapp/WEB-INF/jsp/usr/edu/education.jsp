@@ -25,8 +25,8 @@
 }
 
 .changeLearning {
-	margin-top: 200px; 
-	top : 50px; /* Adjust position as needed */
+	margin-top: 200px;
+	top: 50px; /* Adjust position as needed */
 	right: 10%;
 	font-size: 1.2em;
 	top: 50px;
@@ -56,6 +56,7 @@
 	<div class="bookStatus">
 		<!-- 옵션 선택 상자 -->
 		<select id="bookStatus" onchange="drawGraph()">
+			<option value="null">선택</option>
 			<c:forEach var="Status" items="${bookStatus}" varStatus="loop">
 				<option value="${Status.id}" data-learning="${Status.learning}">${Status.title}</option>
 			</c:forEach>
@@ -65,10 +66,16 @@
 	<!-- 학습 내용 수정 폼 -->
 	<div class="changeLearning">
 		<form id="learningForm" action="../edu/doLearning" method="POST">
-			<input type="hidden" name="id" id="selectedOptionId" value="" /> 학습현황 <input type="text" name="learning" /> <input
+			<input type="hidden" name="id" id="selectedOptionId" value="" /> 학습현황 <input type="text" name="learning" /><input
 				type="submit" />
 		</form>
 	</div>
+
+	<!-- 교과서 삭제 -->
+	<div class="deleteLearning" id="deleteLearningSection">
+		<!-- 여기에 옵션 선택에 따라 동적으로 생성될 삭제 링크 -->
+	</div>
+
 
 	<!-- 그래프 컨테이너 -->
 	<div class="graph-container">
@@ -86,6 +93,22 @@
 			const canvas = document.getElementById('graphCanvas');
 			const select = document.getElementById('bookStatus');
 			const selectedOption = select.options[select.selectedIndex];
+			const deleteLearningSection = document
+					.getElementById('deleteLearningSection');
+
+			// 기존 삭제 링크 제거
+			deleteLearningSection.innerHTML = '';
+
+			// 새로운 삭제 링크 생성
+			const deleteLink = document.createElement('a');
+			deleteLink.setAttribute('class', 'btn btn-outline');
+			deleteLink.setAttribute('href', '#');
+			deleteLink.setAttribute('onclick',
+					`deleteBook('${selectedOption.value}'); return false;`);
+			deleteLink.textContent = '삭제';
+			console.log("Selected Option Value:", selectedOption.value);
+
+			deleteLearningSection.appendChild(deleteLink);
 
 			// 캔버스가 없으면 오류 메시지 표시하고 함수 종료
 			if (!canvas) {
@@ -120,6 +143,22 @@
 			ctx.lineWidth = 30;
 			ctx.lineCap = 'round';
 			ctx.stroke();
+		}
+
+		// 학습삭제
+		function deleteBook() {
+			const select = document.getElementById('bookStatus');
+			const selectedOption = select.options[select.selectedIndex];
+			const bookId = selectedOption.value;
+
+			if (bookId !== undefined && bookId.trim() !== '') {
+				if (confirm('정말 삭제하시겠습니까?')) {
+					// 삭제 작업을 수행할 URL에 해당 bookId를 포함시켜 전송하거나 다른 작업을 수행합니다.
+					window.location.href = "../edu/doDelete?id=" + bookId;
+				}
+			} else {
+				console.error("bookId is undefined or empty.");
+			}
 		}
 	</script>
 </body>

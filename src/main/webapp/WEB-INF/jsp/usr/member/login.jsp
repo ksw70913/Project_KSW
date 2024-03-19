@@ -75,6 +75,7 @@
 										"비밀번호가 일치하지 않습니다."); // Update message content
 							} else {
 								$("#passwordMatchMessage").text("비밀번호가 일치합니다."); // Clear message content if passwords match
+								$("#passwordMatchMessage").css("color", "green"); // Change text color to green
 							}
 						});
 			});
@@ -376,6 +377,8 @@ a {
 	background-color: #d63031; /* Darker color on hover */
 }
 
+
+/* 비밀번호 */
 #passwordMatchMessage {
 	color: red; /* Change text color to red */
 }

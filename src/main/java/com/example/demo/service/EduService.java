@@ -63,4 +63,11 @@ public class EduService {
 		return ResultData.from("S-1", "수치가 수정되었습니다.");
 	}
 
+	public ResultData<Integer> doDelete(int loginedMemberId, int id) {
+
+		 eduRepository.doDelete(loginedMemberId, id);
+		 
+		 return ResultData.from("S-1", "학습 내용이 삭제되었습니다.");
+	}
+
 }

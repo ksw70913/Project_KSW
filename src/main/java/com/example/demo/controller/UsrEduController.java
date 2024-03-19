@@ -128,4 +128,19 @@ public class UsrEduController {
 
 		return Ut.jsReplace(doLearningRd.getResultCode(), doLearningRd.getMsg(), "../edu/education");
 	}
+	
+	@RequestMapping("/usr/edu/doDelete")
+	@ResponseBody
+	public String doLearning(HttpServletRequest req, int id) {
+		Rq rq = (Rq) req.getAttribute("rq");
+
+		System.err.println(id);
+		ResultData<Integer> doDeleteRd = eduService.doDelete(rq.getLoginedMemberId(), id);
+
+		return Ut.jsReplace(doDeleteRd.getResultCode(), doDeleteRd.getMsg(), "../edu/education");
+	}
+	
+	
+	
+	
 }
