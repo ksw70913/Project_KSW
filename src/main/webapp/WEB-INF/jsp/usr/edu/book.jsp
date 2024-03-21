@@ -24,14 +24,16 @@ section {
 			<div class="badge badge-outline">${booksCount }개</div>
 			<div class="flex-grow"></div>
 			<form action="">
-				<input type="hidden" name="boardId" value="${param.boardId }" /> <select
-					data-value="${param.searchKeywordTypeCode }" class="select select-bordered select-sm w-full max-w-xs"
-					name="searchKeywordTypeCode">
-					<option value="title">제목</option>
-					<option value="author">저자</option>
-					<option value="title,author">제목+저자</option>
-				</select><input value="${param.searchKeyword }" name="searchKeyword" type="text" placeholder="searchKeyword?"
-					class="input-sm input input-bordered w-48 max-w-xs" />
+				<input type="hidden" name="boardId" value="${param.boardId }" /> <input type="hidden"
+					data-value="${param.searchKeywordTypeCode1 }" class="input-sm input input-bordered w-48 max-w-xs"
+					name="searchKeywordTypeCode1" value="title">제목 </input><input type="text" placeholder="제목을 입력해주세요."
+					name="searchKeyword1" value="${param.searchKeyword1 }" /><input type="hidden"
+					data-value="${param.searchKeywordTypeCode2 }" class="input-sm input input-bordered w-48 max-w-xs"
+					name="searchKeywordTypeCode2" value="author">저자 </input><input type="text" placeholder="제목을 입력해주세요."
+					name="searchKeyword2" value="${param.searchKeyword2 }" /> <input type="hidden"
+					data-value="${param.searchKeywordTypeCode3 }" class="input-sm input input-bordered w-48 max-w-xs"
+					name="searchKeywordTypeCode3" value="publisher">출판사 </input><input type="text" placeholder="제목을 입력해주세요."
+					name="searchKeyword3" value="${param.searchKeyword3 }" />
 				<button class="btn btn-ghost btn-sm" type="submit">검색</button>
 			</form>
 		</div>
@@ -100,27 +102,27 @@ section {
 			if (cPage > 1) {
 			%>
 			<a
-				href="?boardId=${board.id }&page=1&searchKeywordTypeCode=${param.searchKeywordTypeCode }&searchKeyword=${param.searchKeyword }">◀◀</a>
+				href="?boardId=${board.id }&page=1&searchKeywordTypeCode1=${param.searchKeywordTypeCode1 }&searchKeyword1=${param.searchKeyword1 }&searchKeywordTypeCode2=${param.searchKeywordTypeCode2 }&searchKeyword2=${param.searchKeyword2 }&searchKeywordTypeCode3=${param.searchKeywordTypeCode3 }&searchKeyword3=${param.searchKeyword3 }">◀◀</a>
 			<%
 			}
 			%>
 			<a
-				href="?boardId=${board.id }&page=<%=beforeBtn%>&searchKeywordTypeCode=${param.searchKeywordTypeCode }&searchKeyword=${param.searchKeyword }">◁</a>
+				href="?boardId=${board.id }&page=<%=beforeBtn%>&searchKeywordTypeCode1=${param.searchKeywordTypeCode1 }&searchKeyword1=${param.searchKeyword1 }&searchKeywordTypeCode2=${param.searchKeywordTypeCode2 }&searchKeyword2=${param.searchKeyword2 }&searchKeywordTypeCode3=${param.searchKeywordTypeCode3 }&searchKeyword3=${param.searchKeyword3 }">◁</a>
 			<c:forEach begin="<%=from%>" end="<%=end%>" var="i">
 				<a class="btn btn-sm ${param.page == i ? 'btn-active' : '' }"
-					href="?boardId=${param.boardId }&page=${i }&searchKeywordTypeCode=${param.searchKeywordTypeCode }&searchKeyword=${param.searchKeyword } ">${i }</a>
+					href="?boardId=${param.boardId }&page=${i }&searchKeywordTypeCode1=${param.searchKeywordTypeCode1 }&searchKeyword1=${param.searchKeyword1 }&searchKeywordTypeCode2=${param.searchKeywordTypeCode2 }&searchKeyword2=${param.searchKeyword2 }&searchKeywordTypeCode3=${param.searchKeywordTypeCode3 }&searchKeyword3=${param.searchKeyword3 } ">${i }</a>
 			</c:forEach>
 			<%
 			if (afterBtn < totalPage) {
 			%>
 			<a
-				href="?boardId=${board.id }&page=<%=afterBtn%>&searchKeywordTypeCode=${param.searchKeywordTypeCode }&searchKeyword=${param.searchKeyword }">▷</a>
+				href="?boardId=${board.id }&page=<%=afterBtn%>&searchKeywordTypeCode1=${param.searchKeywordTypeCode1 }&searchKeyword1=${param.searchKeyword1 }&searchKeywordTypeCode2=${param.searchKeywordTypeCode2 }&searchKeyword2=${param.searchKeyword2 }&searchKeywordTypeCode3=${param.searchKeywordTypeCode3 }&searchKeyword3=${param.searchKeyword3 }">▷</a>
 			<%
 			}
 			if (cPage < totalPage) {
 			%>
 			<a
-				href="?boardId=${board.id }&page=<%=totalPage%>&searchKeywordTypeCode=${param.searchKeywordTypeCode }&searchKeyword=${param.searchKeyword }">▶▶</a>
+				href="?boardId=${board.id }&page=<%=totalPage%>&searchKeywordTypeCode1=${param.searchKeywordTypeCode1 }&searchKeyword1=${param.searchKeyword1 }&searchKeywordTypeCode2=${param.searchKeywordTypeCode2 }&searchKeyword2=${param.searchKeyword2 }&searchKeywordTypeCode3=${param.searchKeywordTypeCode3 }&searchKeyword3=${param.searchKeyword3 }">▶▶</a>
 			<%
 			}
 			%>

@@ -35,54 +35,6 @@ public class UsrEduController {
 	@RequestMapping("/usr/edu/book")
 	public String showBook(HttpServletRequest req, Model model, @RequestParam(defaultValue = "4") int boardId,
 			@RequestParam(defaultValue = "1") int page,
-			@RequestParam(defaultValue = "title,author") String searchKeywordTypeCode,
-			@RequestParam(defaultValue = "") String searchKeyword) {
-
-		Rq rq = (Rq) req.getAttribute("rq");
-
-		Board board = boardService.getBoardById(boardId);
-
-		int booksCount = eduService.getBooksCount(boardId, searchKeywordTypeCode, searchKeyword);
-		if (board == null) {
-			return rq.historyBackOnView("없는 게시판이야");
-		}
-
-		// 한페이지에 글 10개씩이야
-		// 글 20개 -> 2 page
-		// 글 24개 -> 3 page
-		int itemsInAPage = 10;
-
-		int totalPage = (int) Math.ceil(booksCount / (double) itemsInAPage);
-
-		int pageSize = 10; // 한 화면에 보여줄 페이지 갯수 -> 10개
-		int pageGroup = (int) Math.ceil((double) page / pageSize); // 한번에 보여줄 페이지의 그룹
-		int from = ((pageGroup - 1) * pageSize) + 1; // 한번에 보여줄 때의 첫번째 페이지 번호
-		int end = pageGroup * pageSize; // 한번에 보여줄 때의 마지막 페이지 번호
-
-		List<Book> book = eduService.getForPrintBooks(itemsInAPage, page, searchKeywordTypeCode, searchKeyword,
-				boardId);
-		req.setAttribute("searchKeyword", searchKeyword);
-		req.setAttribute("page", page);
-		req.setAttribute("totalPage", totalPage);
-		req.setAttribute("pageSize", pageSize);
-		req.setAttribute("pageGroup", pageGroup);
-		req.setAttribute("from", from);
-		req.setAttribute("end", end);
-
-		model.addAttribute("board", board);
-		model.addAttribute("boardId", boardId);
-		model.addAttribute("page", page);
-		model.addAttribute("searchKeywordTypeCode", searchKeywordTypeCode);
-		model.addAttribute("searchKeyword", searchKeyword);
-		model.addAttribute("booksCount", booksCount);
-		model.addAttribute("books", book);
-
-		return "/usr/edu/book";
-	}
-
-	@RequestMapping("/usr/edu/book2")
-	public String showBook2(HttpServletRequest req, Model model, @RequestParam(defaultValue = "4") int boardId,
-			@RequestParam(defaultValue = "1") int page,
 			@RequestParam(defaultValue = "title") String searchKeywordTypeCode1,
 			@RequestParam(defaultValue = "author") String searchKeywordTypeCode2,
 			@RequestParam(defaultValue = "publisher") String searchKeywordTypeCode3,
@@ -94,7 +46,7 @@ public class UsrEduController {
 
 		Board board = boardService.getBoardById(boardId);
 
-		int booksCount = eduService.getBooksCount2(boardId, searchKeywordTypeCode1, searchKeywordTypeCode2,
+		int booksCount = eduService.getBooksCount(boardId, searchKeywordTypeCode1, searchKeywordTypeCode2,
 				searchKeywordTypeCode3, searchKeyword1, searchKeyword2, searchKeyword3);
 
 		if (board == null) {
@@ -113,10 +65,9 @@ public class UsrEduController {
 		int from = ((pageGroup - 1) * pageSize) + 1; // 한번에 보여줄 때의 첫번째 페이지 번호
 		int end = pageGroup * pageSize; // 한번에 보여줄 때의 마지막 페이지 번호
 
-		List<Book> book2 = eduService.getForPrintBooks2(itemsInAPage, page, boardId, searchKeywordTypeCode1,
+		List<Book> book2 = eduService.getForPrintBooks(itemsInAPage, page, boardId, searchKeywordTypeCode1,
 				searchKeywordTypeCode2, searchKeywordTypeCode3, searchKeyword1, searchKeyword2, searchKeyword3);
-		
-		
+
 		req.setAttribute("searchKeyword1", searchKeyword1);
 		req.setAttribute("searchKeyword2", searchKeyword2);
 		req.setAttribute("searchKeyword3", searchKeyword3);
@@ -139,7 +90,7 @@ public class UsrEduController {
 		model.addAttribute("booksCount", booksCount);
 		model.addAttribute("books", book2);
 
-		return "/usr/edu/book2";
+		return "/usr/edu/book";
 	}
 
 	@RequestMapping("/usr/edu/bookDetail")

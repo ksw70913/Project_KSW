@@ -21,65 +21,6 @@ public interface EduRepository {
 	List<Book> bookList();
 
 	@Select("""
-			<script>
-			SELECT COUNT(*) AS cnt
-			FROM book
-			WHERE 4
-			<if test="boardId != 0">
-				AND boardId = #{boardId}
-			</if>
-			<if test="searchKeyword != ''">
-				<choose>
-					<when test="searchKeywordTypeCode == 'title'">
-						AND title LIKE CONCAT('%',#{searchKeyword},'%')
-					</when>
-					<when test="searchKeywordTypeCode == 'grade'">
-						AND grade LIKE CONCAT('%',#{searchKeyword},'%')
-					</when>
-					<otherwise>
-						AND title LIKE CONCAT('%',#{searchKeyword},'%')
-						OR grade LIKE CONCAT('%',#{searchKeyword},'%')
-					</otherwise>
-				</choose>
-			</if>
-			ORDER BY id DESC
-			</script>
-			""")
-	int getBooksCount(int boardId, String searchKeywordTypeCode, String searchKeyword);
-
-	@Select("""
-			<script>
-			SELECT *
-			FROM book B
-			WHERE 1
-			<if test="boardId != 0">
-				AND boardId = #{boardId}
-			</if>
-			<if test="searchKeyword != ''">
-				<choose>
-					<when test="searchKeywordTypeCode == 'title'">
-						AND B.title LIKE CONCAT('%',#{searchKeyword},'%')
-					</when>
-					<when test="searchKeywordTypeCode == 'body'">
-						AND B.body LIKE CONCAT('%',#{searchKeyword},'%')
-					</when>
-					<otherwise>
-						AND B.title LIKE CONCAT('%',#{searchKeyword},'%')
-						OR B.body LIKE CONCAT('%',#{searchKeyword},'%')
-					</otherwise>
-				</choose>
-			</if>
-			GROUP BY B.id
-			ORDER BY B.id DESC
-			<if test="limitFrom >= 0 ">
-				LIMIT #{limitFrom}, #{limitTake}
-			</if>
-			</script>
-			""")
-	List<Book> getForPrintBooks(int limitFrom, int limitTake, String searchKeywordTypeCode, String searchKeyword,
-			int boardId);
-
-	@Select("""
 			SELECT *
 			FROM book
 			WHERE id = #{id}
@@ -154,15 +95,13 @@ public interface EduRepository {
 			ORDER BY id DESC
 			</script>
 			""")
-	int getBooksCount2(int boardId, String searchKeywordTypeCode1, String searchKeywordTypeCode2,
+	int getBooksCount(int boardId, String searchKeywordTypeCode1, String searchKeywordTypeCode2,
 			String searchKeywordTypeCode3, String searchKeyword1, String searchKeyword2, String searchKeyword3);
-	
-	
-	
+
 	@Select("""
 			<script>
 			SELECT *
-			FROM book 
+			FROM book
 			WHERE 1
 			<if test="boardId != 0">
 				AND boardId = #{boardId}
@@ -183,7 +122,7 @@ public interface EduRepository {
 			</if>
 			</script>
 			""")
-	List<Book> getForPrintBooks2(int boardId, String searchKeywordTypeCode1, String searchKeywordTypeCode2,
+	List<Book> getForPrintBooks(int boardId, String searchKeywordTypeCode1, String searchKeywordTypeCode2,
 			String searchKeywordTypeCode3, String searchKeyword1, String searchKeyword2, String searchKeyword3,
 			int limitFrom, int limitTake);
 
