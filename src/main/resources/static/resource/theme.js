@@ -153,6 +153,7 @@ fetch(url)
 		weatherInfoContainer.appendChild(humidityElement);
 		weatherInfoContainer.appendChild(windSpeedElement);
 		weatherInfoContainer.appendChild(iconElement);
+
 	})
 	.catch(error => {
 		console.error('날씨 데이터를 가져오는 중 문제가 발생했습니다:', error);

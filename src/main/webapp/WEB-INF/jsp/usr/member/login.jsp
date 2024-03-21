@@ -167,6 +167,9 @@
 	}
 </script>
 
+
+
+
 <style>
 nav {
 	margin: 0;
@@ -505,16 +508,16 @@ a {
 										readonly> <input type="hidden" id="longitude" name="longitude" readonly>
 								</div>
 								<div class="group">
-									<label for="pass" class="label">학교급</label> <select class="select select-bordered select-sm w-full max-w-xs"
-										name="schoollevel">
+									<label for="schoollevel" class="label">학교급</label> <select
+										class="select select-bordered select-sm w-full max-w-xs" name="schoollevel" id="schoollevel">
 										<option value="primary">초등학교</option>
 										<option value="middle">중학교</option>
 										<option value="high">고등학교</option>
 									</select>
 								</div>
 								<div class="group">
-									<label for="pass" class="label">학년</label> <select class="select select-bordered select-sm w-full max-w-xs"
-										name="grade">
+									<label for="grade" class="label">학년</label> <select class="select select-bordered select-sm w-full max-w-xs"
+										name="grade" id="grade">
 										<option value="1">1학년</option>
 										<option value="2">2학년</option>
 										<option value="3">3학년</option>

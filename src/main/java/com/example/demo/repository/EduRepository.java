@@ -126,13 +126,53 @@ public interface EduRepository {
 			AND memberId = #{loginedMemberId}
 			""")
 	void doLearning(int loginedMemberId, int id, int learning);
-	
-	
+
 	@Delete("""
-			DELETE FROM learning 
+			DELETE FROM learning
 			WHERE id = #{id}
 			AND memberid = #{loginedMemberId}
 			""")
 	void doDelete(int loginedMemberId, int id);
+
+	@Select("""
+			<script>
+			SELECT COUNT(*) AS cnt
+			FROM book
+			WHERE 4
+			<if test="boardId != 0">
+				AND boardId = #{boardId}
+			</if>
+			AND #{searchKeywordTypeCode1} LIKE CONCAT('%',#{searchKeyword1},'%')
+			AND #{searchKeywordTypeCode2} LIKE CONCAT('%',#{searchKeyword2},'%')
+			AND #{searchKeywordTypeCode3} LIKE CONCAT('%',#{searchKeyword3},'%')
+			ORDER BY id DESC
+			</script>
+			""")
+	int getBooksCount2(int boardId, String searchKeywordTypeCode1, String searchKeywordTypeCode2,
+			String searchKeywordTypeCode3, String searchKeyword1, String searchKeyword2, String searchKeyword3);
+	
+	
+	
+	@Select("""
+			<script>
+			SELECT *
+			FROM book 
+			WHERE 1
+			<if test="boardId != 0">
+				AND boardId = #{boardId}
+			</if>
+			AND #{searchKeywordTypeCode1} LIKE CONCAT('%',#{searchKeyword1},'%')
+			AND #{searchKeywordTypeCode2} LIKE CONCAT('%',#{searchKeyword2},'%')
+			AND #{searchKeywordTypeCode3} LIKE CONCAT('%',#{searchKeyword3},'%')
+			GROUP BY id
+			ORDER BY id DESC
+			<if test="limitFrom >= 0 ">
+				LIMIT #{limitFrom}, #{limitTake}
+			</if>
+			</script>
+			""")
+	List<Book> getForPrintBooks2(int boardId, String searchKeywordTypeCode1, String searchKeywordTypeCode2,
+			String searchKeywordTypeCode3, String searchKeyword1, String searchKeyword2, String searchKeyword3,
+			int limitFrom, int limitTake);
 
 }

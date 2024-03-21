@@ -65,9 +65,25 @@ public class EduService {
 
 	public ResultData<Integer> doDelete(int loginedMemberId, int id) {
 
-		 eduRepository.doDelete(loginedMemberId, id);
-		 
-		 return ResultData.from("S-1", "학습 내용이 삭제되었습니다.");
+		eduRepository.doDelete(loginedMemberId, id);
+
+		return ResultData.from("S-1", "학습 내용이 삭제되었습니다.");
+	}
+
+	public int getBooksCount2(int boardId, String searchKeywordTypeCode1, String searchKeywordTypeCode2,
+			String searchKeywordTypeCode3, String searchKeyword1, String searchKeyword2, String searchKeyword3) {
+		return eduRepository.getBooksCount2(boardId, searchKeywordTypeCode1, searchKeywordTypeCode2,
+				searchKeywordTypeCode3, searchKeyword1, searchKeyword2, searchKeyword3);
+	}
+
+	public List<Book> getForPrintBooks2(int itemsInAPage, int page, int boardId, String searchKeywordTypeCode1,
+			String searchKeywordTypeCode2, String searchKeywordTypeCode3, String searchKeyword1, String searchKeyword2,
+			String searchKeyword3) {
+		int limitFrom = (page - 1) * itemsInAPage;
+		int limitTake = itemsInAPage;
+
+		return eduRepository.getForPrintBooks2(boardId, searchKeywordTypeCode1, searchKeywordTypeCode2,
+				searchKeywordTypeCode3, searchKeyword1, searchKeyword2, searchKeyword3, limitFrom, limitTake);
 	}
 
 }

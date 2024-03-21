@@ -9,15 +9,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Book {
 	private int id;
-	private String curriculum;
+	private String curriculum; //교육과정
 	private int publicationyear;
 	private String stateswordrecognition;
 	private String datatype;
 	private String schoolLevel;
 	private String schoolclassification;
-	private String title;
-	private String author;
-	private String publisher;
+	private String title; //제목
+	private String author; //저자
+	private String publisher; //출판사
 	private double price;
 	private String grade;
 	private int boardId;
