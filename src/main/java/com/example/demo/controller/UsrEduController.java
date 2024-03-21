@@ -65,12 +65,9 @@ public class UsrEduController {
 		int from = ((pageGroup - 1) * pageSize) + 1; // 한번에 보여줄 때의 첫번째 페이지 번호
 		int end = pageGroup * pageSize; // 한번에 보여줄 때의 마지막 페이지 번호
 
-		List<Book> book2 = eduService.getForPrintBooks(itemsInAPage, page, boardId, searchKeywordTypeCode1,
+		List<Book> book = eduService.getForPrintBooks(itemsInAPage, page, boardId, searchKeywordTypeCode1,
 				searchKeywordTypeCode2, searchKeywordTypeCode3, searchKeyword1, searchKeyword2, searchKeyword3);
 
-		req.setAttribute("searchKeyword1", searchKeyword1);
-		req.setAttribute("searchKeyword2", searchKeyword2);
-		req.setAttribute("searchKeyword3", searchKeyword3);
 		req.setAttribute("page", page);
 		req.setAttribute("totalPage", totalPage);
 		req.setAttribute("pageSize", pageSize);
@@ -88,7 +85,7 @@ public class UsrEduController {
 		model.addAttribute("searchKeywordTypeCode3", searchKeywordTypeCode3);
 		model.addAttribute("searchKeyword3", searchKeyword3);
 		model.addAttribute("booksCount", booksCount);
-		model.addAttribute("books", book2);
+		model.addAttribute("books", book);
 
 		return "/usr/edu/book";
 	}

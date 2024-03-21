@@ -29,10 +29,10 @@ section {
 					name="searchKeywordTypeCode1" value="title">제목 </input><input type="text" placeholder="제목을 입력해주세요."
 					name="searchKeyword1" value="${param.searchKeyword1 }" /><input type="hidden"
 					data-value="${param.searchKeywordTypeCode2 }" class="input-sm input input-bordered w-48 max-w-xs"
-					name="searchKeywordTypeCode2" value="author">저자 </input><input type="text" placeholder="제목을 입력해주세요."
+					name="searchKeywordTypeCode2" value="author">저자 </input><input type="text" placeholder="저자를 입력해주세요."
 					name="searchKeyword2" value="${param.searchKeyword2 }" /> <input type="hidden"
 					data-value="${param.searchKeywordTypeCode3 }" class="input-sm input input-bordered w-48 max-w-xs"
-					name="searchKeywordTypeCode3" value="publisher">출판사 </input><input type="text" placeholder="제목을 입력해주세요."
+					name="searchKeywordTypeCode3" value="publisher">출판사 </input><input type="text" placeholder="출판사를 입력해주세요."
 					name="searchKeyword3" value="${param.searchKeyword3 }" />
 				<button class="btn btn-ghost btn-sm" type="submit">검색</button>
 			</form>
@@ -70,7 +70,6 @@ section {
 					<td>${book.schoolLevel }</td>
 					<td>${book.author }</td>
 					<td>${book.publisher }</td>
-					<td>${ book.boardId}</td>
 				</tr>
 			</c:forEach>
 		</tbody>

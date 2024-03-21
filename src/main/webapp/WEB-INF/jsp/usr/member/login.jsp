@@ -167,6 +167,57 @@
 	}
 </script>
 
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		// 아이디 입력창 정보 가져오기
+		let elInputUsername = document.querySelector('#loginId'); // input#username
+		// 실패 메시지 정보 가져오기 (글자수 제한: 4~12글자)
+		let elFailureMessage = document.querySelector('.failure-message'); // div.failure-message.hide
+		// 실패 메시지2 정보 가져오기 (영어 또는 숫자)
+		let elFailureMessageTwo = document.querySelector('.failure-message2'); // div.failure-message2.hide
+		// 중복 확인 버튼 가져오기
+		let checkDuplicateButton = document.getElementById('checkDuplicate');
+
+		function idLength(value) {
+			return value.length >= 4 && value.length <= 12;
+		}
+
+		function onlyNumberAndEnglish(str) {
+			return /^[A-Za-z0-9][A-Za-z0-9]*$/.test(str);
+		}
+
+		elInputUsername.onkeyup = function() {
+			// 값이 입력된 경우
+			if (elInputUsername.value.length !== 0) {
+				// 영어 또는 숫자 외의 값을 입력했을 경우
+				if (onlyNumberAndEnglish(elInputUsername.value) === false) {
+					elFailureMessage.classList.add('hide');
+					elFailureMessageTwo.classList.remove('hide'); // 영어 또는 숫자만 가능합니다
+					checkDuplicateButton.disabled = true; // 중복 확인 버튼 비활성화
+				}
+				// 글자 수가 4~12글자가 아닐 경우
+				else if (idLength(elInputUsername.value) === false) {
+					elFailureMessage.classList.remove('hide'); // 아이디는 4~12글자이어야 합니다
+					elFailureMessageTwo.classList.add('hide'); // 실패 메시지2가 가려져야 함
+					checkDuplicateButton.disabled = true; // 중복 확인 버튼 비활성화
+				}
+				// 모든 조건이 충족될 경우
+				else {
+					elFailureMessage.classList.add('hide'); // 실패 메시지 숨기기
+					elFailureMessageTwo.classList.add('hide'); // 실패 메시지2 숨기기
+					checkDuplicateButton.disabled = false; // 중복 확인 버튼 활성화
+				}
+			}
+			// 값이 입력되지 않은 경우
+			else {
+				elFailureMessage.classList.add('hide');
+				elFailureMessageTwo.classList.add('hide');
+				checkDuplicateButton.disabled = true; // 중복 확인 버튼 비활성화
+			}
+		};
+	});
+</script>
+
 
 
 
@@ -436,6 +487,10 @@ a {
 	border-radius: 5px;
 	font-size: 14px;
 }
+
+.hide {
+	display: none;
+}
 </style>
 
 
@@ -476,6 +531,8 @@ a {
 									<label for="user" class="label">아이디</label> <input name="loginId" id="loginId" type="text" class="input">
 									<button type="button" id="checkDuplicate">중복 체크</button>
 									<span id="idCheckMessage"></span>
+									<div class="failure-message hide">아이디는 4~12글자이어야 합니다</div>
+									<div class="failure-message2 hide">영어 또는 숫자만 가능합니다</div>
 								</div>
 								<div class="group loginPw">
 									<label for="pass" class="label">비밀번호</label> <input id="loginPw" name="loginPw" type="password" class="input"
