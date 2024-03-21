@@ -130,8 +130,12 @@ public class UsrEduController {
 		model.addAttribute("board", board);
 		model.addAttribute("boardId", boardId);
 		model.addAttribute("page", page);
-		model.addAttribute("searchKeywordTypeCode", searchKeywordTypeCode1);
+		model.addAttribute("searchKeywordTypeCode1", searchKeywordTypeCode1);
 		model.addAttribute("searchKeyword1", searchKeyword1);
+		model.addAttribute("searchKeywordTypeCode2", searchKeywordTypeCode2);
+		model.addAttribute("searchKeyword2", searchKeyword2);
+		model.addAttribute("searchKeywordTypeCode3", searchKeywordTypeCode3);
+		model.addAttribute("searchKeyword3", searchKeyword3);
 		model.addAttribute("booksCount", booksCount);
 		model.addAttribute("books", book2);
 

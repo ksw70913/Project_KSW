@@ -142,9 +142,15 @@ public interface EduRepository {
 			<if test="boardId != 0">
 				AND boardId = #{boardId}
 			</if>
-			AND #{searchKeywordTypeCode1} LIKE CONCAT('%',#{searchKeyword1},'%')
-			AND #{searchKeywordTypeCode2} LIKE CONCAT('%',#{searchKeyword2},'%')
-			AND #{searchKeywordTypeCode3} LIKE CONCAT('%',#{searchKeyword3},'%')
+			<if test="searchKeyword1 != null and !searchKeyword1.isEmpty()">
+			AND ${searchKeywordTypeCode1} LIKE CONCAT('%',#{searchKeyword1},'%')
+			</if>
+			<if test="searchKeyword2 != null and !searchKeyword2.isEmpty()">
+			AND ${searchKeywordTypeCode2} LIKE CONCAT('%',#{searchKeyword2},'%')
+			</if>
+			<if test="searchKeyword3 != null and !searchKeyword3.isEmpty()">
+			AND ${searchKeywordTypeCode3} LIKE CONCAT('%',#{searchKeyword3},'%')
+			</if>
 			ORDER BY id DESC
 			</script>
 			""")
@@ -161,9 +167,15 @@ public interface EduRepository {
 			<if test="boardId != 0">
 				AND boardId = #{boardId}
 			</if>
-			AND #{searchKeywordTypeCode1} LIKE CONCAT('%',#{searchKeyword1},'%')
-			AND #{searchKeywordTypeCode2} LIKE CONCAT('%',#{searchKeyword2},'%')
-			AND #{searchKeywordTypeCode3} LIKE CONCAT('%',#{searchKeyword3},'%')
+			<if test="searchKeyword1 != null and !searchKeyword1.isEmpty()">
+			AND ${searchKeywordTypeCode1} LIKE CONCAT('%',#{searchKeyword1},'%')
+			</if>
+			<if test="searchKeyword2 != null and !searchKeyword2.isEmpty()">
+			AND ${searchKeywordTypeCode2} LIKE CONCAT('%',#{searchKeyword2},'%')
+			</if>
+			<if test="searchKeyword3 != null and !searchKeyword3.isEmpty()">
+			AND ${searchKeywordTypeCode3} LIKE CONCAT('%',#{searchKeyword3},'%')
+			</if>
 			GROUP BY id
 			ORDER BY id DESC
 			<if test="limitFrom >= 0 ">
