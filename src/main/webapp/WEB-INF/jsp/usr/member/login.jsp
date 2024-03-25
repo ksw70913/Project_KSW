@@ -48,12 +48,10 @@
 				success : function(data) {
 					if (data === "true") {
 						showIdCheckMessage("사용 가능한 아이디입니다.");
-						$("#idCheckMessage").css("color",
-						"green");
+						$("#idCheckMessage").css("color", "green");
 					} else if (data === "false") {
 						showIdCheckMessage("중복된 아이디입니다.");
-						$("#idCheckMessage").css("color",
-						"red");
+						$("#idCheckMessage").css("color", "red");
 					}
 				},
 				error : function() {
@@ -241,49 +239,135 @@
 	});
 
 	//비밀번호 유효성 검사
-document.addEventListener('DOMContentLoaded', function() {
-    // 비밀번호 입력란 정보 가져오기
-    let elInputPassword = document.querySelector('#loginPw');
-    // 비밀번호 확인 입력란 정보 가져오기 (있는 경우)
-    let elInputPasswordRetype = document.querySelector('#loginPw2');
-    // 실패 메시지 정보 가져오기
-    let elStrongPasswordMessage = document.querySelector('.strongPassword-message');
+	document
+			.addEventListener(
+					'DOMContentLoaded',
+					function() {
+						// 비밀번호 입력란 정보 가져오기
+						let elInputPassword = document
+								.querySelector('#loginPw');
+						// 비밀번호 확인 입력란 정보 가져오기 (있는 경우)
+						let elInputPasswordRetype = document
+								.querySelector('#loginPw2');
+						// 실패 메시지 정보 가져오기
+						let elStrongPasswordMessage = document
+								.querySelector('.strongPassword-message');
 
-    // 강력한 비밀번호인지 확인하는 함수
-    function strongPassword(str) {
-        return /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(str);
-    }
+						// 강력한 비밀번호인지 확인하는 함수
+						function strongPassword(str) {
+							return /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
+									.test(str);
+						}
 
-    // 강력한 비밀번호 메시지 표시 여부를 업데이트하는 함수
-    function updatePasswordMessageVisibility() {
-        if (elInputPassword.value.length !== 0) {
-            if (strongPassword(elInputPassword.value)) {
-                elStrongPasswordMessage.classList.add('hide');
-            } else {
-                elStrongPasswordMessage.classList.remove('hide');
-            }
-        } else {
-            elStrongPasswordMessage.classList.add('hide');
-        }
-    }
+						// 강력한 비밀번호 메시지 표시 여부를 업데이트하는 함수
+						function updatePasswordMessageVisibility() {
+							if (elInputPassword.value.length !== 0) {
+								if (strongPassword(elInputPassword.value)) {
+									elStrongPasswordMessage.classList
+											.add('hide');
+								} else {
+									elStrongPasswordMessage.classList
+											.remove('hide');
+								}
+							} else {
+								elStrongPasswordMessage.classList.add('hide');
+							}
+						}
 
-    // 입력 이벤트에 대한 이벤트 리스너를 추가하여 실시간으로 비밀번호 강도를 확인합니다.
-    elInputPassword.addEventListener('input', updatePasswordMessageVisibility);
+						// 입력 이벤트에 대한 이벤트 리스너를 추가하여 실시간으로 비밀번호 강도를 확인합니다.
+						elInputPassword.addEventListener('input',
+								updatePasswordMessageVisibility);
 
-    // 초기에 메시지 표시 여부를 올바르게 확인하기 위해 함수를 호출합니다.
-    updatePasswordMessageVisibility();
+						// 초기에 메시지 표시 여부를 올바르게 확인하기 위해 함수를 호출합니다.
+						updatePasswordMessageVisibility();
 
-    // 폼 제출 시 실행되는 함수
-    document.getElementById('signupForm').addEventListener('submit', function(event) {
-        // 비밀번호 확인을 요청하는 alert 표시
-        if (!strongPassword(elInputPassword.value)) {
-            alert("비밀번호를 다시 확인해주세요.");
-            event.preventDefault(); // 제출 이벤트 중단
-        }
-    });
-});
+						// 폼 제출 시 실행되는 함수
+						document
+								.getElementById('signupForm')
+								.addEventListener(
+										'submit',
+										function(event) {
+											// 비밀번호 확인을 요청하는 alert 표시
+											if (!strongPassword(elInputPassword.value)) {
+												alert("비밀번호를 다시 확인해주세요.");
+												event.preventDefault(); // 제출 이벤트 중단
+											}
+										});
+					});
+
+	// 이메일 유효성 검사
+	document
+			.addEventListener(
+					'DOMContentLoaded',
+					function() {
+						const emailPattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+
+						// 이메일 입력란 정보 가져오기
+						let elInputEmail = document.querySelector('#email');
+						// 실패 메시지 정보 가져오기
+						let elInvalidEmailMessage = document
+								.querySelector('.email-message');
+
+						// 이메일 유효성 검사 함수
+						function validateEmail(email) {
+							return emailPattern.test(email);
+						}
+
+						// 이메일 유효성 메시지 표시 여부를 업데이트하는 함수
+						function updateEmailMessageVisibility() {
+							if (elInputEmail.value.length !== 0) {
+								if (validateEmail(elInputEmail.value)) {
+									elInvalidEmailMessage.classList.add('hide');
+								} else {
+									elInvalidEmailMessage.classList
+											.remove('hide');
+								}
+							} else {
+								elInvalidEmailMessage.classList.add('hide');
+							}
+						}
+
+						// 입력 이벤트에 대한 이벤트 리스너를 추가하여 실시간으로 이메일 유효성을 확인합니다.
+						elInputEmail.addEventListener('input',
+								updateEmailMessageVisibility);
+
+						// 초기에 메시지 표시 여부를 올바르게 확인하기 위해 함수를 호출합니다.
+						updateEmailMessageVisibility();
+
+						// 폼 제출 시 실행되는 함수
+						document.getElementById('signupForm').addEventListener(
+								'submit', function(event) {
+									// 이메일 유효성 검사
+									if (!validateEmail(elInputEmail.value)) {
+										alert("유효하지 않은 이메일 주소입니다.");
+										event.preventDefault(); // 제출 이벤트 중단
+									}
+								});
+					});
 </script>
 
+
+<script>
+	function allowAlphabetsAndNumbers(input) {
+		var regex = /^[a-zA-Z0-9]+$/;
+		if (!regex.test(input.value)) {
+			input.value = input.value.replace(/[^a-zA-Z0-9]+/g, '');
+		}
+	}
+
+	document.addEventListener('DOMContentLoaded', function() {
+		// Apply to ID input field
+		document.getElementById('loginId').addEventListener('input',
+				function() {
+					allowAlphabetsAndNumbers(this);
+				});
+
+		// Apply to email input field
+		document.getElementById('email').addEventListener('input', function() {
+			allowAlphabetsAndNumbers(this);
+		});
+	});
+</script>
 
 
 
@@ -594,7 +678,8 @@ a {
 						<div class="join-form">
 							<form action="../member/doJoin" method="POST" id="signupForm">
 								<div class="group">
-									<label for="user" class="label">아이디</label> <input name="loginId" id="loginId" type="text" class="input">
+									<label for="user" class="label">아이디</label> <input name="loginId" id="loginId" type="text" class="input"
+										onkeydown="allowAlphabetsAndNumbers(this)">
 									<button type="button" id="checkDuplicate">중복 체크</button>
 									<span id="idCheckMessage"></span>
 									<div class="failure-message hide">아이디는 4~12글자이어야 합니다</div>
@@ -611,8 +696,18 @@ a {
 								</div>
 								<div id="passwordMatchMessage"></div>
 								<div class="group">
-									<label for="pass" class="label">이메일</label> <input name="email" type="text" class="input">
+									<label for="email" class="label">이메일</label> <input id="email" name="email" type="text" class="input"
+										onkeydown="allowAlphabetsAndNumbers(this)">
+									<!-- 										<select name="emailList" size='1' -->
+									<!-- 										onchange="return checkEmail()"> -->
+									<!-- 										<option value="">직접 입력</option> -->
+									<!-- 										<option value="naver.com">naver.com</option> -->
+									<!-- 										<option value="naver.com">google.com</option> -->
+									<!-- 										<option value="daum.net">daum.net</option> -->
+									<!-- 										<option value="nate.com">nate.com</option> -->
+									<!-- 									</select> -->
 								</div>
+								<div class="email-message hide">올바른 이메일 형식으로 지어주세요.</div>
 								<div class="group">
 									<label for="pass" class="label">이름</label> <input name="name" type="text" class="input">
 								</div>
