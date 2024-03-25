@@ -20,11 +20,22 @@
 </script>
 <script>
 	$(document).ready(function() {
+		// Function to hide ID check message
+		function hideIdCheckMessage() {
+			$("#idCheckMessage").hide();
+		}
+
+		// Function to show ID check message
+		function showIdCheckMessage(message) {
+			$("#idCheckMessage").text(message).show();
+		}
+
+		// Click event for checking duplicate ID
 		$("#checkDuplicate").click(function() {
 			var id = $("#loginId").val();
 
 			if (id.trim() === '') {
-				$("#idCheckMessage").text("아이디를 입력해주세요.");
+				showIdCheckMessage("아이디를 입력해주세요.");
 				return;
 			}
 
@@ -36,17 +47,18 @@
 				},
 				success : function(data) {
 					if (data === "true") {
-						$("#idCheckMessage").text("사용 가능한 아이디입니다.");
+						showIdCheckMessage("사용 가능한 아이디입니다.");
 					} else if (data === "false") {
-						$("#idCheckMessage").text("중복된 아이디입니다.");
+						showIdCheckMessage("중복된 아이디입니다.");
 					}
 				},
 				error : function() {
-					$("#idCheckMessage").text("서버와의 통신 중 오류가 발생했습니다.");
+					showIdCheckMessage("서버와의 통신 중 오류가 발생했습니다.");
 				}
 			});
 		});
 
+		// Submit event for signup form
 		$("#signupForm").submit(function() {
 			// Disable duplicate checking
 			$("#checkDuplicate").prop("disabled", true);
@@ -54,10 +66,16 @@
 			// Check if the ID is available
 			if ($("#idCheckMessage").text() !== "사용 가능한 아이디입니다.") {
 				alert("아이디를 다시 확인해주세요.");
+
 				// Re-enable duplicate checking
 				$("#checkDuplicate").prop("disabled", false);
 				return false;
 			}
+		});
+
+		// Hide ID check message when typing in login ID input
+		$("#loginId").on("input", function() {
+			hideIdCheckMessage();
 		});
 	});
 </script>
@@ -168,6 +186,7 @@
 </script>
 
 <script>
+	// 아이디 유효성 검사
 	document.addEventListener('DOMContentLoaded', function() {
 		// 아이디 입력창 정보 가져오기
 		let elInputUsername = document.querySelector('#loginId'); // input#username
@@ -216,6 +235,50 @@
 			}
 		};
 	});
+
+	//비밀번호 유효성 검사
+	document
+			.addEventListener(
+					'DOMContentLoaded',
+					function() {
+						// 비밀번호 입력란 정보 가져오기
+						let elInputPassword = document
+								.querySelector('#loginPw');
+						// 비밀번호 확인 입력란 정보 가져오기 (있는 경우)
+						let elInputPasswordRetype = document
+								.querySelector('#loginPw2');
+						// 실패 메시지 정보 가져오기
+						let elStrongPasswordMessage = document
+								.querySelector('.strongPassword-message');
+
+						// 강력한 비밀번호인지 확인하는 함수
+						function strongPassword(str) {
+							return /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
+									.test(str);
+						}
+
+						// 강력한 비밀번호 메시지 표시 여부를 업데이트하는 함수
+						function updatePasswordMessageVisibility() {
+							if (elInputPassword.value.length !== 0) {
+								if (strongPassword(elInputPassword.value)) {
+									elStrongPasswordMessage.classList
+											.add('hide');
+								} else {
+									elStrongPasswordMessage.classList
+											.remove('hide');
+								}
+							} else {
+								elStrongPasswordMessage.classList.add('hide');
+							}
+						}
+
+						// 입력 이벤트에 대한 이벤트 리스너를 추가하여 실시간으로 비밀번호 강도를 확인합니다.
+						elInputPassword.addEventListener('input',
+								updatePasswordMessageVisibility);
+
+						// 초기에 메시지 표시 여부를 올바르게 확인하기 위해 함수를 호출합니다.
+						updatePasswordMessageVisibility();
+					});
 </script>
 
 
@@ -538,6 +601,7 @@ a {
 									<label for="pass" class="label">비밀번호</label> <input id="loginPw" name="loginPw" type="password" class="input"
 										data-type="password">
 								</div>
+								<div class="strongPassword-message hide">8글자 이상, 영문, 숫자, 특수문자를 사용하세요</div>
 								<div class="group loginPw2">
 									<label for="pass" class="label">비밀번호 확인</label> <input id="loginPw2" name="loginPw2" type="password"
 										class="input" data-type="password">
