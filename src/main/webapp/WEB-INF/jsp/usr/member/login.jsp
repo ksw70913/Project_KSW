@@ -48,8 +48,12 @@
 				success : function(data) {
 					if (data === "true") {
 						showIdCheckMessage("사용 가능한 아이디입니다.");
+						$("#idCheckMessage").css("color",
+						"green");
 					} else if (data === "false") {
 						showIdCheckMessage("중복된 아이디입니다.");
+						$("#idCheckMessage").css("color",
+						"red");
 					}
 				},
 				error : function() {
@@ -237,48 +241,47 @@
 	});
 
 	//비밀번호 유효성 검사
-	document
-			.addEventListener(
-					'DOMContentLoaded',
-					function() {
-						// 비밀번호 입력란 정보 가져오기
-						let elInputPassword = document
-								.querySelector('#loginPw');
-						// 비밀번호 확인 입력란 정보 가져오기 (있는 경우)
-						let elInputPasswordRetype = document
-								.querySelector('#loginPw2');
-						// 실패 메시지 정보 가져오기
-						let elStrongPasswordMessage = document
-								.querySelector('.strongPassword-message');
+document.addEventListener('DOMContentLoaded', function() {
+    // 비밀번호 입력란 정보 가져오기
+    let elInputPassword = document.querySelector('#loginPw');
+    // 비밀번호 확인 입력란 정보 가져오기 (있는 경우)
+    let elInputPasswordRetype = document.querySelector('#loginPw2');
+    // 실패 메시지 정보 가져오기
+    let elStrongPasswordMessage = document.querySelector('.strongPassword-message');
 
-						// 강력한 비밀번호인지 확인하는 함수
-						function strongPassword(str) {
-							return /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
-									.test(str);
-						}
+    // 강력한 비밀번호인지 확인하는 함수
+    function strongPassword(str) {
+        return /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(str);
+    }
 
-						// 강력한 비밀번호 메시지 표시 여부를 업데이트하는 함수
-						function updatePasswordMessageVisibility() {
-							if (elInputPassword.value.length !== 0) {
-								if (strongPassword(elInputPassword.value)) {
-									elStrongPasswordMessage.classList
-											.add('hide');
-								} else {
-									elStrongPasswordMessage.classList
-											.remove('hide');
-								}
-							} else {
-								elStrongPasswordMessage.classList.add('hide');
-							}
-						}
+    // 강력한 비밀번호 메시지 표시 여부를 업데이트하는 함수
+    function updatePasswordMessageVisibility() {
+        if (elInputPassword.value.length !== 0) {
+            if (strongPassword(elInputPassword.value)) {
+                elStrongPasswordMessage.classList.add('hide');
+            } else {
+                elStrongPasswordMessage.classList.remove('hide');
+            }
+        } else {
+            elStrongPasswordMessage.classList.add('hide');
+        }
+    }
 
-						// 입력 이벤트에 대한 이벤트 리스너를 추가하여 실시간으로 비밀번호 강도를 확인합니다.
-						elInputPassword.addEventListener('input',
-								updatePasswordMessageVisibility);
+    // 입력 이벤트에 대한 이벤트 리스너를 추가하여 실시간으로 비밀번호 강도를 확인합니다.
+    elInputPassword.addEventListener('input', updatePasswordMessageVisibility);
 
-						// 초기에 메시지 표시 여부를 올바르게 확인하기 위해 함수를 호출합니다.
-						updatePasswordMessageVisibility();
-					});
+    // 초기에 메시지 표시 여부를 올바르게 확인하기 위해 함수를 호출합니다.
+    updatePasswordMessageVisibility();
+
+    // 폼 제출 시 실행되는 함수
+    document.getElementById('signupForm').addEventListener('submit', function(event) {
+        // 비밀번호 확인을 요청하는 alert 표시
+        if (!strongPassword(elInputPassword.value)) {
+            alert("비밀번호를 다시 확인해주세요.");
+            event.preventDefault(); // 제출 이벤트 중단
+        }
+    });
+});
 </script>
 
 
