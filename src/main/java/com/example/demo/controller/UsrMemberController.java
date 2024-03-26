@@ -136,6 +136,13 @@ public class UsrMemberController {
 			return Ut.jsHistoryBack("F-11", "상세주소를 입력해주세요.");
 		}
 
+		// 쉼표로 구분된 이메일 형식인 경우 "@"를 추가하여 수정
+		if (email.contains(",")) {
+			String[] parts = email.split(",");
+			email = parts[0] + "@" + parts[1];
+		}
+		System.err.println(email);
+
 		ResultData<Integer> joinRd = memberService.join(loginId, loginPw, name, nickname, cellphoneNum, email,
 				schoollevel, grade, postcode, roadAddress, jibunAddress, detailAddress, latitude, longitude);
 

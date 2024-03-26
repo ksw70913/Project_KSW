@@ -295,59 +295,60 @@
 										});
 					});
 
-	// 이메일 유효성 검사
-	document
-			.addEventListener(
-					'DOMContentLoaded',
-					function() {
-						const emailPattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+	// 	// 이메일 유효성 검사
+	// 	document
+	// 			.addEventListener(
+	// 					'DOMContentLoaded',
+	// 					function() {
+	// 						const emailPattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 
-						// 이메일 입력란 정보 가져오기
-						let elInputEmail = document.querySelector('#email');
-						// 실패 메시지 정보 가져오기
-						let elInvalidEmailMessage = document
-								.querySelector('.email-message');
+	// 						// 이메일 입력란 정보 가져오기
+	// 						let elInputEmail = document.querySelector('#email');
+	// 						// 실패 메시지 정보 가져오기
+	// 						let elInvalidEmailMessage = document
+	// 								.querySelector('.email-message');
 
-						// 이메일 유효성 검사 함수
-						function validateEmail(email) {
-							return emailPattern.test(email);
-						}
+	// 						// 이메일 유효성 검사 함수
+	// 						function validateEmail(email) {
+	// 							return emailPattern.test(email);
+	// 						}
 
-						// 이메일 유효성 메시지 표시 여부를 업데이트하는 함수
-						function updateEmailMessageVisibility() {
-							if (elInputEmail.value.length !== 0) {
-								if (validateEmail(elInputEmail.value)) {
-									elInvalidEmailMessage.classList.add('hide');
-								} else {
-									elInvalidEmailMessage.classList
-											.remove('hide');
-								}
-							} else {
-								elInvalidEmailMessage.classList.add('hide');
-							}
-						}
+	// 						// 이메일 유효성 메시지 표시 여부를 업데이트하는 함수
+	// 						function updateEmailMessageVisibility() {
+	// 							if (elInputEmail.value.length !== 0) {
+	// 								if (validateEmail(elInputEmail.value)) {
+	// 									elInvalidEmailMessage.classList.add('hide');
+	// 								} else {
+	// 									elInvalidEmailMessage.classList
+	// 											.remove('hide');
+	// 								}
+	// 							} else {
+	// 								elInvalidEmailMessage.classList.add('hide');
+	// 							}
+	// 						}
 
-						// 입력 이벤트에 대한 이벤트 리스너를 추가하여 실시간으로 이메일 유효성을 확인합니다.
-						elInputEmail.addEventListener('input',
-								updateEmailMessageVisibility);
+	// 						// 입력 이벤트에 대한 이벤트 리스너를 추가하여 실시간으로 이메일 유효성을 확인합니다.
+	// 						elInputEmail.addEventListener('input',
+	// 								updateEmailMessageVisibility);
 
-						// 초기에 메시지 표시 여부를 올바르게 확인하기 위해 함수를 호출합니다.
-						updateEmailMessageVisibility();
+	// 						// 초기에 메시지 표시 여부를 올바르게 확인하기 위해 함수를 호출합니다.
+	// 						updateEmailMessageVisibility();
 
-						// 폼 제출 시 실행되는 함수
-						document.getElementById('signupForm').addEventListener(
-								'submit', function(event) {
-									// 이메일 유효성 검사
-									if (!validateEmail(elInputEmail.value)) {
-										alert("유효하지 않은 이메일 주소입니다.");
-										event.preventDefault(); // 제출 이벤트 중단
-									}
-								});
-					});
+	// 						// 폼 제출 시 실행되는 함수
+	// 						document.getElementById('signupForm').addEventListener(
+	// 								'submit', function(event) {
+	// 									// 이메일 유효성 검사
+	// 									if (!validateEmail(elInputEmail.value)) {
+	// 										alert("유효하지 않은 이메일 주소입니다.");
+	// 										event.preventDefault(); // 제출 이벤트 중단
+	// 									}
+	// 								});
+	// 					});
 </script>
 
 
 <script>
+	// 아이디와 이메일 영어 숫자만
 	function allowAlphabetsAndNumbers(input) {
 		var regex = /^[a-zA-Z0-9]+$/;
 		if (!regex.test(input.value)) {
@@ -367,6 +368,32 @@
 			allowAlphabetsAndNumbers(this);
 		});
 	});
+
+	function updateEmailDomain(select) {
+		var emailDomainInput = document.getElementById("emailDomain");
+		var directInputOption = document.querySelector('option[value=""]');
+
+		if (select.value === "") {
+			emailDomainInput.readOnly = false;
+			emailDomainInput.value = "";
+		} else {
+			emailDomainInput.readOnly = true;
+			emailDomainInput.value = select.value;
+		}
+	}
+
+	//이메일 직접입력했을 때, 쓸 수 있게
+	function updateEmailFields(emailValue) {
+		// Split the email into local part and domain part
+		var parts = emailValue.split('@');
+
+		// Update the email and emailDomain fields accordingly
+		document.getElementById("email").value = parts[0];
+		document.getElementById("emailDomain").value = parts[1];
+	}
+
+	//이메일을 합치는 스크립트
+
 </script>
 
 
@@ -641,6 +668,23 @@ a {
 .hide {
 	display: none;
 }
+
+.group.inline {
+	display: flex;
+	align-items: center;
+}
+
+.group.inline input[type="text"], .group.inline select {
+	margin-right: 5px; /* Adjust margin as needed */
+}
+
+.group.inline select {
+	flex-shrink: 0; /* Prevent select from shrinking */
+}
+
+.group.inline span {
+	margin: 0 5px; /* Adjust margin as needed */
+}
 </style>
 
 
@@ -696,16 +740,18 @@ a {
 								</div>
 								<div id="passwordMatchMessage"></div>
 								<div class="group">
-									<label for="email" class="label">이메일</label> <input id="email" name="email" type="text" class="input"
-										onkeydown="allowAlphabetsAndNumbers(this)">
-									<!-- 										<select name="emailList" size='1' -->
-									<!-- 										onchange="return checkEmail()"> -->
-									<!-- 										<option value="">직접 입력</option> -->
-									<!-- 										<option value="naver.com">naver.com</option> -->
-									<!-- 										<option value="naver.com">google.com</option> -->
-									<!-- 										<option value="daum.net">daum.net</option> -->
-									<!-- 										<option value="nate.com">nate.com</option> -->
-									<!-- 									</select> -->
+									<label for="emailID" class="label">이메일 아이디</label>
+								</div>
+								<div class="group inline">
+									<input id="email" name="email" type="text" class="input" onkeydown="allowAlphabetsAndNumbers(this)"> <span>@</span>
+									<input id="emailDomain" name="email" type="text" class="input" readonly> <select name="emailList"
+										size='1' onchange="updateEmailDomain(this)">
+										<option value="">직접 입력</option>
+										<option value="naver.com">naver.com</option>
+										<option value="google.com">google.com</option>
+										<option value="daum.net">daum.net</option>
+										<option value="nate.com">nate.com</option>
+									</select>
 								</div>
 								<div class="email-message hide">올바른 이메일 형식으로 지어주세요.</div>
 								<div class="group">
