@@ -392,8 +392,6 @@
 		document.getElementById("emailDomain").value = parts[1];
 	}
 
-	//이메일을 합치는 스크립트
-
 </script>
 
 
@@ -714,7 +712,7 @@ a {
 							</div>
 							<div class="hr"></div>
 							<div class="foot-lnk">
-								<a href="#forgot">Forgot Password?</a>
+								<a href="../member/findLoginPw">Forgot Password?</a>
 							</div>
 						</div>
 					</form>

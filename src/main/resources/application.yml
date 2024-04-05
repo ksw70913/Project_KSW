@@ -1,6 +1,21 @@
 server:
   port: 8082
 spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: pavico@gmail.com
+    password: qzir bwaa denc wgil
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
   mvc:
     view:
       prefix: /WEB-INF/jsp/
@@ -13,3 +28,8 @@ spring:
     password: 
 mybatis:
   type-aliases-package: com.example.demo.vo
+custom:
+  siteName: 2024_01_Spring_AM
+  siteMainUri: http://localhost:8081
+  emailFrom: no-reply@localhost
+  emailFromName: 2024_01_Spring_AM
