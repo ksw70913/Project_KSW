@@ -116,7 +116,7 @@ public class MemberService {
 	}
 
 	private void setTempPassword(Member actor, String tempPassword) {
-//		memberRepository.modify(actor.getId(), Ut.sha256(tempPassword), null, null, null, null);
+		memberRepository.modify(actor.getId(), Ut.sha256(tempPassword), null, null, null, null, null, 0, 0, null, null, null, 0, 0);
 	}
 
 }

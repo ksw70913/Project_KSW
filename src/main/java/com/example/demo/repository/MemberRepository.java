@@ -77,10 +77,10 @@ public interface MemberRepository {
 				<if test="schoollevel != null">
 					schoollevel = #{schoollevel},
 				</if>
-				<if test="grade != null">
+				<if test="grade != 0">
 					grade = #{grade},
 				</if>
-				<if test="postcode != null">
+				<if test="postcode != 0">
 					postcode = #{postcode},
 				</if>
 				<if test="roadAddress != null">
@@ -92,10 +92,10 @@ public interface MemberRepository {
 				<if test="detailAddress != null">
 					detailAddress = #{detailAddress},
 				</if>
-				<if test="latitude != null">
+				<if test="latitude != 0">
 					latitude = #{latitude},
 				</if>
-				<if test="longitude != null">
+				<if test="longitude != 0">
 					longitude = #{longitude},
 				</if>
 				updateDate= NOW()
