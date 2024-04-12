@@ -4,8 +4,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: pavico@gmail.com
-    password: qzir bwaa denc wgil
+    username: pavicotest@gmail.com
+    password: qfzh hkrz ejan nxgv
     properties:
       mail:
         smtp:
@@ -29,7 +29,7 @@ spring:
 mybatis:
   type-aliases-package: com.example.demo.vo
 custom:
-  siteName: 2024_01_Spring_AM
-  siteMainUri: http://localhost:8081
+  siteName: Helper
+  siteMainUri: http://localhost:8082
   emailFrom: no-reply@localhost
-  emailFromName: 2024_01_Spring_AM
+  emailFromName: Helper
