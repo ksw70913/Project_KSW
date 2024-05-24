@@ -55,6 +55,7 @@
 				<tr>
 					<th>상세주소</th>
 					<td>${rq.loginedMember.detailAddress }</td>
+					
 				</tr>
 				<tr>
 					<th>학교급</th>

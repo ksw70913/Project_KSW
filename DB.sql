@@ -414,27 +414,6 @@ CREATE TABLE `Project_KSW`.`childzone` (
   `providername` TEXT DEFAULT '0'
 );
 
-# 학교
-
-CREATE TABLE `Project_KSW`.`school` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `schoolID` VARCHAR(50),
-  `schoolName` VARCHAR(50),
-  `schoolLevel` VARCHAR(50),
-  `establishmentDate` TEXT,
-  `establishmentType` VARCHAR(10),
-  `classification` VARCHAR(10),
-  `state` VARCHAR(10),
-  `jibunaddress` TEXT,
-  `roadaddress` TEXT,
-  `educationOfficeCode` INT,
-  `educationOffice` VARCHAR(50),
-  `educationSupportOfficeCode` INT,
-  `educationSupportOffice` VARCHAR(50),
-  `latitude` DOUBLE,
-  `longitude` DOUBLE
-)
-
  # 학습데이터
  CREATE TABLE `Project_KSW`.`learning`(
  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -445,11 +424,6 @@ CREATE TABLE `Project_KSW`.`school` (
  delStatus TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '삭제 여부 (0=삭제 전, 1=삭제 후)',
  delDate DATETIME COMMENT '삭제 날짜'
  )
- 
- INSERT INTO learning
- SET memberId = 4,
- bookId = 2,
- title = '자연'
  
 
 ###############################################
@@ -608,13 +582,13 @@ ON A.id = RP.relId AND RP.relTypeCode = 'article'
 GROUP BY A.id
 ORDER BY A.id DESC;
 
-select B.*
-from book B
-where 1
-and boardId = 4
-and `서명` like concat ('%','','%')
-order by B.id asc
-limit 0,10
+SELECT B.*
+FROM book B
+WHERE 1
+AND boardId = 4
+AND `서명` LIKE CONCAT ('%','','%')
+ORDER BY B.id ASC
+LIMIT 0,10
 
 
 SELECT *, COUNT(*)
@@ -632,29 +606,29 @@ SUM(IF(RP.point < 0,RP.point * -1,0)) AS badReactionPoint
 FROM reactionPoint AS RP
 GROUP BY RP.relTypeCode,RP.relId
 
-select *
-from book
-where title like concat('%','수학','%')
-and author like concat('%','교육부','%')
+SELECT *
+FROM book
+WHERE title LIKE CONCAT('%','수학','%')
+AND author LIKE CONCAT('%','교육부','%')
 
 SELECT *
 FROM book
-where boardId = 6
+WHERE boardId = 6
 
 SELECT *
 FROM learning
 
-update learning
-set learning = 20
-where id = 2
+UPDATE learning
+SET learning = 20
+WHERE id = 2
 
 
-select *
-from book
-where 1
-and boardId = 4
-AND title like concat('%','','%')
-and author like concat('%','교육','%')
-group by id
-order by id desc
-limit 0, 10
+SELECT *
+FROM book
+WHERE 1
+AND boardId = 4
+AND title LIKE CONCAT('%','','%')
+AND author LIKE CONCAT('%','교육','%')
+GROUP BY id
+ORDER BY id DESC
+LIMIT 0, 10

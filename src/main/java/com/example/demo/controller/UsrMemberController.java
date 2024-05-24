@@ -188,6 +188,7 @@ public class UsrMemberController {
 			String email, int postcode, String roadAddress, String jibunAddress, String detailAddress, double latitude,
 			double longitude, String schoollevel, int grade) {
 		Rq rq = (Rq) req.getAttribute("rq");
+	
 
 		// 비밀번호 안바꿀 수도 있어서 비번 null 체크는 제거
 
